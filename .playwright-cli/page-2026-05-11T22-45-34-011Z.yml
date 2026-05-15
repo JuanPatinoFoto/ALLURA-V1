@@ -1,0 +1,125 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "ALLURA" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e5]:
+        - link "Inicio" [ref=e6] [cursor=pointer]:
+          - /url: /
+        - link "Servicios" [ref=e7] [cursor=pointer]:
+          - /url: /servicios
+        - link "Nosotros" [ref=e8] [cursor=pointer]:
+          - /url: /nosotros
+        - link "Contacto" [ref=e9] [cursor=pointer]:
+          - /url: /contacto
+      - link "Agenda tu consulta" [ref=e10] [cursor=pointer]:
+        - /url: /contacto
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e15]:
+        - paragraph [ref=e16]: Turismo Médico · Medellín, Colombia
+        - heading "Tu transformación comienza en Medellín" [level=1] [ref=e17]
+        - paragraph [ref=e18]: Salud, estética y bienestar de clase mundial, con la calidez y el encanto de Colombia.
+        - generic [ref=e19]:
+          - link "Conoce nuestros servicios" [ref=e20] [cursor=pointer]:
+            - /url: /servicios
+          - link "¿Quiénes somos?" [ref=e21] [cursor=pointer]:
+            - /url: /nosotros
+      - img [ref=e23]
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - paragraph [ref=e28]: Por qué elegirnos
+        - heading "Una experiencia diseñada para ti" [level=2] [ref=e29]
+        - paragraph [ref=e30]: En Allura, tu bienestar es nuestra única prioridad.
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - img [ref=e34]
+          - heading "Excelencia Profesional" [level=3] [ref=e37]
+          - paragraph [ref=e38]: Trabajamos con especialistas certificados internacionalmente que combinan rigor científico con una atención cercana y personalizada.
+        - generic [ref=e39]:
+          - img [ref=e41]
+          - heading "Acompañamiento Personalizado" [level=3] [ref=e46]
+          - paragraph [ref=e47]: "Coordinamos cada detalle de tu experiencia: desde la llegada a Medellín hasta el alta médica, para que solo te preocupes por sanar y disfrutar."
+        - generic [ref=e48]:
+          - img [ref=e50]
+          - heading "Tecnología y Ética" [level=3] [ref=e53]
+          - paragraph [ref=e54]: Utilizamos equipos de última generación bajo protocolos internacionales, con total transparencia en cada etapa de tu tratamiento.
+    - generic [ref=e56]:
+      - generic [ref=e57]:
+        - paragraph [ref=e58]: Nuestros servicios
+        - heading "Transformación integral" [level=2] [ref=e59]
+        - paragraph [ref=e60]: Tres pilares de excelencia para tu bienestar completo.
+      - generic [ref=e61]:
+        - generic [ref=e65]:
+          - heading "Medicina" [level=3] [ref=e66]
+          - paragraph [ref=e67]: Procedimientos médicos de alta complejidad con estándares internacionales.
+          - link "Ver más" [ref=e68] [cursor=pointer]:
+            - /url: /servicios#medicina
+            - text: Ver más
+            - img [ref=e69]
+        - generic [ref=e74]:
+          - heading "Estética" [level=3] [ref=e75]
+          - paragraph [ref=e76]: Tratamientos estéticos que realzan tu belleza natural con seguridad y precisión.
+          - link "Ver más" [ref=e77] [cursor=pointer]:
+            - /url: /servicios#estetica
+            - text: Ver más
+            - img [ref=e78]
+        - generic [ref=e83]:
+          - heading "Odontología" [level=3] [ref=e84]
+          - paragraph [ref=e85]: Sonrisas perfectas con tecnología de vanguardia y especialistas de primer nivel.
+          - link "Ver más" [ref=e86] [cursor=pointer]:
+            - /url: /servicios#odontologia
+            - text: Ver más
+            - img [ref=e87]
+    - generic [ref=e92]:
+      - generic [ref=e93]:
+        - paragraph [ref=e94]: Nuestra filosofía
+        - heading "Medellín como destino, el bienestar como propósito" [level=2] [ref=e95]
+        - paragraph [ref=e96]: Allura nace de la convicción de que la salud y el disfrute no son opuestos. Combinamos la excelencia médica colombiana con la experiencia única de vivir Medellín — su clima, su cultura y su calidez humana.
+      - link "Conoce nuestro equipo" [ref=e98] [cursor=pointer]:
+        - /url: /nosotros
+    - generic [ref=e103]:
+      - paragraph [ref=e104]: Da el primer paso
+      - heading "Transforma tu bienestar. Agenda tu consulta hoy." [level=2] [ref=e105]
+      - paragraph [ref=e106]: Nuestro equipo te acompañará en cada etapa. Sin compromisos, con total transparencia.
+      - link "Contactar ahora" [ref=e107] [cursor=pointer]:
+        - /url: /contacto
+  - contentinfo [ref=e108]:
+    - generic [ref=e109]:
+      - generic [ref=e110]:
+        - generic [ref=e111]:
+          - paragraph [ref=e112]: ALLURA
+          - paragraph [ref=e113]: Turismo médico de excelencia en Medellín. Salud, estética y bienestar con la calidez de Colombia.
+        - generic [ref=e114]:
+          - paragraph [ref=e115]: Navegación
+          - list [ref=e116]:
+            - listitem [ref=e117]:
+              - link "Inicio" [ref=e118] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e119]:
+              - link "Servicios" [ref=e120] [cursor=pointer]:
+                - /url: /servicios
+            - listitem [ref=e121]:
+              - link "Nosotros" [ref=e122] [cursor=pointer]:
+                - /url: /nosotros
+            - listitem [ref=e123]:
+              - link "Contacto" [ref=e124] [cursor=pointer]:
+                - /url: /contacto
+        - generic [ref=e125]:
+          - paragraph [ref=e126]: Contacto
+          - paragraph [ref=e127]: Medellín, Colombia
+          - paragraph [ref=e128]:
+            - link "info@allura.co" [ref=e129] [cursor=pointer]:
+              - /url: mailto:info@allura.co
+          - generic [ref=e130]:
+            - link "Instagram" [ref=e131] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e132]
+            - link "Facebook" [ref=e135] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e136]
+            - link "LinkedIn" [ref=e138] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e139]
+      - paragraph [ref=e144]: © 2026 Allura Healthcare. Todos los derechos reservados.
+  - alert [ref=e145]

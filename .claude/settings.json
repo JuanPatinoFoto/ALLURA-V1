@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(superpowers:writing-plans)",
+      "Skill(superpowers:writing-plans:*)",
+      "Bash(git add *)",
+      "Bash(Test-Path \"C:\\\\Users\\\\publi\\\\Desktop\\\\ALLURA\\\\playwright-screenshots.js\")",
+      "PowerShell(Copy-Item -Recurse \"screenshots\\\\\" \"public\\\\screenshots\\\\\" -Force)",
+      "PowerShell(Test-Path \"public\\\\presentacion-home.html\"; \\(ls \"public\\\\screenshots\\\\\" | Measure-Object | Select-Object -ExpandProperty Count\\))",
+      "Bash(git commit *)",
+      "PowerShell(npx vercel --version)"
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true
+  }
+}

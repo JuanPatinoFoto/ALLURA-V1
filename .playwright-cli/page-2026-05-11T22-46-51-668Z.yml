@@ -1,0 +1,93 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "ALLURA" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e5]:
+        - link "Inicio" [ref=e6] [cursor=pointer]:
+          - /url: /
+        - link "Servicios" [ref=e7] [cursor=pointer]:
+          - /url: /servicios
+        - link "Nosotros" [ref=e8] [cursor=pointer]:
+          - /url: /nosotros
+        - link "Contacto" [ref=e9] [cursor=pointer]:
+          - /url: /contacto
+      - link "Agenda tu consulta" [ref=e10] [cursor=pointer]:
+        - /url: /contacto
+  - main [ref=e11]:
+    - generic [ref=e13]:
+      - paragraph [ref=e14]: Lo que ofrecemos
+      - heading "Servicios de excelencia" [level=2] [ref=e15]
+      - paragraph [ref=e16]: "Tres especialidades, un solo propósito: tu transformación integral."
+    - generic [ref=e18]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: Medicina
+        - heading "Medicina" [level=2] [ref=e22]
+        - paragraph [ref=e23]: Ofrecemos procedimientos médicos de alta complejidad bajo los más estrictos estándares internacionales. Nuestros especialistas tienen formación en las mejores instituciones de América y Europa.
+        - list [ref=e24]:
+          - listitem [ref=e25]: Cirugía reconstructiva
+          - listitem [ref=e27]: Tratamientos oncológicos complementarios
+          - listitem [ref=e29]: Medicina preventiva y chequeos ejecutivos
+          - listitem [ref=e31]: Cirugía bariátrica
+      - generic [ref=e36]:
+        - paragraph [ref=e37]: Estética
+        - heading "Estética" [level=2] [ref=e38]
+        - paragraph [ref=e39]: Procedimientos estéticos que realzan tu belleza natural. Combinamos técnica de precisión con una visión artística para resultados que se ven y se sienten naturales.
+        - list [ref=e40]:
+          - listitem [ref=e41]: Cirugía plástica y reconstructiva
+          - listitem [ref=e43]: Medicina estética no invasiva
+          - listitem [ref=e45]: Tratamientos corporales
+          - listitem [ref=e47]: Rejuvenecimiento facial
+      - generic [ref=e52]:
+        - paragraph [ref=e53]: Odontología
+        - heading "Odontología" [level=2] [ref=e54]
+        - paragraph [ref=e55]: Sonrisas perfectas con tecnología de vanguardia. Desde implantes hasta diseño de sonrisa digital, nuestro equipo odontológico ofrece resultados excepcionales.
+        - list [ref=e56]:
+          - listitem [ref=e57]: Implantes dentales
+          - listitem [ref=e59]: Diseño de sonrisa digital
+          - listitem [ref=e61]: Ortodoncia invisible
+          - listitem [ref=e63]: Blanqueamiento profesional
+    - generic [ref=e69]:
+      - paragraph [ref=e70]: Da el primer paso
+      - heading "Transforma tu bienestar. Agenda tu consulta hoy." [level=2] [ref=e71]
+      - paragraph [ref=e72]: Nuestro equipo te acompañará en cada etapa. Sin compromisos, con total transparencia.
+      - link "Contactar ahora" [ref=e73] [cursor=pointer]:
+        - /url: /contacto
+  - contentinfo [ref=e74]:
+    - generic [ref=e75]:
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - paragraph [ref=e78]: ALLURA
+          - paragraph [ref=e79]: Turismo médico de excelencia en Medellín. Salud, estética y bienestar con la calidez de Colombia.
+        - generic [ref=e80]:
+          - paragraph [ref=e81]: Navegación
+          - list [ref=e82]:
+            - listitem [ref=e83]:
+              - link "Inicio" [ref=e84] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e85]:
+              - link "Servicios" [ref=e86] [cursor=pointer]:
+                - /url: /servicios
+            - listitem [ref=e87]:
+              - link "Nosotros" [ref=e88] [cursor=pointer]:
+                - /url: /nosotros
+            - listitem [ref=e89]:
+              - link "Contacto" [ref=e90] [cursor=pointer]:
+                - /url: /contacto
+        - generic [ref=e91]:
+          - paragraph [ref=e92]: Contacto
+          - paragraph [ref=e93]: Medellín, Colombia
+          - paragraph [ref=e94]:
+            - link "info@allura.co" [ref=e95] [cursor=pointer]:
+              - /url: mailto:info@allura.co
+          - generic [ref=e96]:
+            - link "Instagram" [ref=e97] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e98]
+            - link "Facebook" [ref=e101] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e102]
+            - link "LinkedIn" [ref=e104] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e105]
+      - paragraph [ref=e110]: © 2026 Allura Healthcare. Todos los derechos reservados.

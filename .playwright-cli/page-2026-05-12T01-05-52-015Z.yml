@@ -1,0 +1,181 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]: ALLURA
+      - navigation [ref=e6]:
+        - link "Cómo funciona" [ref=e7] [cursor=pointer]:
+          - /url: /como-funciona
+        - link "Sobre nosotros" [ref=e8] [cursor=pointer]:
+          - /url: /nosotros
+        - link "Equipo" [ref=e9] [cursor=pointer]:
+          - /url: /equipo
+        - button "Servicios" [ref=e11] [cursor=pointer]:
+          - text: Servicios
+          - img [ref=e12]
+        - link "Contáctanos" [ref=e14] [cursor=pointer]:
+          - /url: /contacto
+        - link "Blog" [ref=e15] [cursor=pointer]:
+          - /url: /blog
+      - link "Agenda tu consulta" [ref=e16] [cursor=pointer]:
+        - /url: /contacto
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e21]:
+        - paragraph [ref=e22]: Medellín, Colombia · Pacientes Internacionales
+        - heading "Salud que inspira, viajes que transforman" [level=1] [ref=e23]:
+          - text: Salud que inspira,
+          - text: viajes que transforman
+        - paragraph [ref=e24]: Atención médica y odontológica premium en Medellín, con acompañamiento personalizado para pacientes internacionales.
+        - generic [ref=e25]:
+          - link "Conoce nuestros servicios" [ref=e26] [cursor=pointer]:
+            - /url: /servicios
+          - link "¿Cómo funciona?" [ref=e27] [cursor=pointer]:
+            - /url: /como-funciona
+      - img [ref=e29]
+    - generic [ref=e32]:
+      - generic [ref=e33]:
+        - paragraph [ref=e34]: Por qué elegirnos
+        - heading "Una experiencia diseñada para ti" [level=2] [ref=e35]
+        - paragraph [ref=e36]: En Allura, tu bienestar es nuestra única prioridad.
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - img [ref=e40]
+          - heading "Excelencia Profesional" [level=3] [ref=e43]
+          - paragraph [ref=e44]: Trabajamos con especialistas certificados internacionalmente que combinan rigor científico con una atención cercana y personalizada.
+        - generic [ref=e45]:
+          - img [ref=e47]
+          - heading "Acompañamiento Personalizado" [level=3] [ref=e52]
+          - paragraph [ref=e53]: "Coordinamos cada detalle de tu experiencia: desde la llegada a Medellín hasta el alta médica, para que solo te preocupes por sanar y disfrutar."
+        - generic [ref=e54]:
+          - img [ref=e56]
+          - heading "Tecnología y Ética" [level=3] [ref=e59]
+          - paragraph [ref=e60]: Utilizamos equipos de última generación bajo protocolos internacionales, con total transparencia en cada etapa de tu tratamiento.
+    - generic [ref=e62]:
+      - generic [ref=e63]:
+        - paragraph [ref=e64]: Nuestros servicios
+        - heading "Especialidades Allura" [level=2] [ref=e65]
+        - paragraph [ref=e66]: Odontología premium y medicina facial estética para pacientes internacionales.
+      - generic [ref=e67]:
+        - generic [ref=e71]:
+          - heading "Full Mouth Reconstruction" [level=3] [ref=e72]
+          - paragraph [ref=e73]: Solución integral para recuperar función, estabilidad y una sonrisa que vuelva a sentirse segura.
+          - link "Ver más" [ref=e74] [cursor=pointer]:
+            - /url: /servicios/full-mouth-reconstruction
+            - text: Ver más
+            - img [ref=e75]
+        - generic [ref=e80]:
+          - heading "Smile Makeover" [level=3] [ref=e81]
+          - paragraph [ref=e82]: Diseño personalizado de sonrisa para transformar la estética dental con precisión y armonía.
+          - link "Ver más" [ref=e83] [cursor=pointer]:
+            - /url: /servicios/smile-makeover
+            - text: Ver más
+            - img [ref=e84]
+        - generic [ref=e89]:
+          - heading "Allura Aligners" [level=3] [ref=e90]
+          - paragraph [ref=e91]: Ortodoncia invisible de última generación con planificación digital y seguimiento personalizado.
+          - link "Ver más" [ref=e92] [cursor=pointer]:
+            - /url: /servicios/aligners
+            - text: Ver más
+            - img [ref=e93]
+        - generic [ref=e98]:
+          - heading "Facial Harmony" [level=3] [ref=e99]
+          - paragraph [ref=e100]: "Medicina facial estética de precisión: toxina botulínica, rellenos y rejuvenecimiento integral."
+          - link "Ver más" [ref=e101] [cursor=pointer]:
+            - /url: /servicios/facial-harmony
+            - text: Ver más
+            - img [ref=e102]
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - paragraph [ref=e109]: Nuestra filosofía
+        - heading "Medellín como destino, el bienestar como propósito" [level=2] [ref=e110]
+        - paragraph [ref=e111]: Allura nace de la convicción de que la salud y el disfrute no son opuestos. Combinamos la excelencia médica colombiana con la experiencia única de vivir Medellín — su clima, su cultura y su calidez humana.
+      - link "Conoce nuestro equipo" [ref=e113] [cursor=pointer]:
+        - /url: /nosotros
+    - generic [ref=e118]:
+      - paragraph [ref=e119]: Da el primer paso
+      - heading "Transforma tu bienestar. Agenda tu consulta hoy." [level=2] [ref=e120]
+      - paragraph [ref=e121]: Nuestro equipo te acompañará en cada etapa. Sin compromisos, con total transparencia.
+      - link "Contactar ahora" [ref=e122] [cursor=pointer]:
+        - /url: /contacto
+  - contentinfo [ref=e123]:
+    - generic [ref=e125]:
+      - generic [ref=e126]:
+        - paragraph [ref=e127]: ¿Podemos ayudarte?
+        - paragraph [ref=e128]: Nuestro equipo responde en menos de 24 horas.
+      - link "Hablar por WhatsApp" [ref=e129] [cursor=pointer]:
+        - /url: https://wa.me/573001234567?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20Allura%20Healthcare
+        - img [ref=e130]
+        - text: Hablar por WhatsApp
+    - generic [ref=e132]:
+      - generic [ref=e133]:
+        - generic [ref=e134]:
+          - paragraph [ref=e135]: ALLURA
+          - paragraph [ref=e136]: Turismo médico de excelencia en Medellín. Odontología premium y medicina facial estética con la calidez de Colombia.
+          - generic [ref=e137]:
+            - link "Instagram" [ref=e138] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e139]
+            - link "Facebook" [ref=e142] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e143]
+            - link "LinkedIn" [ref=e145] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e146]
+        - generic [ref=e150]:
+          - paragraph [ref=e151]: Navegación
+          - list [ref=e152]:
+            - listitem [ref=e153]:
+              - link "Inicio" [ref=e154] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e155]:
+              - link "Cómo funciona" [ref=e156] [cursor=pointer]:
+                - /url: /como-funciona
+            - listitem [ref=e157]:
+              - link "Servicios" [ref=e158] [cursor=pointer]:
+                - /url: /servicios
+            - listitem [ref=e159]:
+              - link "Sobre nosotros" [ref=e160] [cursor=pointer]:
+                - /url: /nosotros
+            - listitem [ref=e161]:
+              - link "Equipo" [ref=e162] [cursor=pointer]:
+                - /url: /equipo
+            - listitem [ref=e163]:
+              - link "Blog" [ref=e164] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e165]:
+              - link "Contáctanos" [ref=e166] [cursor=pointer]:
+                - /url: /contacto
+        - generic [ref=e167]:
+          - paragraph [ref=e168]: Especialidades
+          - list [ref=e169]:
+            - listitem [ref=e170]:
+              - link "Full Mouth Reconstruction" [ref=e171] [cursor=pointer]:
+                - /url: /servicios/full-mouth-reconstruction
+            - listitem [ref=e172]:
+              - link "Smile Makeover" [ref=e173] [cursor=pointer]:
+                - /url: /servicios/smile-makeover
+            - listitem [ref=e174]:
+              - link "Allura Aligners" [ref=e175] [cursor=pointer]:
+                - /url: /servicios/aligners
+            - listitem [ref=e176]:
+              - link "Facial Harmony" [ref=e177] [cursor=pointer]:
+                - /url: /servicios/facial-harmony
+        - generic [ref=e178]:
+          - paragraph [ref=e179]: Contacto
+          - paragraph [ref=e180]: Medellín, Colombia
+          - paragraph [ref=e181]:
+            - link "info@allura.co" [ref=e182] [cursor=pointer]:
+              - /url: mailto:info@allura.co
+          - paragraph [ref=e183]:
+            - link "WhatsApp disponible" [ref=e184] [cursor=pointer]:
+              - /url: https://wa.me/573001234567?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20Allura%20Healthcare
+      - generic [ref=e185]:
+        - paragraph [ref=e186]: © 2026 Allura Healthcare. Todos los derechos reservados.
+        - generic [ref=e187]:
+          - link "Políticas de privacidad" [ref=e188] [cursor=pointer]:
+            - /url: /politicas-de-privacidad
+          - link "Declaración de accesibilidad" [ref=e189] [cursor=pointer]:
+            - /url: /accesibilidad
+  - alert [ref=e190]

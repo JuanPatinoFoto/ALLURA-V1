@@ -1,0 +1,772 @@
+{
+  "prod": {
+    "home": {
+      "title": "Allura Healthcare | Medical Tourism Colombia",
+      "metaDesc": "At Allura Healthcare, we offer a comprehensive medical tourism experience in Medellín, specializing in porcelain veneers, dental implants, and smile design. Our certified specialists combine advanced technology, ethical care, and personalized attention to deliver natural, safe, and long-lasting results. Here, we merge health and wellness so you can transform your smile while enjoying the best of Medellín.",
+      "ogTitle": "Allura Healthcare | Medical Tourism Colombia",
+      "ogImage": "",
+      "canonical": "https://www.allurahealthcare.com/",
+      "h1": [
+        "Salud que inspira, \nviajes que transforman.\n​\nAtención médica y odontológica premium en Medellín, con acompañamiento personalizado para pacientes internacionales.",
+        "Nuestros servicios especializados",
+        "Medellín, un entorno que acompaña tu bienestar",
+        "Tu proceso con Allura:\nsimple, seguro y humano",
+        "Estamos aquí para ayudarte"
+      ],
+      "h2": [
+        "Experiencias reales con Allura",
+        "Pacientes que han vivido su tratamiento con seguridad, cercanía y acompañamiento personalizado.",
+        "Una ciudad moderna, hospitalaria y bien conectada, ideal para pacientes internacionales que buscan atención de alto nivel y una recuperación mas cómoda.",
+        "Por qué elegir Medellín",
+        "Conoce nuestro equipo experto"
+      ],
+      "h3": [
+        "Asesoría por WhatsApp"
+      ],
+      "heroHeadline": "Salud que inspira, \nviajes que transforman.\n​\nAtención médica y odontológica premium en Medellín, con acompañamiento personalizado para pacientes internacionales.",
+      "heroSubtext": "",
+      "ctaAboveFoldTexts": [
+        "Agendar cita",
+        "Hablar por WhatsApp"
+      ],
+      "ctaAboveFoldCount": 2,
+      "allCtaTexts": [
+        "Agendar cita",
+        "Comienza tu consulta personalizada",
+        "Solicitar orientación personalizada",
+        "Agendar cita",
+        "Hablar por WhatsApp",
+        "Contacto",
+        "Agenda tu consulta"
+      ],
+      "allCtaCount": 8,
+      "headerPosition": "sticky",
+      "hasStickyHeader": true,
+      "hasTestimonials": false,
+      "testimonialCount": 0,
+      "hasTeamSection": false,
+      "hasBeforeAfter": false,
+      "imageCount": 24,
+      "hasVideo": true,
+      "videoCount": 1,
+      "hasForm": false,
+      "formFieldCount": 0,
+      "waLinkCount": 0,
+      "waLinkTexts": [],
+      "hasPhone": false,
+      "phoneNumbers": [],
+      "hasFaq": false,
+      "hasPricing": false,
+      "hasTrustBadges": false,
+      "hasFloatingCta": false,
+      "floatingElCount": 0,
+      "sectionCount": 13,
+      "navLinks": [
+        {
+          "text": "Cómo funciona",
+          "href": "https://www.allurahealthcare.com/how-it-works"
+        },
+        {
+          "text": "Sobre nosotros",
+          "href": "https://www.allurahealthcare.com/about-us"
+        },
+        {
+          "text": "Equipo",
+          "href": "https://www.allurahealthcare.com/our-team-of-specialists"
+        },
+        {
+          "text": "Servicios",
+          "href": "https://www.allurahealthcare.com/services"
+        },
+        {
+          "text": "Allura Full Mouth Reconstruction",
+          "href": "https://www.allurahealthcare.com/allura-full-mouth-reconstruction"
+        },
+        {
+          "text": "Implantes unitarios y múltiples",
+          "href": "https://www.allurahealthcare.com/single-and-multiple-dental-implants"
+        },
+        {
+          "text": "Implantes All-on-X",
+          "href": "https://www.allurahealthcare.com/all-on-x-implants"
+        },
+        {
+          "text": "Rehabilitación oral completa",
+          "href": "https://www.allurahealthcare.com/full-mouth-oral-rehabilitation"
+        },
+        {
+          "text": "Prótesis fijas sobre implantes",
+          "href": "https://www.allurahealthcare.com/fixed-implant-supported-prostheses"
+        },
+        {
+          "text": "Reemplazo de restauraciones fallidas",
+          "href": "https://www.allurahealthcare.com/dental-restoration-replacement"
+        },
+        {
+          "text": "Planificación digital 3D",
+          "href": "https://www.allurahealthcare.com/3d-digital-treatment-planning"
+        },
+        {
+          "text": "Allura Smile Makeover",
+          "href": "https://www.allurahealthcare.com/allura-smile-makeover"
+        },
+        {
+          "text": "Carillas en porcelana",
+          "href": "https://www.allurahealthcare.com/porcelain-veneers"
+        },
+        {
+          "text": "Diseño digital de sonrisa",
+          "href": "https://www.allurahealthcare.com/digital-smile-design"
+        },
+        {
+          "text": "Coronas en porcelana",
+          "href": "https://www.allurahealthcare.com/porcelain-crowns"
+        }
+      ],
+      "internalLinks": [],
+      "consoleErrors": []
+    },
+    "servicios": {
+      "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://www.allurahealthcare.com/servicios\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "contacto": {
+      "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://www.allurahealthcare.com/contacto\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    "nosotros": {
+      "title": "404 Error: Page Not Found",
+      "metaDesc": "",
+      "ogTitle": "",
+      "ogImage": "",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "h2": [
+        "ERROR: PAGE NOT FOUND"
+      ],
+      "h3": [],
+      "heroHeadline": "404",
+      "heroSubtext": "This page isn’t available.",
+      "ctaAboveFoldTexts": [],
+      "ctaAboveFoldCount": 0,
+      "allCtaTexts": [],
+      "allCtaCount": 0,
+      "headerPosition": "none",
+      "hasStickyHeader": false,
+      "hasTestimonials": false,
+      "testimonialCount": 0,
+      "hasTeamSection": false,
+      "hasBeforeAfter": false,
+      "imageCount": 0,
+      "hasVideo": false,
+      "videoCount": 0,
+      "hasForm": false,
+      "formFieldCount": 0,
+      "waLinkCount": 0,
+      "waLinkTexts": [],
+      "hasPhone": false,
+      "phoneNumbers": [],
+      "hasFaq": false,
+      "hasPricing": false,
+      "hasTrustBadges": false,
+      "hasFloatingCta": false,
+      "floatingElCount": 0,
+      "sectionCount": 0,
+      "navLinks": [],
+      "internalLinks": [
+        "//www.allurahealthcare.com"
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ]
+    },
+    "como-funciona": {
+      "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://www.allurahealthcare.com/como-funciona\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  },
+  "local": {
+    "home": {
+      "title": "Allura Healthcare — Turismo Médico en Medellín",
+      "metaDesc": "Allura es una marca colombiana de turismo médico en Medellín que integra tratamientos médicos, estéticos y odontológicos con la calidez y el disfrute de Colombia.",
+      "ogTitle": "Allura Healthcare",
+      "ogImage": "",
+      "canonical": "",
+      "h1": [
+        "Salud que inspira,\nviajes que transforman"
+      ],
+      "h2": [
+        "Una experiencia diseñada para ti",
+        "Especialidades Allura",
+        "Medellín como destino, el bienestar como propósito",
+        "Transforma tu bienestar. Agenda tu consulta hoy."
+      ],
+      "h3": [
+        "Excelencia Profesional",
+        "Acompañamiento Personalizado",
+        "Tecnología y Ética",
+        "Full Mouth Reconstruction",
+        "Smile Makeover",
+        "Allura Aligners",
+        "Facial Harmony"
+      ],
+      "heroHeadline": "Salud que inspira,\nviajes que transforman",
+      "heroSubtext": "Atención médica y odontológica premium en Medellín, con acompañamiento personalizado para pacientes internacionales.",
+      "ctaAboveFoldTexts": [
+        "Contáctanos",
+        "Agenda tu consulta"
+      ],
+      "ctaAboveFoldCount": 2,
+      "allCtaTexts": [
+        "Contáctanos",
+        "Agenda tu consulta",
+        "Ver más",
+        "Ver más",
+        "Ver más",
+        "Ver más",
+        "Contactar ahora",
+        "Hablar por WhatsApp",
+        "Contáctanos",
+        "WhatsApp disponible"
+      ],
+      "allCtaCount": 10,
+      "headerPosition": "fixed",
+      "hasStickyHeader": true,
+      "hasTestimonials": false,
+      "testimonialCount": 0,
+      "hasTeamSection": false,
+      "hasBeforeAfter": false,
+      "imageCount": 2,
+      "hasVideo": false,
+      "videoCount": 0,
+      "hasForm": false,
+      "formFieldCount": 0,
+      "waLinkCount": 2,
+      "waLinkTexts": [
+        "Hablar por WhatsApp",
+        "WhatsApp disponible"
+      ],
+      "hasPhone": false,
+      "phoneNumbers": [],
+      "hasFaq": false,
+      "hasPricing": false,
+      "hasTrustBadges": true,
+      "hasFloatingCta": true,
+      "floatingElCount": 1,
+      "sectionCount": 5,
+      "navLinks": [
+        {
+          "text": "Cómo funciona",
+          "href": "/como-funciona"
+        },
+        {
+          "text": "Sobre nosotros",
+          "href": "/nosotros"
+        },
+        {
+          "text": "Equipo",
+          "href": "/equipo"
+        },
+        {
+          "text": "Contáctanos",
+          "href": "/contacto"
+        },
+        {
+          "text": "Blog",
+          "href": "/blog"
+        }
+      ],
+      "internalLinks": [
+        "/como-funciona",
+        "/nosotros",
+        "/equipo",
+        "/contacto",
+        "/blog",
+        "/contacto",
+        "/servicios",
+        "/como-funciona",
+        "/servicios/full-mouth-reconstruction",
+        "/servicios/smile-makeover",
+        "/servicios/aligners",
+        "/servicios/facial-harmony",
+        "/nosotros",
+        "/contacto",
+        "/",
+        "/como-funciona",
+        "/servicios",
+        "/nosotros",
+        "/equipo",
+        "/blog",
+        "/contacto",
+        "/servicios/full-mouth-reconstruction",
+        "/servicios/smile-makeover",
+        "/servicios/aligners",
+        "/servicios/facial-harmony",
+        "/politicas-de-privacidad",
+        "/accesibilidad"
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "servicios": {
+      "title": "Servicios — Allura Healthcare",
+      "metaDesc": "Odontología premium y medicina facial estética de clase mundial en Medellín para pacientes internacionales.",
+      "ogTitle": "Allura Healthcare",
+      "ogImage": "",
+      "canonical": "",
+      "h1": [],
+      "h2": [
+        "Servicios de excelencia",
+        "Allura Full Mouth Reconstruction™",
+        "Allura Smile Makeover™",
+        "Allura Aligners™",
+        "Allura Facial Harmony™",
+        "Transforma tu bienestar. Agenda tu consulta hoy."
+      ],
+      "h3": [],
+      "heroHeadline": "",
+      "heroSubtext": "",
+      "ctaAboveFoldTexts": [
+        "Contáctanos",
+        "Agenda tu consulta"
+      ],
+      "ctaAboveFoldCount": 2,
+      "allCtaTexts": [
+        "Contáctanos",
+        "Agenda tu consulta",
+        "Contactar ahora",
+        "Hablar por WhatsApp",
+        "Contáctanos",
+        "WhatsApp disponible"
+      ],
+      "allCtaCount": 6,
+      "headerPosition": "fixed",
+      "hasStickyHeader": true,
+      "hasTestimonials": false,
+      "testimonialCount": 0,
+      "hasTeamSection": false,
+      "hasBeforeAfter": false,
+      "imageCount": 2,
+      "hasVideo": false,
+      "videoCount": 0,
+      "hasForm": false,
+      "formFieldCount": 0,
+      "waLinkCount": 2,
+      "waLinkTexts": [
+        "Hablar por WhatsApp",
+        "WhatsApp disponible"
+      ],
+      "hasPhone": false,
+      "phoneNumbers": [],
+      "hasFaq": false,
+      "hasPricing": false,
+      "hasTrustBadges": true,
+      "hasFloatingCta": true,
+      "floatingElCount": 1,
+      "sectionCount": 3,
+      "navLinks": [
+        {
+          "text": "Cómo funciona",
+          "href": "/como-funciona"
+        },
+        {
+          "text": "Sobre nosotros",
+          "href": "/nosotros"
+        },
+        {
+          "text": "Equipo",
+          "href": "/equipo"
+        },
+        {
+          "text": "Contáctanos",
+          "href": "/contacto"
+        },
+        {
+          "text": "Blog",
+          "href": "/blog"
+        }
+      ],
+      "internalLinks": [
+        "/como-funciona",
+        "/nosotros",
+        "/equipo",
+        "/contacto",
+        "/blog",
+        "/contacto",
+        "/servicios/full-mouth-reconstruction",
+        "/servicios/smile-makeover",
+        "/servicios/aligners",
+        "/servicios/facial-harmony",
+        "/contacto",
+        "/",
+        "/como-funciona",
+        "/servicios",
+        "/nosotros",
+        "/equipo",
+        "/blog",
+        "/contacto",
+        "/servicios/full-mouth-reconstruction",
+        "/servicios/smile-makeover",
+        "/servicios/aligners",
+        "/servicios/facial-harmony",
+        "/politicas-de-privacidad",
+        "/accesibilidad"
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "contacto": {
+      "title": "Allura Healthcare — Turismo Médico en Medellín",
+      "metaDesc": "Allura es una marca colombiana de turismo médico en Medellín que integra tratamientos médicos, estéticos y odontológicos con la calidez y el disfrute de Colombia.",
+      "ogTitle": "Allura Healthcare",
+      "ogImage": "",
+      "canonical": "",
+      "h1": [],
+      "h2": [
+        "Comienza tu experiencia Allura"
+      ],
+      "h3": [],
+      "heroHeadline": "",
+      "heroSubtext": "",
+      "ctaAboveFoldTexts": [
+        "Contáctanos",
+        "Agenda tu consulta",
+        "Hablar por WhatsApp"
+      ],
+      "ctaAboveFoldCount": 3,
+      "allCtaTexts": [
+        "Contáctanos",
+        "Agenda tu consulta",
+        "Hablar por WhatsApp",
+        "Hablar por WhatsApp",
+        "Contáctanos",
+        "WhatsApp disponible"
+      ],
+      "allCtaCount": 6,
+      "headerPosition": "fixed",
+      "hasStickyHeader": true,
+      "hasTestimonials": false,
+      "testimonialCount": 0,
+      "hasTeamSection": false,
+      "hasBeforeAfter": false,
+      "imageCount": 2,
+      "hasVideo": false,
+      "videoCount": 0,
+      "hasForm": true,
+      "formFieldCount": 5,
+      "waLinkCount": 3,
+      "waLinkTexts": [
+        "Hablar por WhatsApp",
+        "Hablar por WhatsApp",
+        "WhatsApp disponible"
+      ],
+      "hasPhone": false,
+      "phoneNumbers": [],
+      "hasFaq": false,
+      "hasPricing": false,
+      "hasTrustBadges": true,
+      "hasFloatingCta": true,
+      "floatingElCount": 1,
+      "sectionCount": 2,
+      "navLinks": [
+        {
+          "text": "Cómo funciona",
+          "href": "/como-funciona"
+        },
+        {
+          "text": "Sobre nosotros",
+          "href": "/nosotros"
+        },
+        {
+          "text": "Equipo",
+          "href": "/equipo"
+        },
+        {
+          "text": "Contáctanos",
+          "href": "/contacto"
+        },
+        {
+          "text": "Blog",
+          "href": "/blog"
+        }
+      ],
+      "internalLinks": [
+        "/como-funciona",
+        "/nosotros",
+        "/equipo",
+        "/contacto",
+        "/blog",
+        "/contacto",
+        "/",
+        "/como-funciona",
+        "/servicios",
+        "/nosotros",
+        "/equipo",
+        "/blog",
+        "/contacto",
+        "/servicios/full-mouth-reconstruction",
+        "/servicios/smile-makeover",
+        "/servicios/aligners",
+        "/servicios/facial-harmony",
+        "/politicas-de-privacidad",
+        "/accesibilidad"
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "nosotros": {
+      "title": "Sobre nosotros — Allura Healthcare",
+      "metaDesc": "Conoce la filosofía y el equipo detrás de Allura Healthcare, turismo médico de excelencia en Medellín.",
+      "ogTitle": "Allura Healthcare",
+      "ogImage": "",
+      "canonical": "",
+      "h1": [],
+      "h2": [
+        "Personas que cuidan personas",
+        "El bienestar como propósito",
+        "Los pilares de Allura",
+        "Lo que nos define",
+        "Transforma tu bienestar. Agenda tu consulta hoy."
+      ],
+      "h3": [
+        "Diagnóstico honesto",
+        "Plan personalizado",
+        "Acompañamiento total",
+        "Excelencia",
+        "Empatía",
+        "Transparencia"
+      ],
+      "heroHeadline": "",
+      "heroSubtext": "",
+      "ctaAboveFoldTexts": [
+        "Contáctanos",
+        "Agenda tu consulta"
+      ],
+      "ctaAboveFoldCount": 2,
+      "allCtaTexts": [
+        "Contáctanos",
+        "Agenda tu consulta",
+        "Contactar ahora",
+        "Hablar por WhatsApp",
+        "Contáctanos",
+        "WhatsApp disponible"
+      ],
+      "allCtaCount": 6,
+      "headerPosition": "fixed",
+      "hasStickyHeader": true,
+      "hasTestimonials": false,
+      "testimonialCount": 0,
+      "hasTeamSection": false,
+      "hasBeforeAfter": false,
+      "imageCount": 2,
+      "hasVideo": false,
+      "videoCount": 0,
+      "hasForm": false,
+      "formFieldCount": 0,
+      "waLinkCount": 2,
+      "waLinkTexts": [
+        "Hablar por WhatsApp",
+        "WhatsApp disponible"
+      ],
+      "hasPhone": false,
+      "phoneNumbers": [],
+      "hasFaq": false,
+      "hasPricing": false,
+      "hasTrustBadges": true,
+      "hasFloatingCta": true,
+      "floatingElCount": 1,
+      "sectionCount": 5,
+      "navLinks": [
+        {
+          "text": "Cómo funciona",
+          "href": "/como-funciona"
+        },
+        {
+          "text": "Sobre nosotros",
+          "href": "/nosotros"
+        },
+        {
+          "text": "Equipo",
+          "href": "/equipo"
+        },
+        {
+          "text": "Contáctanos",
+          "href": "/contacto"
+        },
+        {
+          "text": "Blog",
+          "href": "/blog"
+        }
+      ],
+      "internalLinks": [
+        "/como-funciona",
+        "/nosotros",
+        "/equipo",
+        "/contacto",
+        "/blog",
+        "/contacto",
+        "/contacto",
+        "/",
+        "/como-funciona",
+        "/servicios",
+        "/nosotros",
+        "/equipo",
+        "/blog",
+        "/contacto",
+        "/servicios/full-mouth-reconstruction",
+        "/servicios/smile-makeover",
+        "/servicios/aligners",
+        "/servicios/facial-harmony",
+        "/politicas-de-privacidad",
+        "/accesibilidad"
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "como-funciona": {
+      "title": "Cómo funciona — Allura Healthcare",
+      "metaDesc": "Descubre el proceso paso a paso para recibir atención médica y odontológica de excelencia en Medellín con Allura Healthcare.",
+      "ogTitle": "Allura Healthcare",
+      "ogImage": "",
+      "canonical": "",
+      "h1": [],
+      "h2": [
+        "Cómo funciona Allura",
+        "Comparte tus necesidades",
+        "Consulta virtual con especialistas",
+        "Plan médico y experiencia de viaje",
+        "Procedimiento y acompañamiento total",
+        "Lo que más nos preguntan",
+        "Tu primer paso es una conversación",
+        "Transforma tu bienestar. Agenda tu consulta hoy."
+      ],
+      "h3": [
+        "¿Necesito hablar español para recibir atención?",
+        "¿Qué pasa si necesito seguimiento después de regresar a mi país?",
+        "¿Los procedimientos incluyen garantía?",
+        "¿Puedo combinar varios tratamientos en un mismo viaje?"
+      ],
+      "heroHeadline": "",
+      "heroSubtext": "",
+      "ctaAboveFoldTexts": [
+        "Contáctanos",
+        "Agenda tu consulta"
+      ],
+      "ctaAboveFoldCount": 2,
+      "allCtaTexts": [
+        "Contáctanos",
+        "Agenda tu consulta",
+        "Hablar por WhatsApp",
+        "Formulario de contacto",
+        "Contactar ahora",
+        "Hablar por WhatsApp",
+        "Contáctanos",
+        "WhatsApp disponible"
+      ],
+      "allCtaCount": 8,
+      "headerPosition": "fixed",
+      "hasStickyHeader": true,
+      "hasTestimonials": false,
+      "testimonialCount": 0,
+      "hasTeamSection": false,
+      "hasBeforeAfter": false,
+      "imageCount": 2,
+      "hasVideo": false,
+      "videoCount": 0,
+      "hasForm": false,
+      "formFieldCount": 0,
+      "waLinkCount": 3,
+      "waLinkTexts": [
+        "Hablar por WhatsApp",
+        "Hablar por WhatsApp",
+        "WhatsApp disponible"
+      ],
+      "hasPhone": false,
+      "phoneNumbers": [],
+      "hasFaq": false,
+      "hasPricing": false,
+      "hasTrustBadges": true,
+      "hasFloatingCta": true,
+      "floatingElCount": 1,
+      "sectionCount": 5,
+      "navLinks": [
+        {
+          "text": "Cómo funciona",
+          "href": "/como-funciona"
+        },
+        {
+          "text": "Sobre nosotros",
+          "href": "/nosotros"
+        },
+        {
+          "text": "Equipo",
+          "href": "/equipo"
+        },
+        {
+          "text": "Contáctanos",
+          "href": "/contacto"
+        },
+        {
+          "text": "Blog",
+          "href": "/blog"
+        }
+      ],
+      "internalLinks": [
+        "/como-funciona",
+        "/nosotros",
+        "/equipo",
+        "/contacto",
+        "/blog",
+        "/contacto",
+        "/contacto",
+        "/contacto",
+        "/",
+        "/como-funciona",
+        "/servicios",
+        "/nosotros",
+        "/equipo",
+        "/blog",
+        "/contacto",
+        "/servicios/full-mouth-reconstruction",
+        "/servicios/smile-makeover",
+        "/servicios/aligners",
+        "/servicios/facial-harmony",
+        "/politicas-de-privacidad",
+        "/accesibilidad"
+      ],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    }
+  }
+}

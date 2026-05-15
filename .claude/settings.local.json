@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv sync *)",
+      "Bash(claude mcp *)",
+      "Bash(node analyze.js)",
+      "Bash(vercel --version)",
+      "Bash(npm install *)",
+      "Bash(vercel whoami *)",
+      "Bash(vercel --yes)",
+      "Bash(vercel --yes --name allura-healthcare)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\publi\\\\Desktop\\\\ALLURA\" -Force)",
+      "Bash(Select-Object Name, PSIsContainer)",
+      "Bash(Format-Table -AutoSize)",
+      "Bash(npx tsc *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\publi\\\\Desktop\\\\ALLURA\" -Recurse -Depth 2)",
+      "Bash(Select-Object FullName, Name)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\publi\\\\Desktop\\\\ALLURA\" -Depth 2 | Where-Object { $_.Extension -in @\\('.html', '.tsx', '.ts', '.jsx', '.js', '.css'\\) } | Select-Object FullName | Head-Object 50)",
+      "Skill(superpowers:brainstorming)",
+      "Skill(superpowers:brainstorming:*)"
+    ]
+  }
+}

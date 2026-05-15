@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allura — Reporte Comparativo Comercial</title>
+<style>
+  :root {
+    --azul: #051c33;
+    --azul-claro: #8b9fb3;
+    --gris: #abacae;
+    --fondo: #eaeeef;
+    --verde: #22c55e;
+    --rojo: #ef4444;
+    --amarillo: #f59e0b;
+    --naranja: #f97316;
+    --blanco: #ffffff;
+    --texto: #1e293b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--fondo); color: var(--texto); font-size: 14px; line-height: 1.6; }
+
+  /* HEADER */
+  .report-header { background: var(--azul); color: white; padding: 40px 60px; }
+  .report-header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .report-header .meta { font-size: 13px; color: var(--azul-claro); }
+  .report-header .meta span { margin-right: 24px; }
+
+  /* VEREDICTO */
+  .veredicto-banner { padding: 32px 60px; display: flex; align-items: center; gap: 24px; }
+  .veredicto-banner.ganador-local { background: linear-gradient(135deg, #064e3b 0%, #065f46 100%); color: white; }
+  .veredicto-banner.empate { background: linear-gradient(135deg, #1e3a5f 0%, #1d4ed8 100%); color: white; }
+  .veredicto-icon { font-size: 48px; }
+  .veredicto-texto h2 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .veredicto-texto p { font-size: 14px; opacity: 0.9; max-width: 700px; }
+
+  /* LAYOUT */
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 60px 60px; }
+
+  /* SCORE CARDS */
+  .scores-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+  .score-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .score-card-header { padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .score-card-header.prod { background: var(--azul); color: white; }
+  .score-card-header.local { background: #064e3b; color: white; }
+  .score-card-header h3 { font-size: 16px; font-weight: 600; }
+  .score-card-header .url { font-size: 11px; opacity: 0.7; }
+  .big-score { font-size: 56px; font-weight: 800; line-height: 1; }
+  .score-body { padding: 20px 24px; }
+  .score-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
+  .score-item:last-child { border-bottom: none; }
+  .score-label { font-size: 13px; color: #64748b; }
+  .score-val { font-weight: 600; font-size: 13px; }
+  .score-val.win { color: var(--verde); }
+  .score-val.lose { color: var(--rojo); }
+  .score-val.tie { color: var(--amarillo); }
+  .score-val.warn { color: var(--naranja); }
+
+  /* SECTIONS */
+  .section { background: white; border-radius: 16px; margin-bottom: 24px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .section-title { background: var(--azul); color: white; padding: 16px 24px; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+  .section-title .icon { font-size: 18px; }
+  .section-body { padding: 24px; }
+
+  /* FUNNEL TABLE */
+  .funnel-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .funnel-table th { background: var(--fondo); padding: 10px 14px; text-align: left; font-weight: 600; color: #475569; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .funnel-table td { padding: 12px 14px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+  .funnel-table tr:last-child td { border-bottom: none; }
+  .funnel-table tr:hover { background: #fafafa; }
+  .funnel-table .factor { font-weight: 600; color: var(--texto); }
+  .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .badge.alta { background: #fee2e2; color: #991b1b; }
+  .badge.media { background: #fef3c7; color: #92400e; }
+  .badge.baja { background: #dbeafe; color: #1e40af; }
+  .badge.ok { background: #dcfce7; color: #166534; }
+  .badge.critica { background: #fecaca; color: #7f1d1d; }
+  .winner { display: inline-flex; align-items: center; gap: 4px; }
+  .winner .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .winner .dot.local { background: var(--verde); }
+  .winner .dot.prod { background: var(--azul-claro); }
+  .winner .dot.empate { background: var(--amarillo); }
+
+  /* COMPARATIVA VISUAL */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .compare-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; color: #64748b; }
+  .compare-col h4.prod-label { color: var(--azul); }
+  .compare-col h4.local-label { color: #059669; }
+  .screenshot-wrapper { position: relative; border-radius: 12px; overflow: hidden; border: 2px solid #e2e8f0; }
+  .screenshot-wrapper img { width: 100%; display: block; }
+  .screenshot-label { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.7); color: white; font-size: 11px; padding: 3px 8px; border-radius: 4px; }
+  .missing-screenshot { background: #f8fafc; border: 2px dashed #e2e8f0; border-radius: 12px; padding: 40px; text-align: center; color: #94a3b8; font-size: 12px; }
+
+  /* CHECKLIST */
+  .checklist { display: flex; flex-direction: column; gap: 10px; }
+  .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; border-radius: 10px; }
+  .check-item.done { background: #f0fdf4; }
+  .check-item.todo { background: #fff7ed; }
+  .check-item.critical { background: #fef2f2; }
+  .check-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .check-text strong { display: block; font-size: 13px; color: var(--texto); }
+  .check-text span { font-size: 12px; color: #64748b; }
+
+  /* PILLS */
+  .pill-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .pill { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+  .pill.green { background: #dcfce7; color: #166534; }
+  .pill.blue { background: #dbeafe; color: #1e40af; }
+  .pill.orange { background: #fed7aa; color: #9a3412; }
+  .pill.gray { background: #f1f5f9; color: #475569; }
+
+  /* TWO COLS */
+  .two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .col-box { padding: 16px 20px; border-radius: 10px; }
+  .col-box.prod-box { background: #eff6ff; border: 1px solid #bfdbfe; }
+  .col-box.local-box { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .col-box h5 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+  .col-box h5.prod { color: #1d4ed8; }
+  .col-box h5.local { color: #059669; }
+  .col-box ul { padding-left: 16px; }
+  .col-box li { font-size: 13px; color: #374151; margin-bottom: 6px; }
+  .col-box li.win { color: #166534; }
+  .col-box li.lose { color: #991b1b; }
+
+  /* FUNNEL VISUAL */
+  .funnel-visual { display: flex; flex-direction: column; gap: 4px; margin: 20px 0; }
+  .funnel-stage { display: grid; grid-template-columns: 180px 1fr 1fr; gap: 12px; align-items: center; }
+  .funnel-stage-label { font-size: 12px; font-weight: 600; color: #64748b; text-align: right; padding-right: 12px; border-right: 2px solid #e2e8f0; }
+  .funnel-bar-wrap { padding: 8px 0; }
+  .funnel-bar { height: 32px; border-radius: 6px; display: flex; align-items: center; padding: 0 12px; font-size: 12px; font-weight: 600; color: white; min-width: 60px; transition: width 0.3s; }
+  .funnel-bar.prod-bar { background: var(--azul); }
+  .funnel-bar.local-bar { background: #059669; }
+
+  /* RECOMMENDATIONS */
+  .rec-list { display: flex; flex-direction: column; gap: 12px; }
+  .rec-item { display: flex; gap: 16px; padding: 16px 20px; border-radius: 12px; border-left: 4px solid; }
+  .rec-item.critical { background: #fef2f2; border-color: var(--rojo); }
+  .rec-item.high { background: #fff7ed; border-color: var(--naranja); }
+  .rec-item.medium { background: #fffbeb; border-color: var(--amarillo); }
+  .rec-item.low { background: #f0fdf4; border-color: var(--verde); }
+  .rec-num { font-size: 20px; font-weight: 800; color: #94a3b8; flex-shrink: 0; width: 28px; }
+  .rec-content strong { font-size: 13px; display: block; margin-bottom: 4px; }
+  .rec-content p { font-size: 12px; color: #64748b; }
+  .rec-content .impact { display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+  .rec-content .impact.critical { background: #fecaca; color: #7f1d1d; }
+  .rec-content .impact.alta { background: #fed7aa; color: #9a3412; }
+  .rec-content .impact.media { background: #fef3c7; color: #92400e; }
+
+  /* SCORE SUMMARY */
+  .score-summary-bar { display: flex; align-items: center; gap: 0; height: 48px; border-radius: 12px; overflow: hidden; margin: 20px 0; }
+  .ssb-prod { background: var(--azul); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 15px; }
+  .ssb-local { background: #059669; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 15px; }
+
+  .divider { height: 1px; background: #f1f5f9; margin: 20px 0; }
+  .text-muted { color: #64748b; font-size: 12px; }
+  .mt16 { margin-top: 16px; }
+  .mb8 { margin-bottom: 8px; }
+  .font-bold { font-weight: 700; }
+  .inline-score { display: inline-flex; align-items: baseline; gap: 4px; }
+  .inline-score .num { font-size: 32px; font-weight: 800; }
+  .inline-score .den { font-size: 16px; color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="report-header">
+  <h1>Reporte Comparativo Comercial — Allura Healthcare</h1>
+  <div class="meta">
+    <span>📅 12 de mayo de 2026</span>
+    <span>🌐 Producción: allurahealthcare.com</span>
+    <span>💻 Desarrollo: localhost:3000</span>
+    <span>🎯 Enfoque: Conversión &amp; Funnel de Ventas</span>
+  </div>
+</div>
+
+<!-- VEREDICTO -->
+<div class="veredicto-banner ganador-local">
+  <div class="veredicto-icon">🏆</div>
+  <div class="veredicto-texto">
+    <h2>Localhost es más comercial — pero con defectos críticos de imagen</h2>
+    <p>El sitio local tiene mejor arquitectura de conversión (WhatsApp flotante, FAQ, CTAs más claros, funnel de contacto completo y URLs en español). Sin embargo, le faltan imágenes de servicios, no tiene video ni testimonios, y arroja 6 errores 404 de recursos. <strong>No está listo para publicar</strong>, pero con correcciones estratégicas puede superar significativamente al sitio de producción actual.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- SCORE CARDS -->
+  <div class="scores-grid">
+
+    <div class="score-card">
+      <div class="score-card-header prod">
+        <div>
+          <h3>Sitio de Producción</h3>
+          <div class="url">allurahealthcare.com</div>
+        </div>
+        <div>
+          <div class="inline-score">
+            <span class="num">52</span><span class="den">/100</span>
+          </div>
+        </div>
+      </div>
+      <div class="score-body">
+        <div class="score-item"><span class="score-label">CTAs sobre el pliegue (home)</span><span class="score-val win">2 ✓</span></div>
+        <div class="score-item"><span class="score-label">WhatsApp flotante</span><span class="score-val lose">No ✗</span></div>
+        <div class="score-item"><span class="score-label">Imágenes en home</span><span class="score-val win">24 ✓✓</span></div>
+        <div class="score-item"><span class="score-label">Video en home</span><span class="score-val win">Sí ✓</span></div>
+        <div class="score-item"><span class="score-label">Testimonios detectados</span><span class="score-val lose">No ✗</span></div>
+        <div class="score-item"><span class="score-label">FAQ</span><span class="score-val lose">No ✗</span></div>
+        <div class="score-item"><span class="score-label">Formulario de contacto</span><span class="score-val lose">No (timeout) ✗</span></div>
+        <div class="score-item"><span class="score-label">URLs en español</span><span class="score-val lose">No (inglés) ✗</span></div>
+        <div class="score-item"><span class="score-label">Errores de consola</span><span class="score-val win">0 ✓</span></div>
+        <div class="score-item"><span class="score-label">Secciones en home</span><span class="score-val win">13 ✓✓</span></div>
+        <div class="score-item"><span class="score-label">Header sticky</span><span class="score-val win">Sí ✓</span></div>
+        <div class="score-item"><span class="score-label">Número de WhatsApp real</span><span class="score-val win">Sí ✓</span></div>
+      </div>
+    </div>
+
+    <div class="score-card">
+      <div class="score-card-header local">
+        <div>
+          <h3>Localhost (versión nueva)</h3>
+          <div class="url">localhost:3000</div>
+        </div>
+        <div>
+          <div class="inline-score">
+            <span class="num">68</span><span class="den">/100</span>
+          </div>
+        </div>
+      </div>
+      <div class="score-body">
+        <div class="score-item"><span class="score-label">CTAs sobre el pliegue (home)</span><span class="score-val win">2 ✓</span></div>
+        <div class="score-item"><span class="score-label">WhatsApp flotante</span><span class="score-val win">Sí ✓✓</span></div>
+        <div class="score-item"><span class="score-label">Imágenes en home</span><span class="score-val lose">2 ✗✗</span></div>
+        <div class="score-item"><span class="score-label">Video en home</span><span class="score-val lose">No ✗</span></div>
+        <div class="score-item"><span class="score-label">Testimonios detectados</span><span class="score-val lose">No ✗</span></div>
+        <div class="score-item"><span class="score-label">FAQ (Cómo funciona)</span><span class="score-val win">4 preguntas ✓</span></div>
+        <div class="score-item"><span class="score-label">Formulario de contacto</span><span class="score-val win">Sí (5 campos) ✓</span></div>
+        <div class="score-item"><span class="score-label">URLs en español</span><span class="score-val win">Sí ✓</span></div>
+        <div class="score-item"><span class="score-label">Errores de consola</span><span class="score-val lose">6 por página ✗</span></div>
+        <div class="score-item"><span class="score-label">Secciones en home</span><span class="score-val warn">5 (faltan)</span></div>
+        <div class="score-item"><span class="score-label">Header fijo</span><span class="score-val win">Sí ✓</span></div>
+        <div class="score-item"><span class="score-label">Número de WhatsApp real</span><span class="score-val lose">Placeholder ✗</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BARRA COMPARATIVA -->
+  <div class="section">
+    <div class="section-title"><span class="icon">⚡</span> Comparativa de Potencial Comercial</div>
+    <div class="section-body">
+      <p class="text-muted mb8">Puntuación sobre 100 puntos en 12 factores de conversión evaluados</p>
+      <div class="score-summary-bar">
+        <div class="ssb-prod" style="width:52%">Producción: 52 pts</div>
+        <div class="ssb-local" style="width:48%">Localhost: 68 pts</div>
+      </div>
+      <div class="two-cols mt16">
+        <div class="col-box prod-box">
+          <h5 class="prod">Producción gana en:</h5>
+          <ul>
+            <li class="win">✓ Volumen de imágenes (24 vs 2)</li>
+            <li class="win">✓ Video en hero (genera confianza)</li>
+            <li class="win">✓ Más secciones en home (13 vs 5)</li>
+            <li class="win">✓ Número de WhatsApp real configurado</li>
+            <li class="win">✓ Sin errores de consola</li>
+            <li class="win">✓ Contenido visual más completo</li>
+          </ul>
+        </div>
+        <div class="col-box local-box">
+          <h5 class="local">Localhost gana en:</h5>
+          <ul>
+            <li class="win">✓ WhatsApp flotante visible en todo momento</li>
+            <li class="win">✓ FAQ que reduce objeciones (4 preguntas)</li>
+            <li class="win">✓ Formulario de contacto con 5 campos</li>
+            <li class="win">✓ URLs en español (mejor para SEO local)</li>
+            <li class="win">✓ "Cómo funciona" página completa</li>
+            <li class="win">✓ CTAs con 10 textos distintos en home</li>
+            <li class="win">✓ Estructura clara de funnel (Descubrir → Contactar)</li>
+            <li class="win">✓ Múltiples puntos de contacto WhatsApp (3 en /contacto)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANÁLISIS DEL FUNNEL -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🎯</span> Análisis del Funnel de Ventas — Página por Página</div>
+    <div class="section-body">
+      <table class="funnel-table">
+        <thead>
+          <tr>
+            <th>Etapa del Funnel</th>
+            <th>Página</th>
+            <th>Factor</th>
+            <th>Producción</th>
+            <th>Localhost</th>
+            <th>Ganador</th>
+            <th>Severidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ATRACCIÓN -->
+          <tr>
+            <td rowspan="4" class="factor" style="background:#f8fafc;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:#64748b;padding:8px 14px;">ATRACCIÓN<br><small>Top of Funnel</small></td>
+            <td>Home</td>
+            <td>Headline principal</td>
+            <td>"Salud que inspira, viajes que transforman" ✓</td>
+            <td>Mismo texto ✓</td>
+            <td><span class="winner"><span class="dot empate"></span></span> Empate</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>Home</td>
+            <td>Subheadline visible</td>
+            <td>Solo en H1 (largo) — no hay subtítulo separado</td>
+            <td>"Atención médica y odontológica premium…" ✓</td>
+            <td><span class="winner"><span class="dot local"></span></span> Localhost</td>
+            <td><span class="badge media">Media</span></td>
+          </tr>
+          <tr>
+            <td>Home</td>
+            <td>Imágenes que inspiran</td>
+            <td>24 imágenes + video ✓✓</td>
+            <td>Solo 2 imágenes ✗✗</td>
+            <td><span class="winner"><span class="dot prod"></span></span> Producción</td>
+            <td><span class="badge alta">Alta</span></td>
+          </tr>
+          <tr>
+            <td>Home</td>
+            <td>SEO (title / meta)</td>
+            <td>Title: "Allura Healthcare | Medical Tourism Colombia"</td>
+            <td>Title: "Allura Healthcare — Turismo Médico en Medellín" ✓</td>
+            <td><span class="winner"><span class="dot local"></span></span> Localhost</td>
+            <td><span class="badge baja">Baja</span></td>
+          </tr>
+
+          <!-- CONSIDERACIÓN -->
+          <tr>
+            <td rowspan="5" class="factor" style="background:#f8fafc;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:#64748b;padding:8px 14px;">CONSIDERACIÓN<br><small>Middle of Funnel</small></td>
+            <td>Home</td>
+            <td>Secciones informativas</td>
+            <td>13 secciones: ciudad, equipo, proceso ✓</td>
+            <td>5 secciones: muy compacto ✗</td>
+            <td><span class="winner"><span class="dot prod"></span></span> Producción</td>
+            <td><span class="badge alta">Alta</span></td>
+          </tr>
+          <tr>
+            <td>Servicios</td>
+            <td>Estructura de servicios</td>
+            <td>Timeout / URL diferente (/services en inglés)</td>
+            <td>4 categorías + links a 24 subpáginas ✓✓</td>
+            <td><span class="winner"><span class="dot local"></span></span> Localhost</td>
+            <td><span class="badge alta">Alta</span></td>
+          </tr>
+          <tr>
+            <td>Cómo funciona</td>
+            <td>Proceso paso a paso</td>
+            <td>Timeout (/how-it-works)</td>
+            <td>5 pasos + FAQ 4 preguntas ✓✓</td>
+            <td><span class="winner"><span class="dot local"></span></span> Localhost</td>
+            <td><span class="badge alta">Alta</span></td>
+          </tr>
+          <tr>
+            <td>FAQ</td>
+            <td>Reduce objeciones</td>
+            <td>No detectado</td>
+            <td>4 preguntas clave (idioma, garantía, combinación) ✓</td>
+            <td><span class="winner"><span class="dot local"></span></span> Localhost</td>
+            <td><span class="badge media">Media</span></td>
+          </tr>
+          <tr>
+            <td>Todas</td>
+            <td>Testimonios / prueba social</td>
+            <td>Sección mencionada en H2 pero no detectada</td>
+            <td>No detectados ✗</td>
+            <td><span class="winner"><span class="dot empate"></span></span> Ambos fallan</td>
+            <td><span class="badge critica">Crítica</span></td>
+          </tr>
+
+          <!-- DECISIÓN -->
+          <tr>
+            <td rowspan="5" class="factor" style="background:#f8fafc;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:#64748b;padding:8px 14px;">DECISIÓN<br><small>Bottom of Funnel</small></td>
+            <td>Todas</td>
+            <td>WhatsApp flotante</td>
+            <td>No existe ✗</td>
+            <td>Sí, en todas las páginas ✓✓</td>
+            <td><span class="winner"><span class="dot local"></span></span> Localhost</td>
+            <td><span class="badge alta">Alta</span></td>
+          </tr>
+          <tr>
+            <td>Home</td>
+            <td>CTAs sobre el pliegue</td>
+            <td>2: "Agendar cita" + "Hablar por WhatsApp"</td>
+            <td>2: "Contáctanos" + "Agenda tu consulta"</td>
+            <td><span class="winner"><span class="dot empate"></span></span> Empate</td>
+            <td><span class="badge ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>Contacto</td>
+            <td>Formulario disponible</td>
+            <td>Timeout (no se pudo verificar)</td>
+            <td>Sí, 5 campos ✓ + WhatsApp directo ✓</td>
+            <td><span class="winner"><span class="dot local"></span></span> Localhost</td>
+            <td><span class="badge alta">Alta</span></td>
+          </tr>
+          <tr>
+            <td>Contacto</td>
+            <td>Múltiples canales</td>
+            <td>No verificable (timeout)</td>
+            <td>Formulario + 3 links WhatsApp en /contacto ✓✓</td>
+            <td><span class="winner"><span class="dot local"></span></span> Localhost</td>
+            <td><span class="badge media">Media</span></td>
+          </tr>
+          <tr>
+            <td>Todas</td>
+            <td>Número de teléfono visible</td>
+            <td>No detectado (puede estar en imagen)</td>
+            <td>No detectado ✗</td>
+            <td><span class="winner"><span class="dot empate"></span></span> Ambos fallan</td>
+            <td><span class="badge media">Media</span></td>
+          </tr>
+
+          <!-- RETENCIÓN -->
+          <tr>
+            <td rowspan="3" class="factor" style="background:#f8fafc;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:#64748b;padding:8px 14px;">CONFIANZA<br><small>Trust Signals</small></td>
+            <td>Home</td>
+            <td>Equipo médico (nombres + foto)</td>
+            <td>Sección presente ✓ (con foto probable)</td>
+            <td>Página /equipo separada ✓ (nombres reales)</td>
+            <td><span class="winner"><span class="dot empate"></span></span> Similar</td>
+            <td><span class="badge media">Media</span></td>
+          </tr>
+          <tr>
+            <td>Todas</td>
+            <td>Galería antes/después</td>
+            <td>No detectada</td>
+            <td>No detectada ✗</td>
+            <td><span class="winner"><span class="dot empate"></span></span> Ambos fallan</td>
+            <td><span class="badge critica">Crítica</span></td>
+          </tr>
+          <tr>
+            <td>Todas</td>
+            <td>Número WhatsApp real</td>
+            <td>Probablemente real ✓</td>
+            <td>Placeholder: 573001234567 ✗</td>
+            <td><span class="winner"><span class="dot prod"></span></span> Producción</td>
+            <td><span class="badge critica">Crítica</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SCREENSHOTS -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📸</span> Comparación Visual — Home (Desktop 1440px)</div>
+    <div class="section-body">
+      <div class="compare-grid">
+        <div class="compare-col">
+          <h4 class="prod-label">Producción — allurahealthcare.com</h4>
+          <div class="screenshot-wrapper">
+            <img src="screenshots/prod_home_desktop.png" alt="Producción Home Desktop" loading="lazy">
+            <span class="screenshot-label">Producción</span>
+          </div>
+        </div>
+        <div class="compare-col">
+          <h4 class="local-label">Localhost — desarrollo</h4>
+          <div class="screenshot-wrapper">
+            <img src="screenshots/local_home_desktop.png" alt="Localhost Home Desktop" loading="lazy">
+            <span class="screenshot-label">Localhost</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="icon">📱</span> Comparación Visual — Home (Mobile 375px)</div>
+    <div class="section-body">
+      <div class="compare-grid">
+        <div class="compare-col">
+          <h4 class="prod-label">Producción — Mobile</h4>
+          <div class="screenshot-wrapper">
+            <img src="screenshots/prod_home_mobile.png" alt="Producción Home Mobile" loading="lazy">
+            <span class="screenshot-label">Producción Mobile</span>
+          </div>
+        </div>
+        <div class="compare-col">
+          <h4 class="local-label">Localhost — Mobile</h4>
+          <div class="screenshot-wrapper">
+            <img src="screenshots/local_home_mobile.png" alt="Localhost Home Mobile" loading="lazy">
+            <span class="screenshot-label">Localhost Mobile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="icon">🦷</span> Comparación Visual — Servicios (Desktop)</div>
+    <div class="section-body">
+      <div class="compare-grid">
+        <div class="compare-col">
+          <h4 class="prod-label">Producción /servicios</h4>
+          <div class="screenshot-wrapper">
+            <img src="screenshots/prod_servicios_desktop.png" alt="Producción Servicios Desktop" loading="lazy">
+            <span class="screenshot-label">Producción</span>
+          </div>
+        </div>
+        <div class="compare-col">
+          <h4 class="local-label">Localhost /servicios</h4>
+          <div class="screenshot-wrapper">
+            <img src="screenshots/local_servicios_desktop.png" alt="Localhost Servicios Desktop" loading="lazy">
+            <span class="screenshot-label">Localhost</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="icon">📋</span> Comparación Visual — Contacto (Desktop)</div>
+    <div class="section-body">
+      <div class="compare-grid">
+        <div class="compare-col">
+          <h4 class="prod-label">Producción /contacto</h4>
+          <div class="screenshot-wrapper">
+            <img src="screenshots/prod_contacto_desktop.png" alt="Producción Contacto Desktop" loading="lazy">
+            <span class="screenshot-label">Producción</span>
+          </div>
+        </div>
+        <div class="compare-col">
+          <h4 class="local-label">Localhost /contacto</h4>
+          <div class="screenshot-wrapper">
+            <img src="screenshots/local_contacto_desktop.png" alt="Localhost Contacto Desktop" loading="lazy">
+            <span class="screenshot-label">Localhost</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEMAS TÉCNICOS -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🔧</span> Problemas Técnicos Detectados en Localhost</div>
+    <div class="section-body">
+      <div class="checklist">
+        <div class="check-item critical">
+          <span class="check-icon">🔴</span>
+          <div class="check-text">
+            <strong>6 errores 404 de recursos por página (todas las páginas)</strong>
+            <span>Hay imágenes o archivos que el sitio intenta cargar y no existen. Esto hace que secciones aparezcan vacías o sin imágenes. Es el error más visible visualmente. Revisa la consola de Chrome devtools para ver qué archivos específicos faltan (probablemente imágenes en /public/).</span>
+          </div>
+        </div>
+        <div class="check-item critical">
+          <span class="check-icon">🔴</span>
+          <div class="check-text">
+            <strong>Número de WhatsApp es un placeholder: 573001234567</strong>
+            <span>Todos los botones "Hablar por WhatsApp" apuntan a un número falso. Si alguien hace clic, no llega a ningún lado. Esto debe corregirse antes de publicar.</span>
+          </div>
+        </div>
+        <div class="check-item critical">
+          <span class="check-icon">🔴</span>
+          <div class="check-text">
+            <strong>Sin imágenes de servicios (solo 2 imágenes detectadas vs 24 en producción)</strong>
+            <span>El sitio visual está casi vacío comparado con producción. Para turismo médico, las imágenes de las clínicas, procedimientos y resultados son factores clave de conversión.</span>
+          </div>
+        </div>
+        <div class="check-item todo">
+          <span class="check-icon">🟡</span>
+          <div class="check-text">
+            <strong>Sin H1 en páginas internas (servicios, contacto, nosotros, cómo funciona)</strong>
+            <span>Las páginas internas no tienen etiqueta H1. Es un error de SEO y de jerarquía visual. Cada página debe tener exactamente un H1 descriptivo.</span>
+          </div>
+        </div>
+        <div class="check-item todo">
+          <span class="check-icon">🟡</span>
+          <div class="check-text">
+            <strong>Sin canonical URL en ninguna página</strong>
+            <span>El sitio no tiene etiqueta &lt;link rel="canonical"&gt;. Cuando se publique puede generar contenido duplicado en Google.</span>
+          </div>
+        </div>
+        <div class="check-item todo">
+          <span class="check-icon">🟡</span>
+          <div class="check-text">
+            <strong>Sin OG Image configurada</strong>
+            <span>Cuando alguien comparta el sitio en WhatsApp, Facebook o LinkedIn, no aparecerá ninguna imagen de preview. Configura og:image con una imagen de la clínica o del hero.</span>
+          </div>
+        </div>
+        <div class="check-item done">
+          <span class="check-icon">🟢</span>
+          <div class="check-text">
+            <strong>Meta descriptions configuradas ✓</strong>
+            <span>Todas las páginas tienen meta description en español. Correcto y bien redactado.</span>
+          </div>
+        </div>
+        <div class="check-item done">
+          <span class="check-icon">🟢</span>
+          <div class="check-text">
+            <strong>Navegación interna completa ✓</strong>
+            <span>Todos los links internos apuntan a rutas válidas. No se detectaron 404 de navegación.</span>
+          </div>
+        </div>
+        <div class="check-item done">
+          <span class="check-icon">🟢</span>
+          <div class="check-text">
+            <strong>Header fijo en scroll ✓</strong>
+            <span>El header tiene position: fixed, lo que permite acceso constante a la navegación y al CTA de contacto.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOMENDACIONES PRIORITARIAS -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🚀</span> Recomendaciones Prioritarias para Maximizar Conversión</div>
+    <div class="section-body">
+      <div class="rec-list">
+
+        <div class="rec-item critical">
+          <div class="rec-num">1</div>
+          <div class="rec-content">
+            <strong>Corregir el número de WhatsApp (BLOQUEANTE)</strong>
+            <p>Reemplazar +57 300 123 4567 con el número real de Allura en todos los componentes. Sin esto, ningún CTA de WhatsApp funciona. Es el canal de conversión #1 para turismo médico en Colombia.</p>
+            <span class="impact critical">Impacto: CRÍTICO — Bloquea toda conversión vía WhatsApp</span>
+          </div>
+        </div>
+
+        <div class="rec-item critical">
+          <div class="rec-num">2</div>
+          <div class="rec-content">
+            <strong>Identificar y corregir los 6 recursos 404 por página</strong>
+            <p>Abrir Chrome devtools → Network → filtrar 404 y agregar las imágenes faltantes a /public/. Probablemente son imágenes de servicios, heros o el equipo médico.</p>
+            <span class="impact critical">Impacto: CRÍTICO — El sitio se ve incompleto y poco profesional</span>
+          </div>
+        </div>
+
+        <div class="rec-item high">
+          <div class="rec-num">3</div>
+          <div class="rec-content">
+            <strong>Agregar galería de antes/después o resultados de tratamientos</strong>
+            <p>Es el elemento de prueba social más poderoso para servicios de odontología estética. Ninguno de los dos sitios lo tiene. Mínimo 6-8 casos con foto antes y después para veneers, implantes y alineadores.</p>
+            <span class="impact alta">Impacto: ALTO — Aumenta confianza y reduce tiempo de decisión</span>
+          </div>
+        </div>
+
+        <div class="rec-item high">
+          <div class="rec-num">4</div>
+          <div class="rec-content">
+            <strong>Agregar testimonios de pacientes internacionales</strong>
+            <p>Actualmente ningún sitio tiene testimonios detectables. Para turismo médico, los testimonios de pacientes extranjeros (nombre, país, tratamiento) son decisivos. Priorizar testimonios en inglés si el mercado es internacional.</p>
+            <span class="impact alta">Impacto: ALTO — Prueba social para pacientes que no conocen la clínica</span>
+          </div>
+        </div>
+
+        <div class="rec-item high">
+          <div class="rec-num">5</div>
+          <div class="rec-content">
+            <strong>Agregar más contenido visual al home (mínimo 8-10 imágenes reales)</strong>
+            <p>Producción tiene 24 imágenes en su home; el localhost solo 2. Las imágenes de la clínica, Medellín, procedimientos y equipo son fundamentales para generar deseo y confianza en turismo médico.</p>
+            <span class="impact alta">Impacto: ALTO — El primer impacto visual es decisivo para pacientes internacionales</span>
+          </div>
+        </div>
+
+        <div class="rec-item medium">
+          <div class="rec-num">6</div>
+          <div class="rec-content">
+            <strong>Agregar H1 a todas las páginas internas</strong>
+            <p>Servicios, Contacto, Nosotros y Cómo funciona no tienen H1. Agregar un H1 descriptivo a cada una mejora SEO y da ancla visual a la página.</p>
+            <span class="impact media">Impacto: MEDIO — SEO y estructura semántica</span>
+          </div>
+        </div>
+
+        <div class="rec-item medium">
+          <div class="rec-num">7</div>
+          <div class="rec-content">
+            <strong>Configurar OG Image y canonical URL</strong>
+            <p>Agregar <code>&lt;meta property="og:image"&gt;</code> con una imagen impactante de la clínica y <code>&lt;link rel="canonical"&gt;</code> a cada página. Es crítico para que los compartidos en WhatsApp y redes sociales se vean bien.</p>
+            <span class="impact media">Impacto: MEDIO — Conversión desde redes sociales y WhatsApp</span>
+          </div>
+        </div>
+
+        <div class="rec-item medium">
+          <div class="rec-num">8</div>
+          <div class="rec-content">
+            <strong>Expandir las secciones del home (actualmente solo 5)</strong>
+            <p>Producción tiene 13 secciones en el home cubriendo: servicios, ciudad, proceso, equipo, testimonios. El localhost tiene solo 5. Agregar al menos: sección "Por qué Medellín", sección del equipo médico y sección de galería de resultados.</p>
+            <span class="impact media">Impacto: MEDIO — Más contenido = más tiempo en página = más conversión</span>
+          </div>
+        </div>
+
+        <div class="rec-item low">
+          <div class="rec-num">9</div>
+          <div class="rec-content">
+            <strong>Agregar número de teléfono o WhatsApp visible en el footer/header</strong>
+            <p>Ningún sitio muestra el número de teléfono como texto visible (solo via href tel:). Para pacientes mayores o con dudas rápidas, ver el número directamente aumenta la confianza.</p>
+            <span class="impact media">Impacto: BAJO-MEDIO — Fricción de contacto en usuarios que prefieren llamar</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST ANTES DE PUBLICAR -->
+  <div class="section">
+    <div class="section-title"><span class="icon">✅</span> Checklist — Antes de Publicar el Localhost</div>
+    <div class="section-body">
+      <div class="two-cols">
+        <div>
+          <p class="font-bold mb8" style="color:#991b1b;">❌ Bloqueantes (no publicar sin esto):</p>
+          <div class="checklist">
+            <div class="check-item critical"><span class="check-icon">🔴</span><div class="check-text"><strong>Actualizar número de WhatsApp real</strong><span>Reemplazar 573001234567 en todos los componentes</span></div></div>
+            <div class="check-item critical"><span class="check-icon">🔴</span><div class="check-text"><strong>Corregir recursos 404 (imágenes faltantes)</strong><span>Agregar imágenes a /public/ o corregir las rutas</span></div></div>
+            <div class="check-item critical"><span class="check-icon">🔴</span><div class="check-text"><strong>Agregar contenido visual mínimo</strong><span>Al menos 8 imágenes reales de la clínica / tratamientos</span></div></div>
+          </div>
+          <p class="font-bold mb8 mt16" style="color:#92400e;">🟡 Importantes (corregir antes o poco después de publicar):</p>
+          <div class="checklist">
+            <div class="check-item todo"><span class="check-icon">🟡</span><div class="check-text"><strong>Agregar testimonios de pacientes</strong></div></div>
+            <div class="check-item todo"><span class="check-icon">🟡</span><div class="check-text"><strong>Galería de antes/después</strong></div></div>
+            <div class="check-item todo"><span class="check-icon">🟡</span><div class="check-text"><strong>H1 en todas las páginas internas</strong></div></div>
+            <div class="check-item todo"><span class="check-icon">🟡</span><div class="check-text"><strong>OG Image para compartir en redes</strong></div></div>
+            <div class="check-item todo"><span class="check-icon">🟡</span><div class="check-text"><strong>Canonical URL en cada página</strong></div></div>
+            <div class="check-item todo"><span class="check-icon">🟡</span><div class="check-text"><strong>Expandir home a mínimo 8 secciones</strong></div></div>
+          </div>
+        </div>
+        <div>
+          <p class="font-bold mb8" style="color:#166534;">✅ Ya funciona bien en localhost:</p>
+          <div class="checklist">
+            <div class="check-item done"><span class="check-icon">🟢</span><div class="check-text"><strong>WhatsApp flotante en todas las páginas</strong></div></div>
+            <div class="check-item done"><span class="check-icon">🟢</span><div class="check-text"><strong>Formulario de contacto funcional (5 campos)</strong></div></div>
+            <div class="check-item done"><span class="check-icon">🟢</span><div class="check-text"><strong>FAQ con 4 preguntas en "Cómo funciona"</strong></div></div>
+            <div class="check-item done"><span class="check-icon">🟢</span><div class="check-text"><strong>24 páginas de servicios con URLs en español</strong></div></div>
+            <div class="check-item done"><span class="check-icon">🟢</span><div class="check-text"><strong>Header fijo con navegación accesible</strong></div></div>
+            <div class="check-item done"><span class="check-icon">🟢</span><div class="check-text"><strong>Meta descriptions en español</strong></div></div>
+            <div class="check-item done"><span class="check-icon">🟢</span><div class="check-text"><strong>Estructura de funnel: Home → Servicios → Cómo funciona → Contacto</strong></div></div>
+            <div class="check-item done"><span class="check-icon">🟢</span><div class="check-text"><strong>Página de equipo con doctores reales</strong></div></div>
+            <div class="check-item done"><span class="check-icon">🟢</span><div class="check-text"><strong>Links de privacidad y accesibilidad</strong></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCLUSIÓN FINAL -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📊</span> Conclusión Final</div>
+    <div class="section-body">
+      <div style="background: linear-gradient(135deg, #064e3b, #065f46); color: white; border-radius: 12px; padding: 24px 28px; margin-bottom: 20px;">
+        <h3 style="font-size:18px; margin-bottom:12px;">Veredicto: Localhost es más comercial, pero requiere 3 correcciones críticas</h3>
+        <p style="opacity:0.9; font-size:14px; line-height:1.7;">El sitio local tiene una arquitectura de conversión superior: WhatsApp flotante omnipresente, FAQ completa, formulario de contacto estructurado, funnel claro en 4 pasos y URLs en español que favorecen el SEO local. Sin embargo, le falta el alma visual: imágenes reales de la clínica, video, testimonios y galería de resultados. El sitio de producción actual tiene más contenido visual pero carece de los mecanismos de conversión directa que tiene el localhost.</p>
+        <p style="margin-top: 12px; font-weight: 700; font-size:15px;">Potencial al corregir los 3 bloqueantes: el localhost podría alcanzar 85+/100 en comercialidad.</p>
+      </div>
+      <div class="two-cols">
+        <div class="col-box prod-box">
+          <h5 class="prod">Producción actual: 52/100</h5>
+          <ul>
+            <li>Fuerte en contenido visual (imágenes, video)</li>
+            <li>Débil en mecánicas de conversión</li>
+            <li>Sin WhatsApp flotante</li>
+            <li>URLs en inglés (peor para SEO español)</li>
+            <li>Sin página /contacto accesible</li>
+          </ul>
+        </div>
+        <div class="col-box local-box">
+          <h5 class="local">Localhost potencial: 85/100 (tras correcciones)</h5>
+          <ul>
+            <li>WhatsApp flotante + múltiples puntos de contacto</li>
+            <li>Funnel completo y estructurado</li>
+            <li>FAQ reduce objeciones de pacientes internacionales</li>
+            <li>Falta: imágenes reales, número real, testimonios</li>
+            <li>Con esos 3 cambios: listo para superar a producción</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-muted" style="text-align:center; padding: 20px 0;">Reporte generado automáticamente con Playwright + Claude Code — Allura Healthcare © 2026</p>
+
+</div>
+</body>
+</html>
