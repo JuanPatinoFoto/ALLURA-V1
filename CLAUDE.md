@@ -32,4 +32,14 @@ Claude, tienes acceso a las siguientes skills instaladas en este proyecto. Úsal
 1. **Planificación primero:** Antes de crear archivos masivos, presenta siempre un plan o diagrama.
 2. **Componentes reutilizables:** Escribe código modular y escalable.
 3. **Fidelidad al Brandbook:** Respeta estrictamente los códigos hexadecimales y las tipografías mencionadas.
+4. **Next.js estricto:** Este proyecto está construido en Next.js. Todas las vistas, páginas y componentes deben crearse o editarse usando la estructura nativa de Next.js (archivos `.tsx` o `.jsx`). No usar ni generar archivos `.html` estáticos. Las imágenes deben usar el componente `next/image` y los enlaces el componente `Link` de `@/navigation` para navegación locale-aware con next-intl.
+
+## 🌐 Arquitectura i18n (internacionalización)
+- **Sistema:** `next-intl` con App Router y `[locale]` en la ruta.
+- **Locales activos:** `es` (default) y `en`. Configurado en `src/i18n/routing.ts`.
+- **Prefijo:** `localePrefix: "always"` — todas las URLs llevan prefijo: `/es/...` y `/en/...`.
+- **Mensajes:** `messages/es.json` y `messages/en.json` contienen todas las etiquetas UI.
+- **Contenido de páginas:** Cada page.tsx de servicios define `contentEs` y `contentEn` inline y selecciona con `locale === "en" ? contentEn : contentEs`.
+- **Links locale-aware:** `import { Link } from "@/navigation"` — agrega automáticamente el prefijo de locale.
+- **Estado de traducción:** 4 categorías + 24 subpáginas de servicios ya tienen contenido en inglés completo.
 

@@ -30,7 +30,416 @@
     },
     "legal": {
       "privacy": "Políticas de privacidad",
-      "accessibility": "Declaración de accesibilidad"
+      "accessibility": "Declaración de accesibilidad",
+      "terms": "Términos y Condiciones",
+      "medicalDisclaimer": "Aviso Médico Legal"
     }
+  },
+  "hero": {
+    "eyebrow": "Medellín, Colombia · Pacientes Internacionales",
+    "headlinePart1": "Salud que inspira,",
+    "headlinePart2": "viajes que transforman",
+    "subtext": "Atención médica y odontológica premium en Medellín, con acompañamiento personalizado para pacientes internacionales.",
+    "ctaPrimary": "Conoce nuestros servicios",
+    "ctaSecondary": "¿Cómo funciona?"
+  },
+  "benefits": {
+    "eyebrow": "Por qué elegirnos",
+    "title": "Una experiencia diseñada para ti",
+    "subtitle": "En Allura, tu bienestar es nuestra única prioridad.",
+    "items": [
+      {
+        "title": "Excelencia Profesional",
+        "description": "Trabajamos con especialistas certificados internacionalmente que combinan rigor científico con una atención cercana y personalizada."
+      },
+      {
+        "title": "Acompañamiento Personalizado",
+        "description": "Coordinamos cada detalle de tu experiencia: desde la llegada a Medellín hasta el alta médica, para que solo te preocupes por sanar y disfrutar."
+      },
+      {
+        "title": "Tecnología y Ética",
+        "description": "Utilizamos equipos de última generación bajo protocolos internacionales, con total transparencia en cada etapa de tu tratamiento."
+      }
+    ]
+  },
+  "servicesPreview": {
+    "eyebrow": "Nuestros servicios",
+    "title": "Especialidades Allura",
+    "subtitle": "Odontología premium y medicina facial estética para pacientes internacionales.",
+    "services": [
+      {
+        "title": "Full Mouth Reconstruction",
+        "description": "Solución integral para recuperar función, estabilidad y una sonrisa que vuelva a sentirse segura."
+      },
+      {
+        "title": "Smile Makeover",
+        "description": "Diseño personalizado de sonrisa para transformar la estética dental con precisión y armonía."
+      },
+      {
+        "title": "Allura Aligners",
+        "description": "Ortodoncia invisible de última generación con planificación digital y seguimiento personalizado."
+      },
+      {
+        "title": "Facial Harmony",
+        "description": "Medicina facial estética de precisión: toxina botulínica, rellenos y rejuvenecimiento integral."
+      }
+    ],
+    "learnMore": "Quiero saber más"
+  },
+  "aboutTeaser": {
+    "eyebrow": "Nuestra filosofía",
+    "title": "Medellín como destino, el bienestar como propósito",
+    "subtitle": "Allura nace de la convicción de que la salud y el disfrute no son opuestos. Combinamos la excelencia médica colombiana con la experiencia única de vivir Medellín — su clima, su cultura y su calidez humana.",
+    "cta": "Conoce nuestro equipo"
+  },
+  "medellin": {
+    "eyebrow": "Por qué Medellín",
+    "title": "Medellín como destino, el bienestar como propósito",
+    "subtitle": "Una ciudad moderna, hospitalaria y bien conectada, ideal para pacientes internacionales que buscan atención de alto nivel y una recuperación más cómoda.",
+    "benefits": [
+      {
+        "title": "Excelencia médica",
+        "description": "Especialistas, infraestructura moderna y tecnología de última generación."
+      },
+      {
+        "title": "Recuperación más cómoda",
+        "description": "Clima templado, hospitalidad local y estancias diseñadas para pacientes extranjeros."
+      },
+      {
+        "title": "Conectividad y logística",
+        "description": "Vuelos desde ciudades clave, alojamientos boutique y apoyo durante todo el viaje."
+      },
+      {
+        "title": "Bienestar y experiencia",
+        "description": "Paisaje, gastronomía y una energía urbana que acompaña el proceso de transformación."
+      }
+    ],
+    "cta": "Explora Medellín con Allura"
+  },
+  "teamPreview": {
+    "eyebrow": "Nuestro equipo",
+    "title": "Conoce nuestro equipo experto",
+    "subtitle": "Conoce a los profesionales que acompañan cada proceso con criterio clínico, experiencia internacional y atención personalizada.",
+    "cta": "Conoce más sobre ellos",
+    "members": [
+      { "specialty": "Odontóloga, Especialista en Prótesis Periodontal" },
+      { "specialty": "Odontólogo y Ortodoncista" },
+      { "specialty": "Odontóloga, Ortodoncista y MSc." },
+      { "specialty": "Odontólogo, Ortodoncista y MSc." },
+      { "specialty": "Odontólogo, MSc, Especialista en Prótesis Periodontal" },
+      { "specialty": "Odontólogo, Especialista en Rehabilitación Oral" }
+    ]
+  },
+  "process": {
+    "eyebrow": "Cómo funciona",
+    "title": "Tu proceso con Allura: simple, seguro y humano",
+    "cta": "Comienza tu consulta personalizada",
+    "steps": [
+      {
+        "step": "PASO 01",
+        "title": "Cuéntanos tu objetivo",
+        "description": "Te guiaremos en los primeros pasos"
+      },
+      {
+        "step": "PASO 02",
+        "title": "Consulta virtual",
+        "description": "Evaluación inicial con un especialista"
+      },
+      {
+        "step": "PASO 03",
+        "title": "Plan personalizado",
+        "description": "Recibe un itinerario y plan detallado"
+      },
+      {
+        "step": "PASO 04",
+        "title": "Tratamiento experto",
+        "description": "Atención de excelencia y seguimiento continuo"
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Da el primer paso",
+    "title": "Transforma tu bienestar. Agenda tu consulta hoy.",
+    "body": "Nuestro equipo te acompañará en cada etapa. Sin compromisos, con total transparencia.",
+    "button": "Contactar ahora"
+  },
+  "serviceTemplate": {
+    "whatsapp": "Hablar por WhatsApp",
+    "treatmentsLabel": "Tratamientos",
+    "treatmentsTitle": "Nuestras soluciones especializadas",
+    "treatmentsSubtitle": "Cada tratamiento es diseñado según tu caso particular.",
+    "learnMore": "Quiero saber más"
+  },
+  "serviceDetail": {
+    "breadcrumbServices": "Servicios",
+    "whatsapp": "Hablar por WhatsApp",
+    "benefitsLabel": "Beneficios",
+    "benefitsTitle": "¿Qué lograrás con este tratamiento?",
+    "processLabel": "Proceso",
+    "processTitle": "Paso a paso del tratamiento",
+    "candidatesLabel": "Candidatos",
+    "candidatesTitle": "¿Para quién es este tratamiento?",
+    "timelineLabel": "Duración estimada",
+    "timelineTitle": "¿Cuánto tiempo toma?",
+    "whyLabel": "Por qué Allura",
+    "whyTitle": "Excelencia, tecnología y acompañamiento total",
+    "whyBody": "En Allura combinamos especialistas certificados internacionalmente, tecnología de diagnóstico 3D y un modelo de atención diseñado especialmente para pacientes que viajan desde el exterior. Tu bienestar comienza antes de llegar y continúa mucho después de regresar."
+  },
+  "teamCard": {
+    "formacion": "Formación",
+    "reconocimiento": "Reconocimiento",
+    "enfoque": "Enfoque clínico",
+    "ariaDetail": "Ver detalle de",
+    "ariaClose": "Cerrar"
+  },
+  "nosotros": {
+    "metaTitle": "Sobre nosotros — Allura Healthcare",
+    "metaDesc": "Conoce la filosofía y el equipo detrás de Allura Healthcare, turismo médico de excelencia en Medellín.",
+    "heroEyebrow": "Quiénes somos",
+    "heroTitle": "Personas que cuidan personas",
+    "heroSubtitle": "Allura nace de la pasión por la odontología y la medicina estética de excelencia, y del orgullo de mostrar lo mejor de Medellín al mundo.",
+    "missionLabel": "Nuestra misión",
+    "missionTitle": "El bienestar como propósito",
+    "missionBody1": "En Allura creemos que la salud y el disfrute no son opuestos. Somos un destino de turismo médico especializado en odontología premium y medicina facial estética, donde cada paciente internacional recibe atención de clase mundial respaldada por tecnología de vanguardia y la calidez de Medellín.",
+    "missionBody2": "Cada persona que llega a Allura no solo recupera su sonrisa o armoniza su rostro — vive una experiencia única en una de las ciudades más vibrantes de América Latina.",
+    "pillarsLabel": "Cómo trabajamos",
+    "pillarsTitle": "Los pilares de Allura",
+    "pillarsSubtitle": "Tres principios que guían cada decisión que tomamos con nuestros pacientes.",
+    "pillars": [
+      { "number": "01", "title": "Diagnóstico honesto", "description": "Evaluamos cada caso sin apresuramiento, con diagnóstico digital 3D y opinión de especialistas." },
+      { "number": "02", "title": "Plan personalizado", "description": "Diseñamos una hoja de ruta exclusiva para ti: tratamiento, alojamiento y experiencia en Medellín." },
+      { "number": "03", "title": "Acompañamiento total", "description": "Coordinamos llegada, procedimientos, recuperación y seguimiento post-retorno desde tu país." }
+    ],
+    "valuesLabel": "Nuestros valores",
+    "valuesTitle": "Lo que nos define",
+    "values": [
+      { "title": "Excelencia", "description": "Cada tratamiento sigue los más altos estándares internacionales, con especialistas certificados y tecnología de vanguardia." },
+      { "title": "Empatía", "description": "Escuchamos y entendemos tu historia antes de cualquier recomendación. Tu bienestar es nuestra única prioridad." },
+      { "title": "Transparencia", "description": "Información clara, precios reales y procesos éticos en todo momento. Sin sorpresas, sin compromisos ocultos." }
+    ]
+  },
+  "equipo": {
+    "metaTitle": "Equipo — Allura Healthcare",
+    "metaDesc": "Conoce al equipo de especialistas de Allura Healthcare: odontólogos y médicos certificados internacionalmente en Medellín.",
+    "heroEyebrow": "Nuestro equipo",
+    "heroTitle": "Especialistas de primer nivel",
+    "heroSubtitle": "Un equipo certificado internacionalmente, comprometido con la excelencia y el bienestar de cada paciente.",
+    "certificationsLabel": "Certificaciones",
+    "certificationsTitle": "Formación de clase mundial",
+    "certificationsSubtitle": "Nuestros especialistas tienen formación en las mejores instituciones de Colombia, América y Europa, y participan activamente en congresos internacionales de odontología y medicina facial.",
+    "members": [
+      {
+        "name": "Dra. Johanna Jaramillo",
+        "specialty": "Odontóloga · Especialista en Prótesis Periodontal",
+        "formacion": ["Odontóloga – Universidad CES (1999)", "Especialista en Prostodoncia Periodontal (2004)"],
+        "reconocimiento": ["Key Opinion Leader en implantología", "Miembro de redes internacionales especializadas", "Docente universitaria desde 2006", "Conferencista nacional e internacional"],
+        "enfoque": ["Implantes dentales y rehabilitaciones complejas", "Casos interdisciplinarios", "Fotografía clínica digital"]
+      },
+      {
+        "name": "Dra. Daniela Alzate",
+        "specialty": "Odontóloga · Ortodoncista y MSc.",
+        "formacion": ["Odontóloga – Universidad CES (2013)", "Especialista en Ortodoncia – Universidad CES (2020)", "Magíster en Ciencias Odontológicas – Universidad CES (2020)"],
+        "reconocimiento": ["Coautora de estudio publicado en American Journal of Orthodontics and Dentofacial Orthopedics"],
+        "enfoque": ["Ortodoncia moderna y alineadores transparentes", "Armonización facial desde la ortodoncia", "Planes de tratamiento basados en evidencia"]
+      },
+      {
+        "name": "Dr. Sebastián Muñoz",
+        "specialty": "Odontólogo MSc · Especialista en Prótesis Periodontal",
+        "formacion": ["Odontólogo – Universidad CES (2000)", "Especialista en Prostodoncia Periodontal (2005)", "Magíster en Ciencias Odontológicas (2018)", "Máster clínico en odontología estética (gIDE / UCLA)"],
+        "reconocimiento": ["Director de posgrado en rehabilitación oral (CES)", "Conferencista internacional"],
+        "enfoque": ["Rehabilitación oral completa", "Estética dental avanzada", "Casos interdisciplinarios complejos"]
+      },
+      {
+        "name": "Dr. Santiago Henao",
+        "specialty": "Odontólogo · Ortodoncista · Diamond Top Doctor Invisalign",
+        "formacion": ["Odontólogo – UAM (2012)", "Ortodoncia y Ortopedia Maxilofacial – México (2015)"],
+        "reconocimiento": ["Diamond Top Doctor Invisalign", "Key Opinion Leader en alineadores"],
+        "enfoque": ["Tratamientos con Invisalign", "Ortodoncia digital", "Estética de la sonrisa"]
+      },
+      {
+        "name": "Dr. Iván Darío Jiménez",
+        "specialty": "Odontólogo · Ortodoncista y MSc.",
+        "formacion": ["Ortodoncia y Maestría – University of Manitoba, Canadá", "Certificación American Board of Orthodontics"],
+        "reconocimiento": ["Conferencista internacional en investigación odontológica", "Miembro de asociaciones globales de ortodoncia"],
+        "enfoque": ["Crecimiento y desarrollo facial", "Ortodoncia avanzada", "Equilibrio funcional y estético"]
+      },
+      {
+        "name": "Dr. Alejandro Cifuentes",
+        "specialty": "Odontólogo · Especialista en Rehabilitación Oral",
+        "formacion": ["Odontólogo – Universidad CES (2013)", "Especialista en Rehabilitación Oral (Prostodoncia) – Universidad CES (2020)"],
+        "reconocimiento": ["Director técnico de laboratorio dental de alta precisión", "Docente en diplomado de estética dental (desde 2022)"],
+        "enfoque": ["Diseño de sonrisa y carillas", "Rehabilitación oral completa", "Odontología digital"]
+      }
+    ]
+  },
+  "serviciosPage": {
+    "metaTitle": "Servicios — Allura Healthcare",
+    "metaDesc": "Odontología premium y medicina facial estética de clase mundial en Medellín para pacientes internacionales.",
+    "heroEyebrow": "Especialidades",
+    "heroTitle": "Servicios de excelencia",
+    "heroSubtitle": "Odontología premium y medicina facial estética para pacientes internacionales que buscan resultados reales.",
+    "exploreLabel": "Explorar tratamientos",
+    "categories": [
+      {
+        "eyebrow": "Odontología Integral",
+        "trademark": "Allura Full Mouth Reconstruction™",
+        "description": "Solución integral para recuperar función, estabilidad y una sonrisa que vuelva a sentirse segura. Para pacientes que han perdido piezas, presentan deterioro severo o necesitan rehabilitación completa, diseñamos un plan integral respaldado por tecnología 3D y especialistas de alto nivel.",
+        "items": ["Implantes unitarios y múltiples", "Implantes All-on-X", "Rehabilitación oral completa", "Prótesis fijas sobre implantes", "Reemplazo de restauraciones fallidas", "Planificación digital 3D"],
+        "href": "/servicios/full-mouth-reconstruction"
+      },
+      {
+        "eyebrow": "Estética Dental",
+        "trademark": "Allura Smile Makeover™",
+        "description": "Tu sonrisa, rediseñada con precisión artística. Combinamos diseño digital, carillas en porcelana y tecnología de vanguardia para que cada sonrisa sea única, natural y proyecte exactamente lo que quieres transmitir.",
+        "items": ["Carillas en porcelana", "Diseño digital de sonrisa", "Coronas en porcelana", "Restauraciones estéticas avanzadas", "Blanqueamiento dental profesional"],
+        "href": "/servicios/smile-makeover"
+      },
+      {
+        "eyebrow": "Ortodoncia Invisible",
+        "trademark": "Allura Aligners™",
+        "description": "Ortodoncia sin brackets, con planificación digital personalizada y seguimiento remoto para pacientes internacionales. Usamos Invisalign y alineadores de última generación para lograr alineaciones precisas con total discreción.",
+        "items": ["Invisalign", "Alineadores transparentes", "Escaneo digital 3D", "Planificación personalizada", "Seguimiento remoto internacional"],
+        "href": "/servicios/aligners"
+      },
+      {
+        "eyebrow": "Medicina Facial Estética",
+        "trademark": "Allura Facial Harmony™",
+        "description": "Medicina facial estética de precisión para realzar tus rasgos con naturalidad. Nuestro equipo de especialistas trabaja con técnicas mínimamente invasivas y protocolos internacionales para resultados que se ven auténticos y duraderos.",
+        "items": ["Evaluación facial estructural", "Toxina botulínica y rellenos dérmicos", "Bioestimuladores y rejuvenecimiento", "Blefaroplastia", "Rinoplastia", "Lifting facial", "Mentoplastia", "Coordinación con cirugía maxilofacial"],
+        "href": "/servicios/facial-harmony"
+      }
+    ]
+  },
+  "contacto": {
+    "metaTitle": "Contacto — Allura Healthcare",
+    "metaDesc": "Contáctanos para comenzar tu experiencia de turismo médico en Medellín con Allura Healthcare.",
+    "heroEyebrow": "Hablemos",
+    "heroTitle": "Comienza tu experiencia Allura",
+    "heroSubtitle": "Cuéntanos qué necesitas. Te respondemos en menos de 24 horas.",
+    "formNombre": "Nombre completo",
+    "formEmail": "Correo electrónico",
+    "formTelefono": "Teléfono / WhatsApp",
+    "formServicio": "Servicio de interés",
+    "servicioOpciones": {
+      "placeholder": "Servicio de interés",
+      "fullMouth": "Full Mouth Reconstruction",
+      "smileMakeover": "Smile Makeover",
+      "aligners": "Allura Aligners",
+      "facialHarmony": "Facial Harmony",
+      "otro": "Otro / Consulta general"
+    },
+    "formMensaje": "Cuéntanos sobre tu caso o consulta...",
+    "formSubmit": "Enviar mensaje",
+    "formSubmitting": "Enviando...",
+    "successTitle": "¡Mensaje enviado!",
+    "successBody": "Nos pondremos en contacto contigo muy pronto.",
+    "infoLabel": "Información de contacto",
+    "infoLocation": "Medellín, Antioquia, Colombia",
+    "infoWhatsapp": "WhatsApp disponible",
+    "waTitle": "¿Prefieres WhatsApp?",
+    "waBody": "Escríbenos directamente y te atendemos al instante.",
+    "waCta": "Hablar por WhatsApp",
+    "validNombre": "Ingresa tu nombre completo",
+    "validEmail": "Ingresa un email válido",
+    "validTelefono": "Ingresa un número de teléfono o WhatsApp",
+    "validServicio": "Selecciona un servicio de interés",
+    "validMensaje": "Escribe al menos 10 caracteres"
+  },
+  "comoFunciona": {
+    "metaTitle": "Cómo funciona — Allura Healthcare",
+    "metaDesc": "Descubre el proceso paso a paso para recibir atención médica y odontológica de excelencia en Medellín con Allura Healthcare.",
+    "heroEyebrow": "El proceso",
+    "heroTitle": "Cómo funciona Allura",
+    "heroSubtitle": "Un proceso diseñado para que tu experiencia de turismo médico sea transparente, segura y sin estrés, desde tu país hasta Medellín.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Comparte tus necesidades",
+        "description": "Completa nuestro formulario de contacto con tus objetivos de salud y bienestar. El equipo Allura te responde con orientación personalizada en menos de 24 horas, sin compromiso."
+      },
+      {
+        "number": "02",
+        "title": "Consulta virtual con especialistas",
+        "description": "Agenda una reunión segura por videollamada con los médicos u odontólogos certificados de Allura. Recibirás un diagnóstico preliminar, opciones de tratamiento y un presupuesto claro antes de viajar."
+      },
+      {
+        "number": "03",
+        "title": "Plan médico y experiencia de viaje",
+        "description": "Nuestro equipo diseña tu plan integral: citas, fechas, alojamiento recomendado y actividades opcionales en Medellín. Todo coordinado para que tu estancia sea cómoda y memorable."
+      },
+      {
+        "number": "04",
+        "title": "Procedimiento y acompañamiento total",
+        "description": "Coordinamos tu llegada, los procedimientos clínicos, la recuperación y el seguimiento post-retorno desde tu país de origen. Estamos contigo en cada etapa."
+      }
+    ],
+    "faqLabel": "Preguntas frecuentes",
+    "faqTitle": "Lo que más nos preguntan",
+    "faqs": [
+      { "q": "¿Necesito hablar español para recibir atención?", "a": "No. Contamos con coordinadores bilingües (español e inglés) disponibles durante todo el proceso." },
+      { "q": "¿Qué pasa si necesito seguimiento después de regresar a mi país?", "a": "Ofrecemos seguimiento remoto con videollamadas y comunicación directa con tu especialista vía WhatsApp." },
+      { "q": "¿Los procedimientos incluyen garantía?", "a": "Sí. Todos nuestros tratamientos incluyen garantías según el tipo de procedimiento, con protocolos claros de seguimiento." },
+      { "q": "¿Puedo combinar varios tratamientos en un mismo viaje?", "a": "Absolutamente. De hecho, muchos pacientes optimizan su viaje combinando tratamientos odontológicos y de medicina facial estética." }
+    ],
+    "ctaEyebrow": "¿Listo para comenzar?",
+    "ctaTitle": "Tu primer paso es una conversación",
+    "ctaSubtitle": "Cuéntanos tu caso sin compromiso. Nuestro equipo te orienta de forma gratuita.",
+    "ctaWhatsapp": "Hablar por WhatsApp",
+    "ctaContact": "Formulario de contacto"
+  },
+  "blog": {
+    "metaTitle": "Blog — Allura Healthcare",
+    "metaDesc": "Artículos y recursos sobre odontología premium, medicina facial estética y turismo médico en Medellín.",
+    "heroEyebrow": "Recursos",
+    "heroTitle": "Blog Allura",
+    "heroSubtitle": "Información clara y confiable sobre odontología, medicina facial estética y turismo médico en Medellín.",
+    "imagePlaceholder": "Imagen próximamente",
+    "readTimeSuffix": "lectura",
+    "comingSoon": "Más artículos próximamente. Suscríbete para recibir novedades.",
+    "categories": ["Todos", "Odontología", "Medicina Facial", "Turismo Médico", "Consejos de Bienestar"],
+    "posts": [
+      {
+        "category": "Odontología",
+        "title": "Implantes dentales: qué esperar antes, durante y después del procedimiento",
+        "excerpt": "Una guía completa para pacientes internacionales que consideran un tratamiento de implantología en Medellín.",
+        "date": "Mayo 2026",
+        "readTime": "5 min"
+      },
+      {
+        "category": "Medicina Facial",
+        "title": "Toxina botulínica: mitos y realidades desde la perspectiva médica",
+        "excerpt": "Resolvemos las dudas más frecuentes sobre el uso de toxina botulínica y cuándo es la opción adecuada.",
+        "date": "Abril 2026",
+        "readTime": "4 min"
+      },
+      {
+        "category": "Turismo Médico",
+        "title": "Por qué Medellín se convirtió en el destino favorito para el turismo dental",
+        "excerpt": "Calidad internacional, costos competitivos y una ciudad vibrante: las razones detrás del crecimiento del turismo médico en Colombia.",
+        "date": "Marzo 2026",
+        "readTime": "6 min"
+      },
+      {
+        "category": "Odontología",
+        "title": "Allura Aligners vs. Invisalign: guía para elegir el mejor alineador para ti",
+        "excerpt": "Comparamos las opciones de ortodoncia invisible más avanzadas y te ayudamos a entender cuál se adapta mejor a tu caso.",
+        "date": "Febrero 2026",
+        "readTime": "5 min"
+      },
+      {
+        "category": "Consejos de Bienestar",
+        "title": "Cómo preparar tu viaje médico a Medellín: lista de verificación completa",
+        "excerpt": "Documentos, cuidados pre-operatorios, alojamiento y actividades: todo lo que necesitas saber antes de volar.",
+        "date": "Enero 2026",
+        "readTime": "7 min"
+      },
+      {
+        "category": "Medicina Facial",
+        "title": "Diseño de sonrisa digital: así transformamos tu sonrisa antes del primer procedimiento",
+        "excerpt": "Tecnología de simulación facial que te permite ver tu resultado final antes de comenzar cualquier tratamiento.",
+        "date": "Diciembre 2025",
+        "readTime": "4 min"
+      }
+    ]
   }
 }

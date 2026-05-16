@@ -144,12 +144,24 @@ export async function Footer() {
           <p className="font-body text-xs text-brand-silver">
             © {new Date().getFullYear()} Allura Healthcare. {t("copyright")}
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center sm:justify-end gap-x-6 gap-y-2">
             <Link
               href="/politicas-de-privacidad"
               className="font-body text-xs text-brand-silver hover:text-white transition-colors"
             >
               {t("legal.privacy")}
+            </Link>
+            <Link
+              href="/terminos-y-condiciones"
+              className="font-body text-xs text-brand-silver hover:text-white transition-colors"
+            >
+              {t("legal.terms")}
+            </Link>
+            <Link
+              href="/medical-disclaimer"
+              className="font-body text-xs text-brand-silver hover:text-white transition-colors"
+            >
+              {t("legal.medicalDisclaimer")}
             </Link>
             <Link
               href="/accesibilidad"
