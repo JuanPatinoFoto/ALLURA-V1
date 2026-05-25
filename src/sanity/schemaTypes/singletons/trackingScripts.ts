@@ -7,7 +7,6 @@ export const trackingScripts = defineType({
   title: 'Scripts y analítica',
   type: 'document',
   icon: EarthGlobeIcon,
-  __experimental_actions: ['update', 'publish'],
   groups: [
     { name: 'analytics', title: '📊 Analytics', default: true },
     { name: 'ads', title: '📣 Publicidad' },

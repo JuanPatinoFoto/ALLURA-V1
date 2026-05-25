@@ -7,7 +7,6 @@ export const navigation = defineType({
   title: 'Navegación',
   type: 'document',
   icon: LinkIcon,
-  __experimental_actions: ['update', 'publish'],
   groups: [
     { name: 'mainMenu', title: '🗂 Menú principal', default: true },
     { name: 'footer', title: '📋 Footer' },

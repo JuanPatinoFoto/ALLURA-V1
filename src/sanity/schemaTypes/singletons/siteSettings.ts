@@ -7,7 +7,6 @@ export const siteSettings = defineType({
   title: 'Configuración del sitio',
   type: 'document',
   icon: CogIcon,
-  __experimental_actions: ['update', 'publish'],
   groups: [
     { name: 'brand', title: '🎨 Marca e identidad', default: true },
     { name: 'contact', title: '📞 Contacto' },

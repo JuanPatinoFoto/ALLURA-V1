@@ -25,11 +25,13 @@ export async function Footer() {
     }),
   ]);
 
-  const whatsappUrl = config?.whatsappUrl ?? WHATSAPP_FALLBACK;
-  const email = config?.email ?? EMAIL_FALLBACK;
-  const instagram = config?.instagram;
-  const facebook = config?.facebook;
-  const linkedin = config?.linkedin;
+  const whatsappUrl = config?.whatsappNumber
+    ? `https://wa.me/${config.whatsappNumber.replace(/^\+/, '')}`
+    : WHATSAPP_FALLBACK;
+  const email = config?.contactEmail ?? EMAIL_FALLBACK;
+  const instagram = config?.socialInstagram;
+  const facebook = config?.socialFacebook;
+  const linkedin = config?.socialLinkedin;
 
   const navLinks = [
     { href: "/",              label: t("navLinks.home") },

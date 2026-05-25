@@ -7,7 +7,6 @@ export const homePage = defineType({
   title: 'Página de inicio',
   type: 'document',
   icon: HomeIcon,
-  __experimental_actions: ['update', 'publish'],
   groups: [
     { name: 'hero', title: '🦸 Hero', default: true },
     { name: 'benefits', title: '✅ Beneficios' },
