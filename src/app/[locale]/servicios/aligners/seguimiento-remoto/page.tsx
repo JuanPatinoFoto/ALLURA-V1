@@ -1,20 +1,11 @@
 import type { Metadata } from "next";
+import { client } from "@/sanity/lib/client";
+import { serviceBySlugQuery, type ServiceDetailData } from "@/sanity/lib/queries";
 import { ServiceDetailTemplate } from "@/components/templates/ServiceDetailTemplate";
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}): Promise<Metadata> {
-  return {
-    title: locale === "en"
-      ? "International Remote Monitoring — Allura Aligners™"
-      : "Seguimiento Remoto Internacional — Allura Aligners™",
-    description: locale === "en"
-      ? "Monitor your orthodontic treatment from your country. Video calls and digital monitoring with your Allura specialist in Medellín."
-      : "Control de tu tratamiento de ortodoncia desde tu país. Videollamadas y monitoreo digital con tu especialista Allura en Medellín.",
-  };
-}
+export const revalidate = process.env.NODE_ENV === "development" ? 0 : 3600;
+
+const SERVICE_SLUG = "seguimiento-remoto";
 
 const contentEs = {
   category: "Allura Aligners",
@@ -74,11 +65,26 @@ const contentEn = {
   specialty: "odontologia" as const,
 };
 
-export default function SeguimientoRemotoPage({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+  const sanityData = await client.fetch<ServiceDetailData | null>(
+    serviceBySlugQuery,
+    { slug: SERVICE_SLUG },
+    { next: { revalidate } }
+  );
+  const loc = locale as "es" | "en";
+  const content = loc === "en" ? contentEn : contentEs;
+  return {
+    title: sanityData?.seo?.metaTitle?.[loc] ?? `${content.title} — Allura Healthcare`,
+    description: sanityData?.seo?.metaDescription?.[loc] ?? content.description,
+  };
+}
+
+export default async function SeguimientoRemotoPage({ params: { locale } }: { params: { locale: string } }) {
+  const sanityData = await client.fetch<ServiceDetailData | null>(
+    serviceBySlugQuery,
+    { slug: SERVICE_SLUG },
+    { next: { revalidate } }
+  );
   const content = locale === "en" ? contentEn : contentEs;
-  return <ServiceDetailTemplate {...content} />;
+  return <ServiceDetailTemplate {...content} sanityData={sanityData ?? undefined} locale={locale} />;
 }
