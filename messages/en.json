@@ -345,7 +345,8 @@
     "validEmail": "Please enter a valid email",
     "validTelefono": "Please enter a phone number or WhatsApp",
     "validServicio": "Please select a service of interest",
-    "validMensaje": "Please write at least 10 characters"
+    "validMensaje": "Please write at least 10 characters",
+    "submitError": "There was an error sending your message. Please try again."
   },
   "comoFunciona": {
     "metaTitle": "How it works — Allura Healthcare",

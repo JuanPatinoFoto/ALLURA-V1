@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -7,11 +8,14 @@ import { Mail, MessageCircle, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useTranslations } from "next-intl";
 
-const WHATSAPP_URL =
-  "https://wa.me/17862087572?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20Allura%20Healthcare";
+interface ContactFormProps {
+  contactEmail: string
+  whatsappUrl: string
+}
 
-export function ContactForm() {
+export function ContactForm({ contactEmail, whatsappUrl }: ContactFormProps) {
   const t = useTranslations("contacto");
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const schema = z.object({
     nombre:   z.string().min(2, t("validNombre")),
@@ -33,9 +37,22 @@ export function ContactForm() {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = async (data: FormData) => {
-    await new Promise((r) => setTimeout(r, 800));
-    console.log(data);
-    reset();
+    setSubmitError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}));
+        setSubmitError(json.error || t("submitError"));
+        return;
+      }
+      reset();
+    } catch {
+      setSubmitError(t("submitError"));
+    }
   };
 
   const inputClass =
@@ -90,6 +107,9 @@ export function ContactForm() {
                 />
                 {errors.mensaje && <p className="mt-1 text-xs text-red-500">{errors.mensaje.message}</p>}
               </div>
+              {submitError && (
+                <p className="text-sm text-red-500 text-center">{submitError}</p>
+              )}
               <Button type="submit" variant="primary" className="w-full">
                 {isSubmitting ? t("formSubmitting") : t("formSubmit")}
               </Button>
@@ -106,7 +126,7 @@ export function ContactForm() {
             <ul className="space-y-5">
               {[
                 { icon: MapPin,         label: t("infoLocation") },
-                { icon: Mail,           label: "contact@allurahealthcare.com" },
+                { icon: Mail,           label: contactEmail },
                 { icon: MessageCircle,  label: t("infoWhatsapp") },
               ].map(({ icon: Icon, label }) => (
                 <li key={label} className="flex items-start gap-4">
@@ -126,7 +146,7 @@ export function ContactForm() {
               {t("waBody")}
             </p>
             <a
-              href={WHATSAPP_URL}
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white rounded-full font-body font-bold text-sm hover:bg-[#22c55e] transition-colors"

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "./ContactForm";
 import { getTranslations } from "next-intl/server";
+import { getSiteSettings, buildWhatsAppUrl } from "@/lib/getSiteSettings";
 
 export async function generateMetadata({
   params: { locale },
@@ -15,8 +16,15 @@ export async function generateMetadata({
   };
 }
 
-export default async function ContactoPage() {
+export default async function ContactoPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   const t = await getTranslations("contacto");
+  const settings = await getSiteSettings();
+  const contactEmail = settings?.contactEmail || "contact@allurahealthcare.com";
+  const whatsappUrl = buildWhatsAppUrl(settings, locale as "es" | "en");
 
   return (
     <>
@@ -31,7 +39,7 @@ export default async function ContactoPage() {
         />
       </section>
 
-      <ContactForm />
+      <ContactForm contactEmail={contactEmail} whatsappUrl={whatsappUrl} />
     </>
   );
 }
