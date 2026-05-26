@@ -64,7 +64,7 @@ export async function BlogListTemplate({
           {categories.map((cat) => (
             <Link
               key={cat._id}
-              href={`/blog?categoria=${cat.slug.current}`}
+              href={{ pathname: "/blog", query: { categoria: cat.slug.current } }}
               className={`px-4 py-1.5 rounded-full font-body text-sm transition-colors ${
                 activeCategorySlug === cat.slug.current
                   ? "bg-brand-navy text-white"
@@ -99,62 +99,66 @@ export async function BlogListTemplate({
               {posts.map(({ _id, slug, title, excerpt, publishedAt, featuredImage, categories: postCats, author }, i) => (
                 <article
                   key={_id}
-                  className={`group ${
-                    i % 2 === 0 ? "bg-white" : "bg-brand-light"
-                  } rounded-2xl overflow-hidden border border-brand-light hover:shadow-md hover:border-brand-blue/30 transition-all duration-200`}
+                  className="group bg-white rounded-2xl overflow-hidden border border-brand-light hover:shadow-md hover:border-brand-blue/30 transition-all duration-200"
                 >
-                  <Link href={`/blog/${slug.current}`}>
-                    {/* Featured image */}
-                    <div className="aspect-video relative bg-brand-light overflow-hidden">
-                      {featuredImage?.asset?.url ? (
-                        <Image
-                          src={featuredImage.asset.url}
-                          alt={featuredImage.alt?.[loc] || featuredImage.alt?.es || title?.[loc] || ""}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <p className="font-body text-xs text-brand-silver">{t("imagePlaceholder")}</p>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="p-6">
-                      {/* Category badge */}
-                      {postCats && postCats.length > 0 && (
-                        <p
-                          className="font-body text-xs tracking-wide uppercase mb-2"
-                          style={{ color: postCats[0].color || "#8b9fb3" }}
-                        >
-                          {postCats[0].title?.[loc] || postCats[0].title?.es}
-                        </p>
-                      )}
-
-                      {/* Title */}
-                      <h3 className="font-heading text-lg text-brand-navy mb-3 leading-snug group-hover:text-brand-blue transition-colors">
-                        {title?.[loc] || title?.es}
-                      </h3>
-
-                      {/* Excerpt */}
-                      <p className="font-body text-sm text-brand-silver leading-relaxed mb-5">
-                        {excerpt?.[loc] || excerpt?.es}
-                      </p>
-
-                      {/* Meta */}
-                      <div className="flex items-center justify-between">
-                        <span className="font-body text-xs text-brand-silver">
-                          {formatDate(publishedAt, locale)}
-                        </span>
-                        {author && (
-                          <span className="font-body text-xs text-brand-silver">
-                            {author.name}
-                          </span>
-                        )}
+                  {/* Featured image — wrapped in Link */}
+                  <Link
+                    href={`/blog/${slug.current}`}
+                    className="block aspect-video relative bg-brand-light overflow-hidden"
+                  >
+                    {featuredImage?.asset?.url ? (
+                      <Image
+                        src={featuredImage.asset.url}
+                        alt={featuredImage.alt?.[loc] || featuredImage.alt?.es || title?.[loc] || ""}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <p className="font-body text-xs text-brand-silver">{t("imagePlaceholder")}</p>
                       </div>
-                    </div>
+                    )}
                   </Link>
+
+                  <div className="p-6">
+                    {/* Category badge */}
+                    {postCats && postCats.length > 0 && (
+                      <p
+                        className="font-body text-xs tracking-wide uppercase mb-2"
+                        style={{ color: postCats[0].color || "#8b9fb3" }}
+                      >
+                        {postCats[0].title?.[loc] || postCats[0].title?.es}
+                      </p>
+                    )}
+
+                    {/* Title - wrapped in Link */}
+                    <h3 className="font-heading text-lg text-brand-navy mb-3 leading-snug group-hover:text-brand-blue transition-colors">
+                      <Link
+                        href={`/blog/${slug.current}`}
+                        className="hover:text-brand-blue transition-colors"
+                      >
+                        {title?.[loc] || title?.es}
+                      </Link>
+                    </h3>
+
+                    {/* Excerpt */}
+                    <p className="font-body text-sm text-brand-silver leading-relaxed mb-5">
+                      {excerpt?.[loc] || excerpt?.es}
+                    </p>
+
+                    {/* Meta */}
+                    <div className="flex items-center justify-between">
+                      <span className="font-body text-xs text-brand-silver">
+                        {publishedAt ? formatDate(publishedAt, locale) : ""}
+                      </span>
+                      {author && (
+                        <span className="font-body text-xs text-brand-silver">
+                          {author.name}
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </article>
               ))}
             </div>
