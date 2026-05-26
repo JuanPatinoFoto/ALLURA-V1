@@ -4,9 +4,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { getTranslations } from "next-intl/server";
 import type { ServiceDetailData } from "@/sanity/lib/queries";
-
-const WHATSAPP_URL =
-  "https://wa.me/17862087572?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20Allura%20Healthcare";
+import { getSiteSettings, buildWhatsAppUrl } from "@/lib/getSiteSettings";
 
 interface Step {
   title: string;
@@ -41,6 +39,8 @@ export async function ServiceDetailTemplate({
 }: ServiceDetailTemplateProps) {
   const t = await getTranslations("serviceDetail");
   const loc = locale as "es" | "en";
+  const settings = await getSiteSettings();
+  const whatsappUrl = buildWhatsAppUrl(settings, loc);
 
   const resolvedTitle = sanityData?.title?.[loc] || title;
   const resolvedDescription = sanityData?.shortDescription?.[loc] || description;
@@ -81,7 +81,7 @@ export async function ServiceDetailTemplate({
             <h1 className="font-heading text-4xl md:text-5xl text-white leading-tight mb-6">{resolvedTitle}</h1>
             <p className="font-body text-base text-white/70 leading-relaxed mb-10">{resolvedDescription}</p>
             <a
-              href={WHATSAPP_URL}
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3 bg-[#25D366] text-white rounded-full font-body font-bold text-sm hover:bg-[#22c55e] transition-colors"
@@ -157,7 +157,7 @@ export async function ServiceDetailTemplate({
             {t("whyBody")}
           </p>
           <a
-            href={WHATSAPP_URL}
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3 bg-[#25D366] text-white rounded-full font-body font-bold text-sm hover:bg-[#22c55e] transition-colors"
