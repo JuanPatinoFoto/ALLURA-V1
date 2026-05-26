@@ -1,0 +1,73 @@
+import { NextResponse } from 'next/server'
+import nodemailer from 'nodemailer'
+import { z } from 'zod'
+import { getSiteSettings } from '@/lib/getSiteSettings'
+
+const contactSchema = z.object({
+  nombre: z.string().min(2).max(100),
+  email: z.string().email(),
+  telefono: z.string().min(7).max(30),
+  servicio: z.enum(['full-mouth-reconstruction', 'smile-makeover', 'aligners', 'facial-harmony', 'otro']),
+  mensaje: z.string().min(10).max(2000),
+})
+
+type ContactData = z.infer<typeof contactSchema>
+
+function formatEmailText(data: ContactData): string {
+  return [
+    `Nombre: ${data.nombre}`,
+    `Email: ${data.email}`,
+    `Teléfono: ${data.telefono}`,
+    `Servicio: ${data.servicio}`,
+    `Mensaje:\n${data.mensaje}`,
+  ].join('\n')
+}
+
+function formatEmailHtml(data: ContactData): string {
+  return `
+    <h2>Nuevo lead de contacto</h2>
+    <table>
+      <tr><td><strong>Nombre:</strong></td><td>${data.nombre}</td></tr>
+      <tr><td><strong>Email:</strong></td><td>${data.email}</td></tr>
+      <tr><td><strong>Teléfono:</strong></td><td>${data.telefono}</td></tr>
+      <tr><td><strong>Servicio:</strong></td><td>${data.servicio}</td></tr>
+    </table>
+    <p><strong>Mensaje:</strong></p>
+    <p>${data.mensaje.replace(/\n/g, '<br>')}</p>
+  `
+}
+
+export async function POST(request: Request) {
+  const body = await request.json().catch(() => null)
+  if (!body) {
+    return NextResponse.json({ error: 'Cuerpo de solicitud inválido' }, { status: 400 })
+  }
+
+  const result = contactSchema.safeParse(body)
+  if (!result.success) {
+    return NextResponse.json({ error: 'Datos inválidos' }, { status: 400 })
+  }
+
+  const settings = await getSiteSettings()
+  const toEmail = settings?.contactEmail || process.env.SMTP_USER!
+
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT ?? 587),
+    secure: false,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  })
+
+  await transporter.sendMail({
+    from: process.env.SMTP_FROM || `Allura Healthcare <${process.env.SMTP_USER}>`,
+    to: toEmail,
+    subject: `Nuevo lead: ${result.data.nombre} — ${result.data.servicio}`,
+    text: formatEmailText(result.data),
+    html: formatEmailHtml(result.data),
+  })
+
+  return NextResponse.json({ ok: true })
+}
