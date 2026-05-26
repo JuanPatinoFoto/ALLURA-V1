@@ -364,3 +364,122 @@ export const serviceBySlugQuery = groq`
     }
   }
 `
+
+// ─── Blog ────────────────────────────────────────────────────────────────────
+
+export interface BlogCategory {
+  _id: string
+  title: LocaleString
+  slug: { current: string }
+  color?: string
+}
+
+export interface BlogPostListItem {
+  _id: string
+  title: LocaleString
+  slug: { current: string }
+  excerpt: LocaleString
+  publishedAt: string
+  featuredImage?: SanityImageLocaleAlt
+  categories?: BlogCategory[]
+  author?: { name: string }
+}
+
+export interface BlogPostDetail {
+  _id: string
+  title: LocaleString
+  slug: { current: string }
+  excerpt: LocaleString
+  publishedAt: string
+  featuredImage?: SanityImageLocaleAlt
+  body?: {
+    es: import('@portabletext/types').PortableTextBlock[]
+    en: import('@portabletext/types').PortableTextBlock[]
+  }
+  categories?: BlogCategory[]
+  author?: {
+    name: string
+    photo?: SanityImage
+  }
+  seo?: {
+    metaTitle?: LocaleString
+    metaDescription?: LocaleString
+    ogImage?: SanityImage
+    noIndex?: boolean
+    canonicalUrl?: string
+  }
+}
+
+export const blogCategoriesQuery = groq`
+  *[_type == "category"] | order(title.es asc) {
+    _id,
+    title,
+    slug,
+    color
+  }
+`
+
+export const blogPostListQuery = groq`
+  *[
+    _type == "blogPost"
+    && status == "published"
+    && (!defined($categorySlug) || $categorySlug in categories[]->slug.current)
+  ] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    featuredImage {
+      asset->{ _id, url, metadata { dimensions } },
+      alt
+    },
+    "categories": categories[]->{ _id, title, slug, color },
+    "author": author->{ name }
+  }
+`
+
+export const blogPostBySlugQuery = groq`
+  *[_type == "blogPost" && slug.current == $slug && status == "published"][0] {
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    featuredImage {
+      asset->{ _id, url, metadata { dimensions } },
+      alt
+    },
+    body {
+      es[] {
+        ...,
+        markDefs[] {
+          ...,
+          _type == "link" => { "href": href }
+        }
+      },
+      en[] {
+        ...,
+        markDefs[] {
+          ...,
+          _type == "link" => { "href": href }
+        }
+      }
+    },
+    "categories": categories[]->{ _id, title, slug, color },
+    "author": author->{ name, photo { asset->{ _id, url, metadata { dimensions } } } },
+    seo {
+      metaTitle,
+      metaDescription,
+      ogImage { asset->{ _id, url, metadata { dimensions } } },
+      noIndex,
+      canonicalUrl
+    }
+  }
+`
+
+export const blogPostSlugsQuery = groq`
+  *[_type == "blogPost" && status == "published"] {
+    "slug": slug.current
+  }
+`
