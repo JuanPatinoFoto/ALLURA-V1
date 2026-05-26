@@ -17,7 +17,11 @@ export const siteSettingsQuery = groq`
     socialLinkedin,
     socialYoutube,
     socialTiktok,
-    seo
+    seo {
+      metaTitle,
+      metaDescription,
+      ogImage { asset->{ url }, alt }
+    }
   }
 `
 
@@ -37,8 +41,9 @@ export interface SiteSettings {
   socialYoutube?: string
   socialTiktok?: string
   seo?: {
-    metaTitle: { es: string; en: string }
-    metaDescription: { es: string; en: string }
+    metaTitle?: { es: string; en: string }
+    metaDescription?: { es: string; en: string }
+    ogImage?: { asset: { url: string }; alt?: string }
   }
 }
 
@@ -46,6 +51,32 @@ export interface SiteSettings {
 /** @deprecated Use siteSettingsQuery instead */
 export const globalConfigQuery = siteSettingsQuery
 export type GlobalConfig = SiteSettings
+
+export const trackingScriptsQuery = groq`
+  *[_type == "trackingScripts"][0] {
+    googleAnalyticsId,
+    gtmContainerId,
+    googleSearchConsoleVerification,
+    metaPixelId,
+    googleAdsId,
+    tiktokPixelId,
+    hotjarId,
+    clarityId,
+    environment
+  }
+`
+
+export interface TrackingScripts {
+  googleAnalyticsId?: string
+  gtmContainerId?: string
+  googleSearchConsoleVerification?: string
+  metaPixelId?: string
+  googleAdsId?: string
+  tiktokPixelId?: string
+  hotjarId?: string
+  clarityId?: string
+  environment?: 'production' | 'staging' | 'development'
+}
 
 // Home Page Types
 export type LocaleString = {
