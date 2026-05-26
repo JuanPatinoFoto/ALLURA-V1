@@ -544,3 +544,91 @@ export const faqsQuery = groq`
     }
   }
 `
+
+// ─── Team ─────────────────────────────────────────────────────────────────────
+
+export interface TeamMemberListItem {
+  _id: string
+  name: string
+  slug: { current: string }
+  role: LocaleString
+  photo?: {
+    asset: { _id: string; url: string; metadata?: { dimensions?: { width: number; height: number } } }
+    alt?: string
+  }
+  specialties?: Array<{ es: string; en: string }>
+  credentials?: string[]
+}
+
+export interface TeamMemberDetail {
+  _id: string
+  name: string
+  slug: { current: string }
+  role: LocaleString
+  photo?: {
+    asset: { _id: string; url: string; metadata?: { dimensions?: { width: number; height: number } } }
+    alt?: string
+  }
+  shortBio?: LocaleString
+  fullBio?: {
+    es: import('@portabletext/types').PortableTextBlock[]
+    en: import('@portabletext/types').PortableTextBlock[]
+  }
+  specialties?: Array<{ es: string; en: string }>
+  credentials?: string[]
+  linkedinUrl?: string
+}
+
+export const teamMembersQuery = groq`
+  *[_type == "teamMember" && isActive == true] | order(order asc, name asc) {
+    _id,
+    name,
+    slug,
+    role,
+    photo {
+      asset->{ _id, url, metadata { dimensions } },
+      alt
+    },
+    specialties[] { es, en },
+    credentials
+  }
+`
+
+export const teamMemberBySlugQuery = groq`
+  *[_type == "teamMember" && slug.current == $slug && isActive == true][0] {
+    _id,
+    name,
+    slug,
+    role,
+    photo {
+      asset->{ _id, url, metadata { dimensions } },
+      alt
+    },
+    shortBio,
+    fullBio {
+      es[] {
+        ...,
+        markDefs[] {
+          ...,
+          _type == "link" => { "href": href }
+        }
+      },
+      en[] {
+        ...,
+        markDefs[] {
+          ...,
+          _type == "link" => { "href": href }
+        }
+      }
+    },
+    specialties[] { es, en },
+    credentials,
+    linkedinUrl
+  }
+`
+
+export const teamMemberSlugsQuery = groq`
+  *[_type == "teamMember" && isActive == true] {
+    "slug": slug.current
+  }
+`
