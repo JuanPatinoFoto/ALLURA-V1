@@ -272,7 +272,7 @@ export interface ServiceDetailData {
   title: LocaleString
   slug: { current: string }
   shortDescription: LocaleString
-  body?: unknown
+  body?: import('@portabletext/types').PortableTextBlock[]
   benefits?: ServiceBenefit[]
   process?: ServiceProcessStep[]
   coverImage?: SanityImageLocaleAlt
@@ -327,6 +327,15 @@ export const serviceBySlugQuery = groq`
     title,
     slug,
     shortDescription,
+    body[] {
+      ...,
+      markDefs[] {
+        ...,
+        _type == "link" => {
+          "href": href
+        }
+      }
+    },
     benefits[] {
       icon,
       title,
