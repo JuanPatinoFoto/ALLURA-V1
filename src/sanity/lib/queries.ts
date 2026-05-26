@@ -223,3 +223,135 @@ export const homePageQuery = groq`
     }
   }
 `
+
+// ─── Service Category ────────────────────────────────────────────────────────
+
+export interface ServiceCategoryData {
+  _id: string
+  title: LocaleString
+  slug: { current: string }
+  description: LocaleString
+  icon?: string
+  coverImage?: SanityImageLocaleAlt
+  order?: number
+  seo?: {
+    metaTitle?: LocaleString
+    metaDescription?: LocaleString
+    ogImage?: SanityImage
+    noIndex?: boolean
+    canonicalUrl?: string
+  }
+  services?: ServiceListItem[]
+}
+
+export interface ServiceListItem {
+  _id: string
+  title: LocaleString
+  slug: { current: string }
+  shortDescription: LocaleString
+  coverImage?: SanityImageLocaleAlt
+}
+
+// ─── Service Detail ───────────────────────────────────────────────────────────
+
+export interface ServiceProcessStep {
+  stepNumber?: string
+  title: LocaleString
+  description: LocaleString
+  duration?: LocaleString
+}
+
+export interface ServiceBenefit {
+  icon?: string
+  title: LocaleString
+  description: LocaleString
+}
+
+export interface ServiceDetailData {
+  _id: string
+  title: LocaleString
+  slug: { current: string }
+  shortDescription: LocaleString
+  body?: unknown
+  benefits?: ServiceBenefit[]
+  process?: ServiceProcessStep[]
+  coverImage?: SanityImageLocaleAlt
+  seo?: {
+    metaTitle?: LocaleString
+    metaDescription?: LocaleString
+    ogImage?: SanityImage
+    noIndex?: boolean
+    canonicalUrl?: string
+  }
+  category?: {
+    title: LocaleString
+    slug: { current: string }
+  }
+}
+
+export const serviceCategoryBySlugQuery = groq`
+  *[_type == "serviceCategory" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    description,
+    icon,
+    coverImage {
+      asset->{ _id, url, metadata { dimensions } },
+      alt
+    },
+    order,
+    seo {
+      metaTitle,
+      metaDescription,
+      ogImage { asset->{ _id, url, metadata { dimensions } } },
+      noIndex,
+      canonicalUrl
+    },
+    "services": *[_type == "service" && category._ref == ^._id && isActive == true] | order(title.es asc) {
+      _id,
+      title,
+      slug,
+      shortDescription,
+      coverImage {
+        asset->{ _id, url, metadata { dimensions } },
+        alt
+      }
+    }
+  }
+`
+
+export const serviceBySlugQuery = groq`
+  *[_type == "service" && slug.current == $slug && isActive == true][0] {
+    _id,
+    title,
+    slug,
+    shortDescription,
+    benefits[] {
+      icon,
+      title,
+      description
+    },
+    process[] {
+      stepNumber,
+      title,
+      description,
+      duration
+    },
+    coverImage {
+      asset->{ _id, url, metadata { dimensions } },
+      alt
+    },
+    seo {
+      metaTitle,
+      metaDescription,
+      ogImage { asset->{ _id, url, metadata { dimensions } } },
+      noIndex,
+      canonicalUrl
+    },
+    "category": category-> {
+      title,
+      slug
+    }
+  }
+`
