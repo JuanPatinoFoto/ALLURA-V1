@@ -23,17 +23,26 @@ function formatEmailText(data: ContactData): string {
   ].join('\n')
 }
 
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
 function formatEmailHtml(data: ContactData): string {
   return `
     <h2>Nuevo lead de contacto</h2>
     <table>
-      <tr><td><strong>Nombre:</strong></td><td>${data.nombre}</td></tr>
-      <tr><td><strong>Email:</strong></td><td>${data.email}</td></tr>
-      <tr><td><strong>Teléfono:</strong></td><td>${data.telefono}</td></tr>
-      <tr><td><strong>Servicio:</strong></td><td>${data.servicio}</td></tr>
+      <tr><td><strong>Nombre:</strong></td><td>${escapeHtml(data.nombre)}</td></tr>
+      <tr><td><strong>Email:</strong></td><td>${escapeHtml(data.email)}</td></tr>
+      <tr><td><strong>Teléfono:</strong></td><td>${escapeHtml(data.telefono)}</td></tr>
+      <tr><td><strong>Servicio:</strong></td><td>${escapeHtml(data.servicio)}</td></tr>
     </table>
     <p><strong>Mensaje:</strong></p>
-    <p>${data.mensaje.replace(/\n/g, '<br>')}</p>
+    <p>${escapeHtml(data.mensaje).replace(/\n/g, '<br>')}</p>
   `
 }
 
@@ -61,13 +70,18 @@ export async function POST(request: Request) {
     },
   })
 
-  await transporter.sendMail({
-    from: process.env.SMTP_FROM || `Allura Healthcare <${process.env.SMTP_USER}>`,
-    to: toEmail,
-    subject: `Nuevo lead: ${result.data.nombre} — ${result.data.servicio}`,
-    text: formatEmailText(result.data),
-    html: formatEmailHtml(result.data),
-  })
+  try {
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM || `Allura Healthcare <${process.env.SMTP_USER}>`,
+      to: toEmail,
+      subject: `Nuevo lead: ${result.data.nombre} — ${result.data.servicio}`,
+      text: formatEmailText(result.data),
+      html: formatEmailHtml(result.data),
+    })
+  } catch (error) {
+    console.error('Email send failed:', error)
+    return NextResponse.json({ error: 'No se pudo enviar el mensaje' }, { status: 500 })
+  }
 
   return NextResponse.json({ ok: true })
 }
