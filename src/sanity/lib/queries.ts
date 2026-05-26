@@ -632,3 +632,126 @@ export const teamMemberSlugsQuery = groq`
     "slug": slug.current
   }
 `
+
+// ─── Commercial Modules ───────────────────────────────────────────────────────
+
+export interface GalleryItemData {
+  _id: string
+  title?: { es?: string; en?: string }
+  category?: string
+  isFeatured?: boolean
+  image: {
+    asset: {
+      _id: string
+      url: string
+      metadata?: { dimensions?: { width: number; height: number } }
+    }
+    alt?: { es?: string; en?: string }
+  }
+}
+
+export const galleryItemsQuery = groq`
+  *[_type == "galleryItem" && (!defined($category) || category == $category)]
+  | order(isFeatured desc, publishedAt desc) {
+    _id,
+    title,
+    category,
+    isFeatured,
+    image {
+      asset->{ _id, url, metadata { dimensions } },
+      alt
+    }
+  }
+`
+
+export interface VideoItem {
+  _id: string
+  title: { es: string; en: string }
+  description?: { es?: string; en?: string }
+  platform: 'youtube' | 'vimeo' | 'instagram'
+  videoId: string
+  thumbnail?: { asset: { url: string }; alt?: { es?: string; en?: string } }
+  category?: string
+  isFeatured?: boolean
+}
+
+export const videosQuery = groq`
+  *[_type == "video"] | order(isFeatured desc, publishedAt desc) {
+    _id,
+    title,
+    description,
+    platform,
+    videoId,
+    thumbnail { asset->{ url }, alt },
+    category,
+    isFeatured
+  }
+`
+
+export interface ActivePopup {
+  _id: string
+  title: { es: string; en: string }
+  body?: {
+    es: import('@portabletext/types').PortableTextBlock[]
+    en: import('@portabletext/types').PortableTextBlock[]
+  }
+  image?: { asset: { url: string }; alt?: { es?: string; en?: string } }
+  cta?: {
+    label: { es: string; en: string }
+    url: string
+    style?: string
+    openInNewTab?: boolean
+  }
+  trigger?: 'on-load' | 'timed'
+  delaySeconds?: number
+  showOnPages?: string[]
+  startDate?: string
+  endDate?: string
+  frequency?: 'once' | 'per-session' | 'always'
+}
+
+export const activePopupQuery = groq`
+  *[_type == "popup" && isActive == true][0] {
+    _id,
+    title,
+    body,
+    image { asset->{ url }, alt },
+    cta,
+    trigger,
+    delaySeconds,
+    showOnPages,
+    startDate,
+    endDate,
+    frequency
+  }
+`
+
+export interface ActivePromotion {
+  _id: string
+  title: { es: string; en: string }
+  description?: { es?: string; en?: string }
+  cta?: {
+    label: { es: string; en: string }
+    url: string
+    style?: string
+    openInNewTab?: boolean
+  }
+  bgColor?: 'navy' | 'blue' | 'gold'
+  startDate?: string
+  endDate?: string
+}
+
+export const activePromotionQuery = groq`
+  *[_type == "promotion" && isActive == true
+    && (!defined(startDate) || startDate <= now())
+    && (!defined(endDate) || endDate >= now())
+  ] | order(order asc) [0] {
+    _id,
+    title,
+    description,
+    cta,
+    bgColor,
+    startDate,
+    endDate
+  }
+`
