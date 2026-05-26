@@ -4,9 +4,46 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useTranslations } from "next-intl";
+import type { LocaleString, SanityImage, CtaField } from "@/sanity/lib/queries";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  sanityData?: {
+    eyebrow?: LocaleString;
+    headlinePart1?: LocaleString;
+    headlinePart2?: LocaleString;
+    subtext?: LocaleString;
+    ctaPrimary?: CtaField;
+    ctaSecondary?: CtaField;
+    backgroundImage?: SanityImage;
+  };
+  locale?: string;
+}
+
+export function HeroSection({ sanityData, locale = "es" }: HeroSectionProps) {
   const t = useTranslations("hero");
+
+  // Helper to get text from Sanity data or fall back to next-intl
+  const getText = (sanityValue: LocaleString | undefined, i18nKey: string): string => {
+    if (sanityValue?.[locale as keyof LocaleString]) {
+      const value = sanityValue[locale as keyof LocaleString];
+      if (value && typeof value === "string" && value.trim()) {
+        return value;
+      }
+    }
+    return t(i18nKey);
+  };
+
+  // Helper to get CTA data with fallbacks
+  const getCtaData = (
+    sanityCta: CtaField | undefined,
+    defaultUrl: string
+  ): { label: string; href: string } => {
+    const label = sanityCta?.label?.[locale as keyof LocaleString];
+    return {
+      label: label && typeof label === "string" && label.trim() ? label : t("ctaPrimary"),
+      href: sanityCta?.url || defaultUrl,
+    };
+  };
 
   return (
     <section className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden">
@@ -37,7 +74,7 @@ export function HeroSection() {
           transition={{ duration: 0.6 }}
           className="font-body text-xs tracking-[0.25em] uppercase text-white/60 mb-6"
         >
-          {t("eyebrow")}
+          {getText(sanityData?.eyebrow, "eyebrow")}
         </motion.p>
 
         <motion.h1
@@ -46,9 +83,9 @@ export function HeroSection() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="font-heading text-5xl md:text-6xl lg:text-7xl text-white leading-tight tracking-tight mb-6 max-w-4xl mx-auto"
         >
-          {t("headlinePart1")}
+          {getText(sanityData?.headlinePart1, "headlinePart1")}
           <br className="hidden sm:block" />
-          {" "}{t("headlinePart2")}
+          {" "}{getText(sanityData?.headlinePart2, "headlinePart2")}
         </motion.h1>
 
         <motion.p
@@ -57,7 +94,7 @@ export function HeroSection() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="font-body text-base md:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto mb-10"
         >
-          {t("subtext")}
+          {getText(sanityData?.subtext, "subtext")}
         </motion.p>
 
         <motion.div
@@ -66,12 +103,22 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.35 }}
           className="flex flex-col sm:flex-row gap-3 justify-center"
         >
-          <Button href="/servicios" variant="secondary">
-            {t("ctaPrimary")}
-          </Button>
-          <Button href="/como-funciona" variant="outline" className="border-white/50 hover:border-white">
-            {t("ctaSecondary")}
-          </Button>
+          {(() => {
+            const primaryCta = getCtaData(sanityData?.ctaPrimary, "/servicios");
+            return (
+              <Button href={primaryCta.href} variant="secondary">
+                {primaryCta.label}
+              </Button>
+            );
+          })()}
+          {(() => {
+            const secondaryCta = getCtaData(sanityData?.ctaSecondary, "/como-funciona");
+            return (
+              <Button href={secondaryCta.href} variant="outline" className="border-white/50 hover:border-white">
+                {secondaryCta.label}
+              </Button>
+            );
+          })()}
         </motion.div>
       </div>
 
