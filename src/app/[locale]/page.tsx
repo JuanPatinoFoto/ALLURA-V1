@@ -15,7 +15,7 @@ import { TeamPreview }    from "@/components/sections/TeamPreview"
 import { ProcessSection } from "@/components/sections/ProcessSection"
 import { CTABanner }      from "@/components/sections/CTABanner"
 
-const revalidate = process.env.NODE_ENV === "development" ? 0 : 3600
+export const revalidate = process.env.NODE_ENV === "development" ? 0 : 3600
 
 export async function generateMetadata({
   params,
@@ -23,8 +23,8 @@ export async function generateMetadata({
   params: { locale: string }
 }) {
   const [homePageData, siteSettings] = await Promise.all([
-    client.fetch<HomePage | null>(homePageQuery, {}, { next: { revalidate: 3600 } }),
-    client.fetch<SiteSettings | null>(siteSettingsQuery, {}, { next: { revalidate: 3600 } }),
+    client.fetch<HomePage | null>(homePageQuery, {}, { next: { revalidate } }),
+    client.fetch<SiteSettings | null>(siteSettingsQuery, {}, { next: { revalidate } }),
   ])
 
   const locale = params.locale as "es" | "en"
@@ -68,12 +68,9 @@ export default async function HomePage({
 }) {
   const locale = params.locale as "es" | "en"
 
-  const [homePageData] = await Promise.all([
-    client.fetch<HomePage | null>(
-      homePageQuery,
-      {},
-      { next: { revalidate } }
-    ),
+  const [homePageData, siteSettings] = await Promise.all([
+    client.fetch<HomePage | null>(homePageQuery, {}, { next: { revalidate } }),
+    client.fetch<SiteSettings | null>(siteSettingsQuery, {}, { next: { revalidate } }),
   ])
 
   return (
