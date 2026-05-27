@@ -13,11 +13,11 @@ export const popup = defineType({
     defineField({ name: 'body', title: 'Contenido', type: 'localePortableText', validation: (Rule) => Rule.required() }),
     defineField({ name: 'image', title: 'Imagen', type: 'image', options: { hotspot: true }, fields: [{ name: 'alt', title: 'Alt text', type: 'object', fields: [{ name: 'es', type: 'string', title: 'Español' }, { name: 'en', type: 'string', title: 'English' }] }] }),
     defineField({ name: 'cta', title: 'CTA', type: 'ctaObject' }),
-    defineField({ name: 'trigger', title: 'Disparador', type: 'string', options: { list: [{ title: 'Al cargar la página', value: 'on-load' }, { title: 'Intención de salida', value: 'exit-intent' }, { title: 'Después de hacer scroll', value: 'after-scroll' }, { title: 'Tiempo definido', value: 'timed' }], layout: 'radio' } }),
+    defineField({ name: 'trigger', title: 'Disparador', type: 'string', description: 'Cuándo aparece el popup: al cargar la página, después de un tiempo, o al intentar salir.', options: { list: [{ title: 'Al cargar la página', value: 'on-load' }, { title: 'Intención de salida', value: 'exit-intent' }, { title: 'Después de hacer scroll', value: 'after-scroll' }, { title: 'Tiempo definido', value: 'timed' }], layout: 'radio' } }),
     defineField({ name: 'delaySeconds', title: 'Segundos de espera', type: 'number', description: 'Solo aplica si el disparador es "Tiempo definido".', validation: (Rule) => Rule.min(3).integer() }),
     defineField({ name: 'showOnPages', title: 'Mostrar en páginas', type: 'array', of: [{ type: 'string' }], description: 'Rutas donde mostrar. Vacío = todas las páginas. Ej: /servicios/smile-makeover' }),
-    defineField({ name: 'startDate', title: 'Fecha de inicio', type: 'datetime' }),
-    defineField({ name: 'endDate', title: 'Fecha de fin', type: 'datetime' }),
+    defineField({ name: 'startDate', title: 'Fecha de inicio', type: 'datetime', description: 'Fecha desde la que el popup puede aparecer (opcional). Dejar vacío para activar inmediatamente.' }),
+    defineField({ name: 'endDate', title: 'Fecha de fin', type: 'datetime', description: 'Fecha límite del popup (opcional). Dejar vacío para que no expire.' }),
     defineField({
       name: 'isActive',
       title: '🔴 Activo',
@@ -38,7 +38,7 @@ export const popup = defineType({
           return true
         }),
     }),
-    defineField({ name: 'frequency', title: 'Frecuencia de aparición', type: 'string', options: { list: [{ title: 'Una vez (por usuario)', value: 'once' }, { title: 'Por sesión', value: 'per-session' }, { title: 'Siempre', value: 'always' }], layout: 'radio' }, initialValue: 'once' }),
+    defineField({ name: 'frequency', title: 'Frecuencia de aparición', type: 'string', description: 'Con qué frecuencia se muestra al mismo visitante: una vez, por sesión, o siempre.', options: { list: [{ title: 'Una vez (por usuario)', value: 'once' }, { title: 'Por sesión', value: 'per-session' }, { title: 'Siempre', value: 'always' }], layout: 'radio' }, initialValue: 'once' }),
   ],
   preview: {
     select: { title: 'name', active: 'isActive' },
