@@ -16,7 +16,7 @@ export const video = defineType({
     defineField({ name: 'service', title: 'Servicio relacionado', type: 'reference', description: "Servicio relacionado con este video (opcional).", to: [{ type: 'service' }] }),
     defineField({ name: 'category', title: 'Tipo de video', type: 'string', options: { list: [{ title: 'Testimonio', value: 'testimonial' }, { title: 'Educativo', value: 'education' }, { title: 'Tour de clínica', value: 'clinic-tour' }, { title: 'Resultados', value: 'results' }] } }),
     defineField({ name: 'isFeatured', title: 'Destacado', type: 'boolean', description: "Los videos destacados aparecen primero en la sección de videos.", initialValue: false }),
-    defineField({ name: 'publishedAt', title: 'Fecha', type: 'datetime', validation: (Rule) => Rule.required() }),
+    defineField({ name: 'publishedAt', title: 'Fecha', type: 'datetime' }),
   ],
   preview: {
     select: { title: 'title.es', subtitle: 'platform', media: 'thumbnail' },

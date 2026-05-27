@@ -18,7 +18,7 @@ export const page = defineType({
     defineField({ name: 'heroSubtitle', title: 'Subtítulo del hero', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'text', rows: 2 }, { name: 'en', title: 'English', type: 'text', rows: 2 }] }),
     defineField({ name: 'heroImage', title: 'Imagen del hero', type: 'image', options: { hotspot: true }, fields: [{ name: 'alt', title: 'Alt text', type: 'object', fields: [{ name: 'es', type: 'string', title: 'Español' }, { name: 'en', type: 'string', title: 'English' }] }] }),
     defineField({ name: 'body', title: 'Contenido', type: 'localePortableText' }),
-    defineField({ name: 'seo', title: 'SEO', type: 'seoObject', validation: (Rule) => Rule.required() }),
+    defineField({ name: 'seo', title: 'SEO', type: 'seoObject' }),
     defineField({ name: 'isActive', title: 'Activo en el sitio', type: 'boolean', initialValue: true }),
   ],
   preview: {
