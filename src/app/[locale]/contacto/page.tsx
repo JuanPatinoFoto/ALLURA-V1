@@ -9,10 +9,21 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: "contacto" });
+  const [t, settings] = await Promise.all([
+    getTranslations({ locale, namespace: "contacto" }),
+    getSiteSettings(),
+  ]);
+  const ogImageUrl = settings?.seo?.ogImage?.asset?.url;
+  const title = t("metaTitle");
+  const description = t("metaDesc");
   return {
-    title: t("metaTitle"),
-    description: t("metaDesc"),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      ...(ogImageUrl && { images: [{ url: ogImageUrl, width: 1200, height: 630 }] }),
+    },
   };
 }
 

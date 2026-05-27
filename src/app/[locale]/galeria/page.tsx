@@ -4,6 +4,7 @@ import type { GalleryItemData } from '@/sanity/lib/queries'
 import { GalleryTemplate } from '@/components/templates/GalleryTemplate'
 import { getTranslations } from 'next-intl/server'
 import type { Metadata } from 'next'
+import { getSiteSettings } from '@/lib/getSiteSettings'
 
 export const revalidate = process.env.NODE_ENV === 'development' ? 0 : 3600
 
@@ -12,10 +13,21 @@ export async function generateMetadata({
 }: {
   params: { locale: string }
 }): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'galeria' })
+  const [t, settings] = await Promise.all([
+    getTranslations({ locale, namespace: 'galeria' }),
+    getSiteSettings(),
+  ])
+  const ogImageUrl = settings?.seo?.ogImage?.asset?.url
+  const title = t('metaTitle')
+  const description = t('metaDesc')
   return {
-    title: t('metaTitle'),
-    description: t('metaDesc'),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      ...(ogImageUrl && { images: [{ url: ogImageUrl, width: 1200, height: 630 }] }),
+    },
   }
 }
 
