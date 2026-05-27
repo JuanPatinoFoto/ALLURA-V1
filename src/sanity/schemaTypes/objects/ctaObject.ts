@@ -31,8 +31,8 @@ export const ctaObject = defineType({
       type: 'string',
       description: 'Ruta interna (ej: /contacto) o URL externa (ej: https://wa.me/...)',
       validation: (Rule) =>
-        Rule.required().custom((url: string | undefined) => {
-          if (!url) return 'La URL es obligatoria'
+        Rule.custom((url: string | undefined) => {
+          if (!url) return true
           if (url.startsWith('/') || url.startsWith('https://') || url.startsWith('http://'))
             return true
           return 'La URL debe empezar con / o https://'

@@ -88,8 +88,8 @@ export const homePage = defineType({
       options: { collapsible: true, collapsed: true },
       fields: [
         { name: 'eyebrow', title: 'Supratítulo', type: 'object', fields: [{ name: 'es', type: 'string', title: 'Español' }, { name: 'en', type: 'string', title: 'English' }] },
-        { name: 'title', title: 'Título', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'string', validation: (Rule) => Rule.required() }, { name: 'en', title: 'English', type: 'string', validation: (Rule) => Rule.required() }] },
-        { name: 'body', title: 'Descripción', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'text', rows: 4, validation: (Rule) => Rule.required() }, { name: 'en', title: 'English', type: 'text', rows: 4, validation: (Rule) => Rule.required() }] },
+        { name: 'title', title: 'Título', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'string' }, { name: 'en', title: 'English', type: 'string' }] },
+        { name: 'body', title: 'Descripción', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'text', rows: 4 }, { name: 'en', title: 'English', type: 'text', rows: 4 }] },
         { name: 'cta', title: 'CTA', type: 'ctaObject' },
         { name: 'image', title: 'Imagen', type: 'image', options: { hotspot: true }, fields: [{ name: 'alt', title: 'Alt text', type: 'object', fields: [{ name: 'es', type: 'string', title: 'Español' }, { name: 'en', type: 'string', title: 'English' }] }] },
       ],
@@ -102,8 +102,8 @@ export const homePage = defineType({
       options: { collapsible: true, collapsed: true },
       fields: [
         { name: 'eyebrow', title: 'Supratítulo', type: 'object', fields: [{ name: 'es', type: 'string', title: 'Español' }, { name: 'en', type: 'string', title: 'English' }] },
-        { name: 'title', title: 'Título', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'string', validation: (Rule) => Rule.required() }, { name: 'en', title: 'English', type: 'string', validation: (Rule) => Rule.required() }] },
-        { name: 'subtitle', title: 'Subtítulo', type: 'object', fields: [{ name: 'es', type: 'text', rows: 2, title: 'Español', validation: (Rule) => Rule.required() }, { name: 'en', type: 'text', rows: 2, title: 'English', validation: (Rule) => Rule.required() }] },
+        { name: 'title', title: 'Título', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'string' }, { name: 'en', title: 'English', type: 'string' }] },
+        { name: 'subtitle', title: 'Subtítulo', type: 'object', fields: [{ name: 'es', type: 'text', rows: 2, title: 'Español' }, { name: 'en', type: 'text', rows: 2, title: 'English' }] },
         {
           name: 'blocks', title: 'Bloques de beneficios', type: 'array',
           of: [{
@@ -127,7 +127,7 @@ export const homePage = defineType({
       options: { collapsible: true, collapsed: true },
       fields: [
         { name: 'eyebrow', title: 'Supratítulo', type: 'object', fields: [{ name: 'es', type: 'string', title: 'Español' }, { name: 'en', type: 'string', title: 'English' }] },
-        { name: 'title', title: 'Título', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'string', validation: (Rule) => Rule.required() }, { name: 'en', title: 'English', type: 'string', validation: (Rule) => Rule.required() }] },
+        { name: 'title', title: 'Título', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'string' }, { name: 'en', title: 'English', type: 'string' }] },
         { name: 'subtitle', title: 'Subtítulo', type: 'object', fields: [{ name: 'es', type: 'text', rows: 2, title: 'Español' }, { name: 'en', type: 'text', rows: 2, title: 'English' }] },
         { name: 'featuredMembers', title: 'Miembros destacados', type: 'array', description: 'Selecciona 2 a 8 miembros del equipo.', of: [{ type: 'reference', to: [{ type: 'teamMember' }] }], validation: (Rule) => Rule.min(2).max(8) },
         { name: 'cta', title: 'CTA', type: 'ctaObject' },
@@ -141,8 +141,8 @@ export const homePage = defineType({
       options: { collapsible: true, collapsed: true },
       fields: [
         { name: 'eyebrow', title: 'Supratítulo', type: 'object', fields: [{ name: 'es', type: 'string', title: 'Español' }, { name: 'en', type: 'string', title: 'English' }] },
-        { name: 'title', title: 'Título', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'string', validation: (Rule) => Rule.required() }, { name: 'en', title: 'English', type: 'string', validation: (Rule) => Rule.required() }] },
-        { name: 'steps', title: 'Pasos del proceso', type: 'array', of: [{ type: 'processStep' }], validation: (Rule) => Rule.required().min(2).max(6) },
+        { name: 'title', title: 'Título', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'string' }, { name: 'en', title: 'English', type: 'string' }] },
+        { name: 'steps', title: 'Pasos del proceso', type: 'array', of: [{ type: 'processStep' }], validation: (Rule) => Rule.min(2).max(6) },
         { name: 'cta', title: 'CTA', type: 'ctaObject' },
       ],
     }),
@@ -154,9 +154,9 @@ export const homePage = defineType({
       options: { collapsible: true, collapsed: true },
       fields: [
         { name: 'eyebrow', title: 'Supratítulo', type: 'object', fields: [{ name: 'es', type: 'string', title: 'Español' }, { name: 'en', type: 'string', title: 'English' }] },
-        { name: 'title', title: 'Título', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'string', validation: (Rule) => Rule.required() }, { name: 'en', title: 'English', type: 'string', validation: (Rule) => Rule.required() }] },
-        { name: 'body', title: 'Cuerpo', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'text', rows: 2, validation: (Rule) => Rule.required() }, { name: 'en', title: 'English', type: 'text', rows: 2, validation: (Rule) => Rule.required() }] },
-        { name: 'cta', title: 'CTA', type: 'ctaObject', validation: (Rule) => Rule.required() },
+        { name: 'title', title: 'Título', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'string' }, { name: 'en', title: 'English', type: 'string' }] },
+        { name: 'body', title: 'Cuerpo', type: 'object', fields: [{ name: 'es', title: 'Español', type: 'text', rows: 2 }, { name: 'en', title: 'English', type: 'text', rows: 2 }] },
+        { name: 'cta', title: 'CTA', type: 'ctaObject' },
         { name: 'backgroundImage', title: 'Imagen de fondo', type: 'image', options: { hotspot: true } },
       ],
     }),
