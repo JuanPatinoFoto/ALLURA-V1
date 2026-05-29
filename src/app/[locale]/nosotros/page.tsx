@@ -3,6 +3,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { Award, HeartHandshake, ShieldCheck } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { getPageBySlug, getSectionsByPage } from '@/lib/supabase/pages'
+import { SectionRenderer } from '@/components/sections/SectionRenderer'
 
 const valueIcons = [Award, HeartHandshake, ShieldCheck];
 
@@ -18,10 +20,27 @@ export async function generateMetadata({
   };
 }
 
-export default async function NosotrosPage() {
+export default async function NosotrosPage({
+  params: { locale },
+}: {
+  params: { locale: string }
+}) {
   const t = await getTranslations("nosotros");
   const pillars = t.raw("pillars") as Array<{ number: string; title: string; description: string }>;
   const values = t.raw("values") as Array<{ title: string; description: string }>;
+
+  const dbPage = await getPageBySlug('/nosotros')
+  const sections = dbPage ? await getSectionsByPage(dbPage.id) : []
+
+  if (sections.length > 0) {
+    return (
+      <>
+        {sections.map(section => (
+          <SectionRenderer key={section.id} section={section} locale={locale} />
+        ))}
+      </>
+    )
+  }
 
   return (
     <>

@@ -3,6 +3,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "./ContactForm";
 import { getTranslations } from "next-intl/server";
 import { getSiteSettings, buildWhatsAppUrl } from "@/lib/getSiteSettings";
+import { getPageBySlug, getSectionsByPage } from '@/lib/supabase/pages'
+import { SectionRenderer } from '@/components/sections/SectionRenderer'
 
 export async function generateMetadata({
   params: { locale },
@@ -32,6 +34,19 @@ export default async function ContactoPage({
 }: {
   params: { locale: string };
 }) {
+  const dbPage = await getPageBySlug('/contacto')
+  const sections = dbPage ? await getSectionsByPage(dbPage.id) : []
+
+  if (sections.length > 0) {
+    return (
+      <>
+        {sections.map(section => (
+          <SectionRenderer key={section.id} section={section} locale={locale} />
+        ))}
+      </>
+    )
+  }
+
   const t = await getTranslations("contacto");
   const settings = await getSiteSettings();
   const contactEmail = settings?.contactEmail || "contact@allurahealthcare.com";

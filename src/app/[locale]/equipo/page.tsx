@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import { getPageBySlug, getSectionsByPage } from '@/lib/supabase/pages'
+import { SectionRenderer } from '@/components/sections/SectionRenderer'
 import { getTeamMembers } from '@/lib/supabase/team'
 import type { TeamMemberListItem } from '@/types/cms'
 import { TeamListTemplate } from '@/components/templates/TeamListTemplate'
@@ -35,6 +37,19 @@ export default async function EquipoPage({
 }: {
   params: { locale: string }
 }) {
+  const dbPage = await getPageBySlug('/equipo')
+  const sections = dbPage ? await getSectionsByPage(dbPage.id) : []
+
+  if (sections.length > 0) {
+    return (
+      <>
+        {sections.map(section => (
+          <SectionRenderer key={section.id} section={section} locale={locale} />
+        ))}
+      </>
+    )
+  }
+
   const members = await getTeamMembers()
 
   // Map Supabase TeamMember[] to TeamMemberListItem[] (Sanity shape expected by template)

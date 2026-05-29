@@ -1,4 +1,6 @@
 import { getSiteSettings } from "@/lib/getSiteSettings"
+import { getPageBySlug, getSectionsByPage } from '@/lib/supabase/pages'
+import { SectionRenderer } from '@/components/sections/SectionRenderer'
 
 import { HeroSection }    from "@/components/sections/HeroSection"
 import { BenefitsSection } from "@/components/sections/BenefitsSection"
@@ -56,6 +58,19 @@ export default async function HomePage({
   params: { locale: string }
 }) {
   const locale = params.locale as "es" | "en"
+
+  const dbPage = await getPageBySlug('/')
+  const sections = dbPage ? await getSectionsByPage(dbPage.id) : []
+
+  if (sections.length > 0) {
+    return (
+      <>
+        {sections.map(section => (
+          <SectionRenderer key={section.id} section={section} locale={locale} />
+        ))}
+      </>
+    )
+  }
 
   return (
     <>
