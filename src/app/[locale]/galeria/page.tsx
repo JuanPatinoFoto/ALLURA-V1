@@ -1,5 +1,4 @@
-import { client } from '@/sanity/lib/client'
-import { galleryItemsQuery } from '@/sanity/lib/queries'
+import { getGalleryItems } from '@/lib/supabase/content'
 import type { GalleryItemData } from '@/sanity/lib/queries'
 import { GalleryTemplate } from '@/components/templates/GalleryTemplate'
 import { getTranslations } from 'next-intl/server'
@@ -39,16 +38,27 @@ export default async function GaleriaPage({
   searchParams: { categoria?: string }
 }) {
   const activeCategory = searchParams.categoria ?? null
+  const items = await getGalleryItems()
 
-  const items = await client.fetch<GalleryItemData[]>(
-    galleryItemsQuery,
-    { category: activeCategory },
-    { next: { revalidate } }
-  )
+  // Filter by category if requested
+  const filtered = activeCategory
+    ? items.filter((item) => item.category === activeCategory)
+    : items
+
+  // Map Supabase GalleryItem[] to GalleryItemData[] (Sanity shape expected by template)
+  const mappedItems: GalleryItemData[] = filtered.map((item) => ({
+    _id: item.id,
+    title: item.alt as { es?: string; en?: string } | undefined,
+    category: item.category,
+    image: {
+      asset: { _id: item.id, url: item.imageUrl },
+      alt: item.alt as { es?: string; en?: string },
+    },
+  }))
 
   return (
     <GalleryTemplate
-      items={items}
+      items={mappedItems}
       locale={locale}
       activeCategory={activeCategory ?? undefined}
     />

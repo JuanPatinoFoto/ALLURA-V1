@@ -6,9 +6,8 @@ import { Footer } from '@/components/layout/Footer'
 import { PromoBanner } from '@/components/ui/PromoBanner'
 import { PopupManager } from '@/components/ui/PopupManager'
 import { AnalyticsScripts } from '@/components/analytics/AnalyticsScripts'
-import { client } from '@/sanity/lib/client'
-import { activePromotionQuery, activePopupQuery } from '@/sanity/lib/queries'
 import type { ActivePromotion, ActivePopup } from '@/sanity/lib/queries'
+import { getActivePromotions, getActivePopup } from '@/lib/supabase/content'
 import { getSiteSettings } from '@/lib/getSiteSettings'
 import { getTrackingScripts } from '@/lib/getTrackingScripts'
 import '@/styles/globals.css'
@@ -85,13 +84,41 @@ export default async function LocaleLayout({
   children: React.ReactNode
   params: { locale: string }
 }) {
-  const revalidate = process.env.NODE_ENV === 'development' ? 0 : 3600
-
-  const [messages, promotion, popup] = await Promise.all([
+  const [messages, promotions, supabasePopup] = await Promise.all([
     getMessages(),
-    client.fetch<ActivePromotion | null>(activePromotionQuery, {}, { next: { revalidate } }),
-    client.fetch<ActivePopup | null>(activePopupQuery, {}, { next: { revalidate } }),
+    getActivePromotions(),
+    getActivePopup(),
   ])
+
+  // Map Supabase Promotion to ActivePromotion shape for PromoBanner
+  const supabasePromo = promotions[0] ?? null
+  const promotion: ActivePromotion | null = supabasePromo
+    ? {
+        _id: supabasePromo.id,
+        title: supabasePromo.title as { es: string; en: string },
+        description: supabasePromo.description as { es?: string; en?: string } | undefined,
+        cta: supabasePromo.ctaUrl
+          ? { label: supabasePromo.ctaLabel as { es: string; en: string }, url: supabasePromo.ctaUrl }
+          : undefined,
+        bgColor: 'navy',
+      }
+    : null
+
+  // Map Supabase Popup to ActivePopup shape for PopupManager
+  const popup: ActivePopup | null = supabasePopup
+    ? {
+        _id: supabasePopup.id,
+        title: supabasePopup.title as { es: string; en: string },
+        cta: supabasePopup.ctaUrl
+          ? {
+              label: supabasePopup.ctaLabel as { es: string; en: string },
+              url: supabasePopup.ctaUrl,
+            }
+          : undefined,
+        trigger: 'timed',
+        delaySeconds: supabasePopup.delaySeconds,
+      }
+    : null
 
   return (
     <html lang={locale}>

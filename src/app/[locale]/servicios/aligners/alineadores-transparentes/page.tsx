@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { client } from "@/sanity/lib/client";
-import { serviceBySlugQuery, type ServiceDetailData } from "@/sanity/lib/queries";
 import { ServiceDetailTemplate } from "@/components/templates/ServiceDetailTemplate";
 
 export const revalidate = process.env.NODE_ENV === "development" ? 0 : 3600;
@@ -66,25 +64,15 @@ const contentEn = {
 };
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
-  const sanityData = await client.fetch<ServiceDetailData | null>(
-    serviceBySlugQuery,
-    { slug: SERVICE_SLUG },
-    { next: { revalidate } }
-  );
   const loc = locale as "es" | "en";
   const content = loc === "en" ? contentEn : contentEs;
   return {
-    title: sanityData?.seo?.metaTitle?.[loc] ?? `${content.title} — Allura Healthcare`,
-    description: sanityData?.seo?.metaDescription?.[loc] ?? content.description,
+    title: `${content.title} — Allura Healthcare`,
+    description: content.description,
   };
 }
 
 export default async function AlineadoresTransparentesPage({ params: { locale } }: { params: { locale: string } }) {
-  const sanityData = await client.fetch<ServiceDetailData | null>(
-    serviceBySlugQuery,
-    { slug: SERVICE_SLUG },
-    { next: { revalidate } }
-  );
   const content = locale === "en" ? contentEn : contentEs;
-  return <ServiceDetailTemplate {...content} sanityData={sanityData ?? undefined} locale={locale} />;
+  return <ServiceDetailTemplate {...content} sanityData={undefined} locale={locale} />;
 }

@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { client } from "@/sanity/lib/client";
-import { serviceCategoryBySlugQuery, type ServiceCategoryData } from "@/sanity/lib/queries";
 import { ServiceCategoryTemplate } from "@/components/templates/ServiceCategoryTemplate";
 
 export const revalidate = process.env.NODE_ENV === "development" ? 0 : 3600;
@@ -40,31 +38,21 @@ const contentEn = {
 };
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
-  const sanityData = await client.fetch<ServiceCategoryData | null>(
-    serviceCategoryBySlugQuery,
-    { slug: CATEGORY_SLUG },
-    { next: { revalidate } }
-  );
   const loc = locale as "es" | "en";
   const content = loc === "en" ? contentEn : contentEs;
   return {
-    title: sanityData?.seo?.metaTitle?.[loc] ?? `${content.title} — Allura Healthcare`,
-    description: sanityData?.seo?.metaDescription?.[loc] ?? content.subtitle,
+    title: `${content.title} — Allura Healthcare`,
+    description: content.subtitle,
   };
 }
 
 export default async function FullMouthReconstructionPage({ params: { locale } }: { params: { locale: string } }) {
-  const sanityData = await client.fetch<ServiceCategoryData | null>(
-    serviceCategoryBySlugQuery,
-    { slug: CATEGORY_SLUG },
-    { next: { revalidate } }
-  );
   const content = locale === "en" ? contentEn : contentEs;
   return (
     <ServiceCategoryTemplate
       {...content}
       categorySlug={CATEGORY_SLUG}
-      sanityData={sanityData ?? undefined}
+      sanityData={undefined}
       locale={locale}
     />
   );

@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { client } from "@/sanity/lib/client";
-import {
-  blogCategoriesQuery,
-  blogPostListQuery,
-  type BlogCategory,
-  type BlogPostListItem,
-} from "@/sanity/lib/queries";
+import { getBlogPosts } from "@/lib/supabase/blog";
+import type { BlogPostListItem, BlogCategory } from "@/sanity/lib/queries";
 import { BlogListTemplate } from "@/components/templates/BlogListTemplate";
 import { getSiteSettings } from "@/lib/getSiteSettings";
 
@@ -37,27 +32,34 @@ export async function generateMetadata({
 
 export default async function BlogPage({
   params: { locale },
-  searchParams,
 }: {
   params: { locale: string };
-  searchParams: { categoria?: string };
 }) {
-  const categorySlug = searchParams.categoria ?? null;
+  const loc = locale as "es" | "en";
+  const posts = await getBlogPosts();
 
-  const [categories, posts] = await Promise.all([
-    client.fetch<BlogCategory[]>(blogCategoriesQuery, {}, { next: { revalidate } }),
-    client.fetch<BlogPostListItem[]>(
-      blogPostListQuery,
-      { categorySlug },
-      { next: { revalidate } }
-    ),
-  ]);
+  // Map Supabase BlogPost[] to BlogPostListItem[] (Sanity shape expected by template)
+  const mappedPosts: BlogPostListItem[] = posts.map((post) => ({
+    _id: post.id,
+    title: post.title as { es: string; en: string },
+    slug: { current: post.slug },
+    excerpt: post.excerpt as { es: string; en: string },
+    publishedAt: post.publishedAt ?? new Date().toISOString(),
+    featuredImage: post.coverImageUrl
+      ? {
+          asset: { _id: post.id, url: post.coverImageUrl },
+          alt: { es: post.coverImageAlt ?? "", en: post.coverImageAlt ?? "" },
+        }
+      : undefined,
+    author: post.author ? { name: post.author } : undefined,
+  }));
+
+  const categories: BlogCategory[] = [];
 
   return (
     <BlogListTemplate
-      posts={posts ?? []}
-      categories={categories ?? []}
-      activeCategorySlug={categorySlug ?? undefined}
+      posts={mappedPosts}
+      categories={categories}
       locale={locale}
     />
   );

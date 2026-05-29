@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
-import { client } from '@/sanity/lib/client'
-import { teamMembersQuery, type TeamMemberListItem } from '@/sanity/lib/queries'
+import { getTeamMembers } from '@/lib/supabase/team'
+import type { TeamMemberListItem } from '@/sanity/lib/queries'
 import { TeamListTemplate } from '@/components/templates/TeamListTemplate'
 import { getSiteSettings } from '@/lib/getSiteSettings'
 
@@ -35,11 +35,20 @@ export default async function EquipoPage({
 }: {
   params: { locale: string }
 }) {
-  const members = await client.fetch<TeamMemberListItem[]>(
-    teamMembersQuery,
-    {},
-    { next: { revalidate } }
-  )
+  const members = await getTeamMembers()
 
-  return <TeamListTemplate members={members ?? []} locale={locale} />
+  // Map Supabase TeamMember[] to TeamMemberListItem[] (Sanity shape expected by template)
+  const mappedMembers: TeamMemberListItem[] = members.map((m) => ({
+    _id: m.id,
+    name: m.name,
+    slug: { current: m.slug },
+    role: m.role as { es: string; en: string },
+    photo: m.photoUrl
+      ? {
+          asset: { _id: m.id, url: m.photoUrl },
+        }
+      : undefined,
+  }))
+
+  return <TeamListTemplate members={mappedMembers} locale={locale} />
 }
