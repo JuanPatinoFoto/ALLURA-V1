@@ -23,15 +23,13 @@ export async function TeamListTemplate({ members, locale }: TeamListTemplateProp
 
   const hasSanityMembers = members.length > 0
 
-  const hardcodedMembers = hasSanityMembers
-    ? []
-    : (t.raw('members') as Array<{
-        name: string
-        specialty: string
-        formacion: string[]
-        reconocimiento?: string[]
-        enfoque: string[]
-      }>)
+  const hardcodedMembers = t.raw('members') as Array<{
+    name: string
+    specialty: string
+    formacion: string[]
+    reconocimiento?: string[]
+    enfoque: string[]
+  }>
 
   return (
     <>
@@ -57,8 +55,8 @@ export async function TeamListTemplate({ members, locale }: TeamListTemplateProp
                     name={member.name}
                     specialty={member.role?.[locale as 'es' | 'en'] || member.role?.es || ''}
                     image={member.photo?.asset?.url || teamImages[i] || teamImages[0]}
-                    formacion={[]}
-                    enfoque={[]}
+                    formacion={hardcodedMembers[i]?.formacion ?? []}
+                    enfoque={hardcodedMembers[i]?.enfoque ?? []}
                     bgLight={i % 2 !== 0}
                     sanityMember={member}
                     locale={locale}

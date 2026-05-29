@@ -38,16 +38,12 @@ export default async function EquipoPage({
   const members = await getTeamMembers()
 
   // Map Supabase TeamMember[] to TeamMemberListItem[] (Sanity shape expected by template)
+  // photo intentionally omitted — TeamListTemplate uses its local teamImages[] array as fallback
   const mappedMembers: TeamMemberListItem[] = members.map((m) => ({
     _id: m.id,
     name: m.name,
     slug: { current: m.slug },
     role: m.role as { es: string; en: string },
-    photo: m.photoUrl
-      ? {
-          asset: { _id: m.id, url: m.photoUrl },
-        }
-      : undefined,
   }))
 
   return <TeamListTemplate members={mappedMembers} locale={locale} />

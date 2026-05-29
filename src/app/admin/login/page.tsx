@@ -3,18 +3,7 @@
 import { Suspense, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createBrowserSupabaseClient } from '@/lib/supabase/browser-client'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
-
-const loginSchema = z.object({
-  email: z.string().email('Email inválido'),
-  password: z.string().min(6, 'Mínimo 6 caracteres'),
-})
-type LoginData = z.infer<typeof loginSchema>
 
 function LoginForm() {
   const router = useRouter()
@@ -23,19 +12,22 @@ function LoginForm() {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
-  const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
-    resolver: zodResolver(loginSchema),
-  })
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const form = e.currentTarget
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim()
+    const password = (form.elements.namedItem('password') as HTMLInputElement).value
 
-  async function onSubmit(data: LoginData) {
+    if (!email || !password) {
+      setError('Por favor ingresa tu email y contraseña')
+      return
+    }
+
     setLoading(true)
     setError(null)
     const supabase = createBrowserSupabaseClient()
-    const { error } = await supabase.auth.signInWithPassword({
-      email: data.email,
-      password: data.password,
-    })
-    if (error) {
+    const { error: authError } = await supabase.auth.signInWithPassword({ email, password })
+    if (authError) {
       setError('Email o contraseña incorrectos')
       setLoading(false)
       return
@@ -45,32 +37,32 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={onSubmit} className="space-y-4">
       <div className="space-y-1">
-        <Label htmlFor="email" className="text-[#051c33]">Correo electrónico</Label>
-        <Input
+        <label htmlFor="email" className="block text-sm font-medium text-[#051c33]">
+          Correo electrónico
+        </label>
+        <input
           id="email"
+          name="email"
           type="email"
+          autoComplete="email"
           placeholder="tu@email.com"
-          {...register('email')}
-          className="border-[#8b9fb3] focus:border-[#051c33]"
+          className="w-full px-3 py-2 border border-[#8b9fb3] rounded-lg text-sm focus:outline-none focus:border-[#051c33] bg-white"
         />
-        {errors.email && (
-          <p className="text-red-500 text-sm">{errors.email.message}</p>
-        )}
       </div>
       <div className="space-y-1">
-        <Label htmlFor="password" className="text-[#051c33]">Contraseña</Label>
-        <Input
+        <label htmlFor="password" className="block text-sm font-medium text-[#051c33]">
+          Contraseña
+        </label>
+        <input
           id="password"
+          name="password"
           type="password"
+          autoComplete="current-password"
           placeholder="••••••••"
-          {...register('password')}
-          className="border-[#8b9fb3] focus:border-[#051c33]"
+          className="w-full px-3 py-2 border border-[#8b9fb3] rounded-lg text-sm focus:outline-none focus:border-[#051c33] bg-white"
         />
-        {errors.password && (
-          <p className="text-red-500 text-sm">{errors.password.message}</p>
-        )}
       </div>
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-3">
