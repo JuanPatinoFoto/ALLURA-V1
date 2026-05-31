@@ -6,9 +6,20 @@ import { CTABanner } from "@/components/sections/CTABanner";
 import { ChevronLeft } from "lucide-react";
 import type { BlogPostDetail } from "@/types/cms";
 
+type RelatedPost = {
+  _id: string
+  title: { es: string; en: string }
+  slug: { current: string }
+  excerpt: { es: string; en: string }
+  publishedAt: string
+  category?: string
+  featuredImage?: { asset: { url: string }; alt: { es: string; en: string } }
+}
+
 interface BlogPostTemplateProps {
   post: BlogPostDetail;
   locale: string;
+  relatedPosts?: RelatedPost[];
 }
 
 function formatDate(isoString: string, locale: string): string {
@@ -23,7 +34,7 @@ function formatDate(isoString: string, locale: string): string {
   }
 }
 
-export function BlogPostTemplate({ post, locale }: BlogPostTemplateProps) {
+export function BlogPostTemplate({ post, locale, relatedPosts = [] }: BlogPostTemplateProps) {
   const loc = locale as "es" | "en";
   const title = (post.title as { es: string; en: string })?.[loc] || (post.title as { es: string; en: string })?.es || "";
   const excerpt = (post.excerpt as { es: string; en: string })?.[loc] || (post.excerpt as { es: string; en: string })?.es || "";
@@ -146,6 +157,58 @@ export function BlogPostTemplate({ post, locale }: BlogPostTemplateProps) {
           )}
         </div>
       </section>
+
+      {/* Related posts */}
+      {relatedPosts.length > 0 && (
+        <section className="bg-[#eaeeef] py-16 px-6 md:px-12">
+          <div className="container-allura">
+            <h2 className="font-heading text-2xl md:text-3xl text-brand-navy mb-2">
+              {loc === "en" ? "You might also like" : "También te puede interesar"}
+            </h2>
+            <p className="font-body text-sm text-brand-silver mb-10">
+              {loc === "en" ? "More articles from Allura Healthcare" : "Más artículos de Allura Healthcare"}
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedPosts.map(p => (
+                <Link
+                  key={p._id}
+                  href={`/blog/${p.slug.current}`}
+                  className="group bg-white rounded-2xl overflow-hidden border border-brand-light hover:shadow-md hover:border-brand-blue/30 transition-all duration-200"
+                >
+                  {/* Image */}
+                  <div className="aspect-video relative overflow-hidden bg-brand-light">
+                    {p.featuredImage?.asset?.url ? (
+                      <Image
+                        src={p.featuredImage.asset.url}
+                        alt={p.title?.[loc] || p.title?.es || ""}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-brand-navy/10 flex items-center justify-center">
+                        <span className="text-3xl">📝</span>
+                      </div>
+                    )}
+                  </div>
+                  {/* Content */}
+                  <div className="p-5">
+                    {p.category && (
+                      <p className="font-body text-xs tracking-wide uppercase text-brand-blue mb-2">{p.category}</p>
+                    )}
+                    <h3 className="font-heading text-base text-brand-navy leading-snug group-hover:text-brand-blue transition-colors mb-2">
+                      {p.title?.[loc] || p.title?.es}
+                    </h3>
+                    <p className="font-body text-sm text-brand-silver leading-relaxed line-clamp-2">
+                      {p.excerpt?.[loc] || p.excerpt?.es}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <CTABanner />
     </>

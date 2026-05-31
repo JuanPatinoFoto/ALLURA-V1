@@ -32,10 +32,13 @@ export async function generateMetadata({
 
 export default async function BlogPage({
   params: { locale },
+  searchParams,
 }: {
   params: { locale: string };
+  searchParams?: { categoria?: string };
 }) {
   const loc = locale as "es" | "en";
+  const activeCategory = searchParams?.categoria ?? null;
   const posts = await getBlogPosts();
 
   // Map Supabase BlogPost[] to BlogPostListItem[] (Sanity shape expected by template)
@@ -52,14 +55,37 @@ export default async function BlogPage({
         }
       : undefined,
     author: post.author ? { name: post.author } : undefined,
+    categories: post.category
+      ? [{ _id: post.category, title: { es: post.category, en: post.category }, slug: { current: post.category.toLowerCase().replace(/\s+/g, '-') } }]
+      : undefined,
   }));
 
-  const categories: BlogCategory[] = [];
+  // Build unique categories from posts
+  const categorySet = new Map<string, BlogCategory>()
+  posts.forEach(post => {
+    if (post.category) {
+      const slug = post.category.toLowerCase().replace(/\s+/g, '-')
+      categorySet.set(slug, {
+        _id: slug,
+        title: { es: post.category, en: post.category },
+        slug: { current: slug },
+      })
+    }
+  })
+  const categories: BlogCategory[] = Array.from(categorySet.values());
+
+  // Filter posts by active category
+  const filteredPosts = activeCategory
+    ? mappedPosts.filter(p =>
+        p.categories?.some(c => c.slug.current === activeCategory)
+      )
+    : mappedPosts;
 
   return (
     <BlogListTemplate
-      posts={mappedPosts}
+      posts={filteredPosts}
       categories={categories}
+      activeCategorySlug={activeCategory ?? undefined}
       locale={locale}
     />
   );

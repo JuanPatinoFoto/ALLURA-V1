@@ -69,6 +69,7 @@ export interface BlogPost {
   coverImageUrl?: string
   coverImageAlt?: string
   author?: string
+  category?: string
   status: 'draft' | 'published' | 'archived'
   publishedAt?: string
   seoTitle: I18nField

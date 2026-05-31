@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getBlogPostBySlug } from "@/lib/supabase/blog";
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/supabase/blog";
 import { BlogPostTemplate } from "@/components/templates/BlogPostTemplate";
 
 export const revalidate = process.env.NODE_ENV === "development" ? 0 : 3600;
@@ -34,7 +34,10 @@ export default async function BlogPostPage({
 }: {
   params: { locale: string; slug: string };
 }) {
-  const post = await getBlogPostBySlug(slug);
+  const [post, allPosts] = await Promise.all([
+    getBlogPostBySlug(slug),
+    getBlogPosts(),
+  ])
   if (!post) notFound();
 
   const mappedPost = {
@@ -51,7 +54,25 @@ export default async function BlogPostPage({
         }
       : undefined,
     author: post.author ? { name: post.author } : undefined,
+    category: post.category,
   };
 
-  return <BlogPostTemplate post={mappedPost as any} locale={locale} />;
+  // Related: same category first, then recent, exclude current
+  const otherPosts = allPosts.filter(p => p.slug !== slug)
+  const related = [
+    ...otherPosts.filter(p => post.category && p.category === post.category),
+    ...otherPosts.filter(p => !post.category || p.category !== post.category),
+  ].slice(0, 3).map(p => ({
+    _id: p.id,
+    title: p.title as { es: string; en: string },
+    slug: { current: p.slug },
+    excerpt: p.excerpt as { es: string; en: string },
+    publishedAt: p.publishedAt ?? '',
+    category: p.category,
+    featuredImage: p.coverImageUrl
+      ? { asset: { url: p.coverImageUrl }, alt: { es: '', en: '' } }
+      : undefined,
+  }))
+
+  return <BlogPostTemplate post={mappedPost as any} locale={locale} relatedPosts={related} />;
 }

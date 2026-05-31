@@ -14,6 +14,7 @@ function mapPost(row: any): BlogPost {
     coverImageUrl: row.cover_image_url ?? undefined,
     coverImageAlt: row.cover_image_alt ?? undefined,
     author: row.author ?? undefined,
+    category: row.category ?? undefined,
     status: row.status,
     publishedAt: row.published_at ?? undefined,
     seoTitle: row.seo_title_i18n ?? {},

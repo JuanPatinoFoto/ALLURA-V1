@@ -7,6 +7,7 @@ import { z } from 'zod'
 import dynamic from 'next/dynamic'
 import { createBrowserSupabaseClient } from '@/lib/supabase/browser-client'
 import { ImageUploader } from '@/components/admin/ImageUploader'
+import { ImagePickerModal } from '@/components/admin/ImagePickerModal'
 import '@uiw/react-md-editor/markdown-editor.css'
 import '@uiw/react-markdown-preview/markdown.css'
 
@@ -26,14 +27,49 @@ type FormData = z.infer<typeof schema>
 const inputCls = 'w-full border border-[#8b9fb3]/40 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#051c33]'
 const labelCls = 'block text-sm font-medium text-[#051c33] mb-1'
 
-export function BlogForm({ post, siteId }: { post: any; siteId: string }) {
+export function BlogForm({ post, siteId, existingCategories = [] }: { post: any; siteId: string; existingCategories?: string[] }) {
   const router = useRouter()
   const [coverUrl, setCoverUrl] = useState<string>(post?.cover_image_url ?? '')
   const [bodyEs, setBodyEs] = useState<string>(post?.body_i18n?.es ?? '')
   const [bodyEn, setBodyEn] = useState<string>(post?.body_i18n?.en ?? '')
   const [bodyTab, setBodyTab] = useState<'es' | 'en'>('es')
+  const [category, setCategory] = useState<string>(post?.category ?? '')
+  const [newCategory, setNewCategory] = useState('')
+  const [showNewCategory, setShowNewCategory] = useState(false)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [showImagePicker, setShowImagePicker] = useState(false)
+  const [showImageUploader, setShowImageUploader] = useState(false)
+
+  const FONT_SIZES = [
+    { label: 'Normal',      value: '' },
+    { label: 'Grande',      value: '1.25rem' },
+    { label: 'Pequeño',     value: '0.85rem' },
+    { label: 'Muy pequeño', value: '0.75rem' },
+    { label: 'Fuente',      value: '0.7rem' },
+  ]
+
+  function applyFontSize(size: string) {
+    const textarea = document.querySelector<HTMLTextAreaElement>('.w-md-editor-text-input')
+    if (!textarea) return
+    const start = textarea.selectionStart
+    const end = textarea.selectionEnd
+    const selected = textarea.value.slice(start, end)
+    if (!selected) return
+    const wrapped = size
+      ? `<span style="font-size:${size}">${selected}</span>`
+      : selected
+    const current = bodyTab === 'es' ? bodyEs : bodyEn
+    const newVal = current.slice(0, start) + wrapped + current.slice(end)
+    if (bodyTab === 'es') setBodyEs(newVal)
+    else setBodyEn(newVal)
+  }
+
+  function insertImage(url: string) {
+    const md = `\n![imagen](${url})\n`
+    if (bodyTab === 'es') setBodyEs(prev => prev + md)
+    else setBodyEn(prev => prev + md)
+  }
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -58,6 +94,7 @@ export function BlogForm({ post, siteId }: { post: any; siteId: string }) {
       excerpt_i18n: { es: data.excerpt_es ?? '', en: data.excerpt_en ?? '' },
       body_i18n: { es: bodyEs, en: bodyEn },
       author: data.author ?? null,
+      category: category || null,
       status: data.status,
       cover_image_url: coverUrl || null,
       published_at: data.status === 'published' ? (post?.published_at ?? new Date().toISOString()) : null,
@@ -98,6 +135,59 @@ export function BlogForm({ post, siteId }: { post: any; siteId: string }) {
         </div>
       </div>
 
+      {/* Categoría */}
+      <div>
+        <label className={labelCls}>Categoría</label>
+        {!showNewCategory ? (
+          <div className="flex gap-2">
+            <select
+              value={category}
+              onChange={e => setCategory(e.target.value)}
+              className={`${inputCls} flex-1`}
+            >
+              <option value="">Sin categoría</option>
+              {existingCategories.map(cat => (
+                <option key={cat} value={cat}>{cat}</option>
+              ))}
+            </select>
+            <button
+              type="button"
+              onClick={() => setShowNewCategory(true)}
+              className="px-3 py-2 border border-[#8b9fb3]/40 rounded-lg text-sm text-[#051c33] hover:bg-[#eaeeef] transition-colors whitespace-nowrap"
+            >
+              + Nueva
+            </button>
+          </div>
+        ) : (
+          <div className="flex gap-2">
+            <input
+              value={newCategory}
+              onChange={e => setNewCategory(e.target.value)}
+              className={`${inputCls} flex-1`}
+              placeholder="Ej: Odontología, Bienestar..."
+              autoFocus
+            />
+            <button
+              type="button"
+              onClick={() => { setCategory(newCategory); setShowNewCategory(false) }}
+              className="px-3 py-2 bg-[#051c33] text-white rounded-lg text-sm hover:bg-[#051c33]/90 transition-colors"
+            >
+              Agregar
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowNewCategory(false)}
+              className="px-3 py-2 border border-[#8b9fb3]/40 rounded-lg text-sm text-[#051c33] hover:bg-[#eaeeef] transition-colors"
+            >
+              Cancelar
+            </button>
+          </div>
+        )}
+        {category && (
+          <p className="text-xs text-[#8b9fb3] mt-1">Categoría seleccionada: <span className="font-medium text-[#051c33]">{category}</span></p>
+        )}
+      </div>
+
       {/* Resumen */}
       <div className="grid grid-cols-2 gap-4">
         <div>
@@ -111,9 +201,28 @@ export function BlogForm({ post, siteId }: { post: any; siteId: string }) {
       </div>
 
       {/* Editor de contenido */}
+      {showImagePicker && (
+        <ImagePickerModal
+          onSelect={url => insertImage(url)}
+          onClose={() => setShowImagePicker(false)}
+        />
+      )}
+      {showImageUploader && (
+        <div className="fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4" onClick={() => setShowImageUploader(false)}>
+          <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm" onClick={e => e.stopPropagation()}>
+            <h3 className="text-sm font-semibold text-[#051c33] mb-4">Subir imagen al artículo</h3>
+            <ImageUploader
+              folder="blog"
+              onUpload={url => { insertImage(url); setShowImageUploader(false) }}
+              label="Arrastra o haz clic para subir"
+            />
+            <button onClick={() => setShowImageUploader(false)} className="mt-3 w-full text-xs text-gray-400 hover:text-gray-600">Cancelar</button>
+          </div>
+        </div>
+      )}
       <div>
         <label className={labelCls}>Contenido del artículo</label>
-        <div className="flex gap-2 mb-2">
+        <div className="flex items-center gap-2 mb-2 flex-wrap">
           <button
             type="button"
             onClick={() => setBodyTab('es')}
@@ -127,6 +236,32 @@ export function BlogForm({ post, siteId }: { post: any; siteId: string }) {
             className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${bodyTab === 'en' ? 'bg-[#051c33] text-white' : 'bg-[#eaeeef] text-[#051c33]'}`}
           >
             English
+          </button>
+          <div className="flex-1" />
+          <select
+            defaultValue=""
+            onChange={e => { applyFontSize(e.target.value); e.target.value = '' }}
+            className="px-2 py-1 rounded-lg text-xs border border-[#8b9fb3]/40 text-[#051c33] focus:outline-none focus:border-[#051c33] cursor-pointer"
+            title="Selecciona texto y elige tamaño"
+          >
+            <option value="" disabled>🔤 Tamaño fuente</option>
+            {FONT_SIZES.filter(f => f.value).map(f => (
+              <option key={f.value} value={f.value}>{f.label}</option>
+            ))}
+          </select>
+          <button
+            type="button"
+            onClick={() => setShowImagePicker(true)}
+            className="px-3 py-1 rounded-lg text-xs font-medium border border-[#8b9fb3]/40 text-[#051c33] hover:bg-[#eaeeef] transition-colors"
+          >
+            🖼️ Imagen del proyecto
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowImageUploader(true)}
+            className="px-3 py-1 rounded-lg text-xs font-medium border border-[#8b9fb3]/40 text-[#051c33] hover:bg-[#eaeeef] transition-colors"
+          >
+            ⬆️ Subir imagen
           </button>
         </div>
         <div data-color-mode="light">

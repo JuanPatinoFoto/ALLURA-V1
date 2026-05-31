@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { Upload, X, Loader2 } from 'lucide-react'
+import { Upload, X, Loader2, FolderOpen } from 'lucide-react'
 import Image from 'next/image'
+import { ImagePickerModal } from './ImagePickerModal'
 
 interface ImageUploaderProps {
   folder: 'services' | 'blog' | 'team' | 'gallery' | 'site' | 'popups'
@@ -20,6 +21,7 @@ export function ImageUploader({
   const [preview, setPreview] = useState<string | null>(currentUrl ?? null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [showPicker, setShowPicker] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
   async function handleFile(file: File) {
@@ -49,12 +51,18 @@ export function ImageUploader({
 
   return (
     <div className="space-y-2">
+      {showPicker && (
+        <ImagePickerModal
+          onSelect={url => { setPreview(url); onUpload(url, url) }}
+          onClose={() => setShowPicker(false)}
+        />
+      )}
       {preview && (
         <div className="relative w-40 h-32 rounded-lg overflow-hidden border border-[#8b9fb3]/30">
           <Image src={preview} alt="Preview" fill className="object-cover" unoptimized />
           <button
             type="button"
-            onClick={() => setPreview(null)}
+            onClick={() => { setPreview(null) }}
             className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-0.5 hover:bg-red-600 transition-colors"
           >
             <X size={12} />
@@ -88,6 +96,14 @@ export function ImageUploader({
           </div>
         )}
       </div>
+      <button
+        type="button"
+        onClick={() => setShowPicker(true)}
+        className="w-full flex items-center justify-center gap-2 px-3 py-2 border border-[#8b9fb3]/40 rounded-lg text-sm text-[#8b9fb3] hover:border-[#051c33] hover:text-[#051c33] transition-colors"
+      >
+        <FolderOpen size={14} />
+        Elegir imagen del proyecto
+      </button>
       {error && (
         <p className="text-red-500 text-sm">{error}</p>
       )}
