@@ -13,6 +13,7 @@ interface NavProps {
 
 export function Nav({ dark = false, items }: NavProps) {
   const pathname = usePathname();
+  const locale = pathname.startsWith('/en') ? 'en' : 'es';
   const [openId, setOpenId] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -35,7 +36,7 @@ export function Nav({ dark = false, items }: NavProps) {
           return (
             <Link key={item.id} href={item.href as `/${string}`}
               className={cn(linkClass, isActive && activeLinkClass)}>
-              {item.label.es}
+              {item.label[locale as 'es'|'en'] || item.label.es}
             </Link>
           )
         }
@@ -46,7 +47,7 @@ export function Nav({ dark = false, items }: NavProps) {
             onMouseEnter={() => openMenu(item.id)}
             onMouseLeave={closeMenu}>
             <button className={cn(linkClass, 'flex items-center gap-1', isActive && activeLinkClass)}>
-              {item.label.es}
+              {item.label[locale as 'es'|'en'] || item.label.es}
               <ChevronDown size={14} className={cn("transition-transform duration-200", isOpen && "rotate-180")} />
             </button>
             <div className="absolute top-full left-0 right-0 h-3" />

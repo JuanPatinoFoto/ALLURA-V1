@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { usePathname } from "@/navigation";
 import { Menu, X, ChevronDown, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
@@ -13,6 +14,8 @@ import type { MenuItem } from "@/lib/menu-defaults";
 import { defaultMenu } from "@/lib/menu-defaults";
 
 export function Header({ hasPromo = false, menuItems = defaultMenu }: { hasPromo?: boolean; menuItems?: MenuItem[] }) {
+  const pathname = usePathname();
+  const locale = pathname.startsWith('/en') ? 'en' : 'es';
   const [scrolled,      setScrolled]      = useState(false);
   const [menuOpen,      setMenuOpen]      = useState(false);
   const [openSubmenu,   setOpenSubmenu]   = useState<string | null>(null);
@@ -128,7 +131,7 @@ export function Header({ hasPromo = false, menuItems = defaultMenu }: { hasPromo
                 <Link key={item.id} href={item.href as `/${string}`}
                   className="text-brand-navy/80 font-body text-base py-2.5 hover:text-brand-navy transition-colors"
                   onClick={() => setMenuOpen(false)}>
-                  {item.label.es}
+                  {item.label[locale as 'es'|'en'] || item.label.es}
                 </Link>
               )
             }
@@ -139,7 +142,7 @@ export function Header({ hasPromo = false, menuItems = defaultMenu }: { hasPromo
                   className="w-full flex items-center justify-between text-brand-navy/80 font-body text-base py-2.5 hover:text-brand-navy transition-colors"
                   onClick={() => setOpenSubmenu(isOpen ? null : item.id)}
                 >
-                  {item.label.es}
+                  {item.label[locale as 'es'|'en'] || item.label.es}
                   <ChevronDown size={16} className={cn("transition-transform duration-200", isOpen && "rotate-180")} />
                 </button>
                 {isOpen && (
@@ -148,7 +151,7 @@ export function Header({ hasPromo = false, menuItems = defaultMenu }: { hasPromo
                       <Link key={child.id} href={child.href as `/${string}`}
                         className="text-brand-navy/60 font-body text-sm py-2 hover:text-brand-navy transition-colors"
                         onClick={() => { setMenuOpen(false); setOpenSubmenu(null) }}>
-                        {child.label.es}
+                        {child.label[locale as 'es'|'en'] || child.label.es}
                       </Link>
                     ))}
                   </div>
