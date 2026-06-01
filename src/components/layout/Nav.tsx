@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Link, usePathname } from "@/navigation";
+import { useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
 import type { MenuItem } from "@/lib/menu-defaults";
 
@@ -13,7 +14,7 @@ interface NavProps {
 
 export function Nav({ dark = false, items }: NavProps) {
   const pathname = usePathname();
-  const locale = pathname.startsWith('/en') ? 'en' : 'es';
+  const locale = useLocale();
   const [openId, setOpenId] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 

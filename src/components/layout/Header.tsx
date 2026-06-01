@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "@/navigation";
+import { useLocale } from "next-intl";
 import { Menu, X, ChevronDown, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
@@ -15,7 +16,7 @@ import { defaultMenu } from "@/lib/menu-defaults";
 
 export function Header({ hasPromo = false, menuItems = defaultMenu }: { hasPromo?: boolean; menuItems?: MenuItem[] }) {
   const pathname = usePathname();
-  const locale = pathname.startsWith('/en') ? 'en' : 'es';
+  const locale = useLocale();
   const [scrolled,      setScrolled]      = useState(false);
   const [menuOpen,      setMenuOpen]      = useState(false);
   const [openSubmenu,   setOpenSubmenu]   = useState<string | null>(null);
