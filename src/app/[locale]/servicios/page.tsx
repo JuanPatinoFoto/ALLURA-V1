@@ -4,6 +4,10 @@ import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { getTranslations } from "next-intl/server";
+import { getPageBySlug, getSectionsByPage } from "@/lib/supabase/pages";
+import { renderSection } from "@/lib/render-section";
+
+export const revalidate = process.env.NODE_ENV === "development" ? 0 : 3600;
 
 const categoryImages = [
   "/images/imagenes_web/Allura-Full-Mouth-Reconstruction.jpg",
@@ -24,7 +28,26 @@ export async function generateMetadata({
   };
 }
 
-export default async function ServiciosPage() {
+export default async function ServiciosPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  // Try to render from Supabase CMS sections
+  const page = await getPageBySlug('/servicios')
+  if (page) {
+    const sections = await getSectionsByPage(page.id)
+    const visible = sections.filter(s => s.is_visible)
+    if (visible.length > 0) {
+      return (
+        <div className="pt-24">
+          {visible.map(s => renderSection(s, locale))}
+        </div>
+      )
+    }
+  }
+
+  // Fallback: hardcoded content
   const t = await getTranslations("serviciosPage");
   const categories = t.raw("categories") as Array<{
     eyebrow: string;
