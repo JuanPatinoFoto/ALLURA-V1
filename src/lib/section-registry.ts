@@ -1,3 +1,4 @@
+// v2
 export interface SectionDefinition {
   type: string
   label: string
