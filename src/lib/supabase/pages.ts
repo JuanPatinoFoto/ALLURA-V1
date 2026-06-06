@@ -76,14 +76,24 @@ export async function upsertSection(
   data: Partial<SectionRow> & { page_id: string; type: string }
 ): Promise<SectionRow> {
   const supabase = createServiceClient()
-  const payload = data.id ? data : { ...data }
-  const { data: row, error } = await supabase
-    .from('sections')
-    .upsert(payload, { onConflict: 'id' })
-    .select()
-    .single()
-  if (error) throw error
-  return row as SectionRow
+  if (data.id) {
+    const { data: row, error } = await supabase
+      .from('sections')
+      .upsert(data, { onConflict: 'id' })
+      .select()
+      .single()
+    if (error) throw error
+    return row as SectionRow
+  } else {
+    const { id: _id, ...insertPayload } = data as SectionRow
+    const { data: row, error } = await supabase
+      .from('sections')
+      .insert(insertPayload)
+      .select()
+      .single()
+    if (error) throw error
+    return row as SectionRow
+  }
 }
 
 export async function deleteSection(id: string): Promise<void> {

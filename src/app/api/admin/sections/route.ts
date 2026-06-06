@@ -7,7 +7,8 @@ export async function POST(request: NextRequest) {
     const section = await upsertSection(data)
     return NextResponse.json(section)
   } catch (error) {
-    return NextResponse.json({ error: String(error) }, { status: 500 })
+    const errDetail = error instanceof Error ? error.message : JSON.stringify(error)
+    return NextResponse.json({ error: errDetail }, { status: 500 })
   }
 }
 
