@@ -103,8 +103,10 @@ export const SECTION_REGISTRY: SectionDefinition[] = [
           name: 'Dra. Johanna Jaramillo',
           role: { es: 'Odontóloga especialista en rehabilitación oral', en: 'Dental specialist in oral rehabilitation' },
           imageUrl: '/images/equipo/Dra-Johanna-Jaramillo-Allura.avif',
-          formacion: ['Universidad de Antioquia'],
-          enfoque: ['Rehabilitación oral completa'],
+          hoverBlocks: [
+            { id: 'auto-formacion', title: { es: 'Formación', en: 'Training' }, items: ['Universidad de Antioquia'] },
+            { id: 'auto-enfoque', title: { es: 'Enfoque', en: 'Focus areas' }, items: ['Rehabilitación oral completa'] },
+          ],
           slug: 'johanna-jaramillo',
         },
         {
@@ -112,8 +114,10 @@ export const SECTION_REGISTRY: SectionDefinition[] = [
           name: 'Dr. Santiago Henao',
           role: { es: 'Cirujano maxilofacial', en: 'Maxillofacial surgeon' },
           imageUrl: '/images/equipo/Dr-Santiago-Henao-Allura.avif',
-          formacion: ['Universidad CES'],
-          enfoque: ['Cirugía maxilofacial'],
+          hoverBlocks: [
+            { id: 'auto-formacion', title: { es: 'Formación', en: 'Training' }, items: ['Universidad CES'] },
+            { id: 'auto-enfoque', title: { es: 'Enfoque', en: 'Focus areas' }, items: ['Cirugía maxilofacial'] },
+          ],
           slug: 'santiago-henao',
         },
         {
@@ -121,8 +125,10 @@ export const SECTION_REGISTRY: SectionDefinition[] = [
           name: 'Dra. Daniela Alzate',
           role: { es: 'Especialista en ortodoncia', en: 'Orthodontics specialist' },
           imageUrl: '/images/equipo/Dra-Daniela-Alzate-Allura.avif',
-          formacion: ['Universidad Pontificia Bolivariana'],
-          enfoque: ['Ortodoncia y alineadores'],
+          hoverBlocks: [
+            { id: 'auto-formacion', title: { es: 'Formación', en: 'Training' }, items: ['Universidad Pontificia Bolivariana'] },
+            { id: 'auto-enfoque', title: { es: 'Enfoque', en: 'Focus areas' }, items: ['Ortodoncia y alineadores'] },
+          ],
           slug: 'daniela-alzate',
         },
         {
@@ -130,8 +136,10 @@ export const SECTION_REGISTRY: SectionDefinition[] = [
           name: 'Dr. Iván Darío Jiménez',
           role: { es: 'Especialista en implantes', en: 'Implant specialist' },
           imageUrl: '/images/equipo/Dr-Ivan-Jimenez-Allura.avif',
-          formacion: ['Universidad de Antioquia'],
-          enfoque: ['Implantes dentales'],
+          hoverBlocks: [
+            { id: 'auto-formacion', title: { es: 'Formación', en: 'Training' }, items: ['Universidad de Antioquia'] },
+            { id: 'auto-enfoque', title: { es: 'Enfoque', en: 'Focus areas' }, items: ['Implantes dentales'] },
+          ],
           slug: 'ivan-jimenez',
         },
         {
@@ -139,8 +147,10 @@ export const SECTION_REGISTRY: SectionDefinition[] = [
           name: 'Dr. Sebastián Muñoz',
           role: { es: 'Especialista en estética dental', en: 'Dental aesthetics specialist' },
           imageUrl: '/images/equipo/Dr-Sebastian-Munoz-Allura.avif',
-          formacion: ['Universidad El Bosque'],
-          enfoque: ['Estética dental avanzada'],
+          hoverBlocks: [
+            { id: 'auto-formacion', title: { es: 'Formación', en: 'Training' }, items: ['Universidad El Bosque'] },
+            { id: 'auto-enfoque', title: { es: 'Enfoque', en: 'Focus areas' }, items: ['Estética dental avanzada'] },
+          ],
           slug: 'sebastian-munoz',
         },
         {
@@ -148,8 +158,10 @@ export const SECTION_REGISTRY: SectionDefinition[] = [
           name: 'Dr. Alejandro Cifuentes',
           role: { es: 'Médico estético', en: 'Aesthetic physician' },
           imageUrl: '/images/equipo/Dr-Alejandro-Cifuentes-Allura.avif',
-          formacion: ['Universidad de Antioquia'],
-          enfoque: ['Medicina estética facial'],
+          hoverBlocks: [
+            { id: 'auto-formacion', title: { es: 'Formación', en: 'Training' }, items: ['Universidad de Antioquia'] },
+            { id: 'auto-enfoque', title: { es: 'Enfoque', en: 'Focus areas' }, items: ['Medicina estética facial'] },
+          ],
           slug: 'alejandro-cifuentes',
         },
       ],
