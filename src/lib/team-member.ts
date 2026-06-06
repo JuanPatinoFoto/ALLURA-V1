@@ -44,7 +44,7 @@ export function normalizeMember(raw: RawTeamMember): TeamMember {
 
   let hoverBlocks: HoverBlock[]
   if (raw.hoverBlocks && raw.hoverBlocks.length > 0) {
-    hoverBlocks = raw.hoverBlocks
+    hoverBlocks = raw.hoverBlocks.map(b => ({ ...b, items: [...b.items] }))
   } else {
     hoverBlocks = []
     if (raw.formacion && raw.formacion.length > 0) {
