@@ -3,13 +3,21 @@ import { Link } from '@/navigation'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 
 type I18n = { es?: string; en?: string }
-type Card = { iconType?: 'none' | 'emoji' | 'image'; icon?: string; iconImageUrl?: string; title?: I18n; body?: I18n; imageUrl?: string; ctaLabel?: I18n; ctaUrl?: string }
+type CtaStyle = 'link' | 'button-navy' | 'button-whatsapp' | 'button-outline'
+type Card = { iconType?: 'none' | 'emoji' | 'image'; icon?: string; iconImageUrl?: string; title?: I18n; body?: I18n; imageUrl?: string; ctaLabel?: I18n; ctaUrl?: string; ctaStyle?: CtaStyle }
 type Settings = {
   eyebrow?: I18n; title?: I18n; subtitle?: I18n
   columns?: 2 | 3 | 4
   bg?: 'white' | 'light' | 'navy'
   cardStyle?: 'flat' | 'shadow' | 'bordered' | 'image-top'
   cards?: Card[]
+}
+
+const CTA_CLS: Record<CtaStyle, string> = {
+  'link':             'mt-2 inline-flex items-center gap-1 text-sm font-medium text-[#051c33] hover:underline',
+  'button-navy':      'mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-[#051c33] text-white rounded-full font-body font-bold text-sm hover:bg-[#062a4e] transition-colors',
+  'button-whatsapp':  'mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-[#25D366] text-white rounded-full font-body font-bold text-sm hover:bg-[#1ebe5d] transition-colors',
+  'button-outline':   'mt-2 inline-flex items-center gap-2 px-5 py-2.5 border border-[#051c33] text-[#051c33] rounded-full font-body font-bold text-sm hover:bg-[#051c33]/5 transition-colors',
 }
 
 interface CardsGridSectionProps {
@@ -110,9 +118,9 @@ export function CardsGridSection({ locale = 'es', settings = {} }: CardsGridSect
                   {ctaLabel && ctaUrl && (
                     <Link
                       href={ctaUrl as `/${string}`}
-                      className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-[#051c33] hover:underline"
+                      className={CTA_CLS[card.ctaStyle ?? 'link']}
                     >
-                      {ctaLabel} →
+                      {ctaLabel}{(card.ctaStyle ?? 'link') === 'link' ? ' →' : ''}
                     </Link>
                   )}
                 </div>

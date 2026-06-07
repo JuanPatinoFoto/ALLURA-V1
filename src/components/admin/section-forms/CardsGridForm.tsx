@@ -4,6 +4,7 @@ import { ImageUploader } from '@/components/admin/ImageUploader'
 import { Plus, Trash2 } from 'lucide-react'
 
 type I18n = { es: string; en: string }
+type CtaStyle = 'link' | 'button-navy' | 'button-whatsapp' | 'button-outline'
 type Card = {
   iconType: 'none' | 'emoji' | 'image'
   icon: string
@@ -13,7 +14,15 @@ type Card = {
   imageUrl: string
   ctaLabel: I18n
   ctaUrl: string
+  ctaStyle: CtaStyle
 }
+
+const CTA_STYLES: { value: CtaStyle; label: string; preview: string }[] = [
+  { value: 'link',            label: 'Enlace',    preview: 'text-[#051c33] underline text-xs' },
+  { value: 'button-navy',     label: 'Azul',      preview: 'bg-[#051c33] text-white text-xs px-2 py-0.5 rounded-full' },
+  { value: 'button-whatsapp', label: 'WhatsApp',  preview: 'bg-[#25D366] text-white text-xs px-2 py-0.5 rounded-full' },
+  { value: 'button-outline',  label: 'Borde',     preview: 'border border-[#051c33] text-[#051c33] text-xs px-2 py-0.5 rounded-full' },
+]
 type Settings = {
   internalName: string
   eyebrow: I18n
@@ -46,6 +55,7 @@ const emptyCard = (): Card => ({
   imageUrl: '',
   ctaLabel: { es: '', en: '' },
   ctaUrl: '',
+  ctaStyle: 'button-navy',
 })
 
 export function CardsGridForm({ settings, onChange }: { settings: Record<string, unknown>; onChange: (s: Record<string, unknown>) => void }) {
@@ -220,6 +230,23 @@ export function CardsGridForm({ settings, onChange }: { settings: Record<string,
                 <div>
                   <label className={labelCls}>URL</label>
                   <input value={cards[activeCard].ctaUrl ?? ''} onChange={e => updCard(activeCard, 'ctaUrl', e.target.value)} className={inputCls} placeholder="/contacto" />
+                </div>
+              </div>
+
+              {/* Estilo del botón */}
+              <div>
+                <label className={labelCls}>Estilo del botón</label>
+                <div className="grid grid-cols-2 gap-2">
+                  {CTA_STYLES.map(opt => (
+                    <button
+                      key={opt.value}
+                      type="button"
+                      onClick={() => updCard(activeCard, 'ctaStyle', opt.value)}
+                      className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-xs transition-colors ${(cards[activeCard].ctaStyle ?? 'button-navy') === opt.value ? 'border-[#051c33] ring-1 ring-[#051c33] bg-[#051c33]/5' : 'border-gray-200 hover:border-gray-300'}`}
+                    >
+                      <span className={opt.preview}>{opt.label}</span>
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
