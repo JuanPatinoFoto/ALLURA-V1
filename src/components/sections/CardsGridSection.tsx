@@ -9,15 +9,16 @@ type Settings = {
   eyebrow?: I18n; title?: I18n; subtitle?: I18n
   columns?: 2 | 3 | 4
   bg?: 'white' | 'light' | 'navy'
+  cardBg?: 'white' | 'light' | 'navy'
   cardStyle?: 'flat' | 'shadow' | 'bordered' | 'image-top'
   cards?: Card[]
 }
 
 const CTA_CLS: Record<CtaStyle, string> = {
-  'link':             'mt-2 inline-flex items-center gap-1 text-sm font-medium text-[#051c33] hover:underline',
-  'button-navy':      'mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-[#051c33] text-white rounded-full font-body font-bold text-sm hover:bg-[#062a4e] transition-colors',
-  'button-whatsapp':  'mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-[#25D366] text-white rounded-full font-body font-bold text-sm hover:bg-[#1ebe5d] transition-colors',
-  'button-outline':   'mt-2 inline-flex items-center gap-2 px-5 py-2.5 border border-[#051c33] text-[#051c33] rounded-full font-body font-bold text-sm hover:bg-[#051c33]/5 transition-colors',
+  'link':             'mt-2 inline-flex items-center gap-1 text-sm font-medium hover:underline w-fit',
+  'button-navy':      'mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-[#051c33] text-white rounded-lg font-body font-bold text-sm hover:bg-[#062a4e] transition-colors w-fit',
+  'button-whatsapp':  'mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-[#25D366] text-white rounded-lg font-body font-bold text-sm hover:bg-[#1ebe5d] transition-colors w-fit',
+  'button-outline':   'mt-2 inline-flex items-center gap-2 px-5 py-2.5 border border-[#051c33] text-[#051c33] rounded-lg font-body font-bold text-sm hover:bg-[#051c33]/5 transition-colors w-fit',
 }
 
 interface CardsGridSectionProps {
@@ -28,11 +29,17 @@ interface CardsGridSectionProps {
 const BG: Record<string, string> = { white: 'bg-white', light: 'bg-[#eaeeef]', navy: 'bg-[#051c33]' }
 const COLS: Record<number, string> = { 2: 'grid-cols-1 sm:grid-cols-2', 3: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3', 4: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4' }
 
+const CARD_BG_CLS: Record<string, string> = {
+  white: 'bg-white',
+  light: 'bg-[#eaeeef]',
+  navy:  'bg-[#051c33]',
+}
+
 const CARD_BASE: Record<string, string> = {
-  flat:      'bg-white rounded-2xl p-7 flex flex-col gap-4',
-  shadow:    'bg-white rounded-2xl p-7 flex flex-col gap-4 shadow-md',
-  bordered:  'bg-white rounded-2xl p-7 flex flex-col gap-4 border border-[#051c33]/10',
-  'image-top': 'bg-white rounded-2xl overflow-hidden flex flex-col',
+  flat:        'rounded-xl p-6 flex flex-col gap-4',
+  shadow:      'rounded-xl p-6 flex flex-col gap-4 shadow-md',
+  bordered:    'rounded-xl p-6 flex flex-col gap-4 border border-[#051c33]/10',
+  'image-top': 'rounded-xl overflow-hidden flex flex-col',
 }
 
 export function CardsGridSection({ locale = 'es', settings = {} }: CardsGridSectionProps) {
@@ -50,7 +57,7 @@ export function CardsGridSection({ locale = 'es', settings = {} }: CardsGridSect
   if (cards.length === 0) return null
 
   return (
-    <section className={`${BG[s.bg ?? 'white']} py-16 px-6 md:px-12`}>
+    <section className={`${BG[s.bg ?? 'white']} py-16 px-4 md:px-8`}>
       <div className="container mx-auto max-w-6xl">
         {(eyebrow || title || subtitle) && (
           <div className="mb-12">
@@ -71,8 +78,11 @@ export function CardsGridSection({ locale = 'es', settings = {} }: CardsGridSect
             const ctaLabel   = card.ctaLabel?.[loc] || card.ctaLabel?.es || ''
             const ctaUrl     = card.ctaUrl || ''
 
+            const cardBgCls = CARD_BG_CLS[s.cardBg ?? 'white']
+            const isCardNavy = (s.cardBg ?? 'white') === 'navy'
+
             return (
-              <div key={i} className={CARD_BASE[cardStyle] ?? CARD_BASE.bordered}>
+              <div key={i} className={`${CARD_BASE[cardStyle] ?? CARD_BASE.bordered} ${cardBgCls} transition-shadow duration-200 hover:shadow-lg`}>
                 {/* Image top style */}
                 {cardStyle === 'image-top' && card.imageUrl && (
                   <div className="relative w-full aspect-[16/9] overflow-hidden">
@@ -102,14 +112,14 @@ export function CardsGridSection({ locale = 'es', settings = {} }: CardsGridSect
 
                   {/* Title */}
                   {cardTitle && (
-                    <h3 className={`font-heading text-lg leading-snug ${isNavy ? 'text-white' : 'text-[#051c33]'}`}>
+                    <h3 className={`font-heading text-lg leading-snug ${isCardNavy ? 'text-white' : 'text-[#051c33]'}`}>
                       {cardTitle}
                     </h3>
                   )}
 
                   {/* Body */}
                   {cardBody && (
-                    <p className={`font-body text-sm leading-relaxed flex-1 ${isNavy ? 'text-white/70' : 'text-[#abacae]'}`}>
+                    <p className={`font-body text-sm leading-relaxed flex-1 ${isCardNavy ? 'text-white/70' : 'text-[#abacae]'}`}>
                       {cardBody}
                     </p>
                   )}
@@ -118,7 +128,7 @@ export function CardsGridSection({ locale = 'es', settings = {} }: CardsGridSect
                   {ctaLabel && ctaUrl && (
                     <Link
                       href={ctaUrl as `/${string}`}
-                      className={CTA_CLS[card.ctaStyle ?? 'link']}
+                      className={`${CTA_CLS[card.ctaStyle ?? 'link']} ${(card.ctaStyle ?? 'link') === 'link' ? (isCardNavy ? 'text-white/80' : 'text-[#051c33]') : ''}`}
                     >
                       {ctaLabel}{(card.ctaStyle ?? 'link') === 'link' ? ' →' : ''}
                     </Link>

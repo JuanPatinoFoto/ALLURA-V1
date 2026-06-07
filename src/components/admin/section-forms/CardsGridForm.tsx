@@ -19,9 +19,9 @@ type Card = {
 
 const CTA_STYLES: { value: CtaStyle; label: string; preview: string }[] = [
   { value: 'link',            label: 'Enlace',    preview: 'text-[#051c33] underline text-xs' },
-  { value: 'button-navy',     label: 'Azul',      preview: 'bg-[#051c33] text-white text-xs px-2 py-0.5 rounded-full' },
-  { value: 'button-whatsapp', label: 'WhatsApp',  preview: 'bg-[#25D366] text-white text-xs px-2 py-0.5 rounded-full' },
-  { value: 'button-outline',  label: 'Borde',     preview: 'border border-[#051c33] text-[#051c33] text-xs px-2 py-0.5 rounded-full' },
+  { value: 'button-navy',     label: 'Azul',      preview: 'bg-[#051c33] text-white text-xs px-2 py-0.5 rounded-lg' },
+  { value: 'button-whatsapp', label: 'WhatsApp',  preview: 'bg-[#25D366] text-white text-xs px-2 py-0.5 rounded-lg' },
+  { value: 'button-outline',  label: 'Borde',     preview: 'border border-[#051c33] text-[#051c33] text-xs px-2 py-0.5 rounded-lg' },
 ]
 type Settings = {
   internalName: string
@@ -30,6 +30,7 @@ type Settings = {
   subtitle: I18n
   columns: 2 | 3 | 4
   bg: 'white' | 'light' | 'navy'
+  cardBg: 'white' | 'light' | 'navy'
   cardStyle: 'flat' | 'shadow' | 'bordered' | 'image-top'
   cards: Card[]
 }
@@ -282,12 +283,25 @@ export function CardsGridForm({ settings, onChange }: { settings: Record<string,
           </div>
 
           <div>
-            <label className={labelCls}>Color de fondo</label>
+            <label className={labelCls}>Fondo de la sección</label>
             <div className="flex gap-3">
               {[{value:'white',label:'Blanco',cls:'bg-white border border-gray-200'},{value:'light',label:'Claro',cls:'bg-[#eaeeef]'},{value:'navy',label:'Oscuro',cls:'bg-[#051c33]'}].map(opt => (
                 <label key={opt.value} className="flex flex-col items-center gap-1 cursor-pointer">
-                  <input type="radio" name="bg" value={opt.value} checked={s.bg === opt.value} onChange={() => upd('bg', opt.value)} className="sr-only" />
-                  <div className={`w-10 h-10 rounded-lg ${opt.cls} ${s.bg === opt.value ? 'ring-2 ring-[#051c33] ring-offset-2' : ''}`} />
+                  <input type="radio" name="bg" value={opt.value} checked={(s.bg ?? 'white') === opt.value} onChange={() => upd('bg', opt.value)} className="sr-only" />
+                  <div className={`w-10 h-10 rounded-lg ${opt.cls} ${(s.bg ?? 'white') === opt.value ? 'ring-2 ring-[#051c33] ring-offset-2' : ''}`} />
+                  <span className="text-xs text-gray-500">{opt.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className={labelCls}>Fondo de las tarjetas</label>
+            <div className="flex gap-3">
+              {[{value:'white',label:'Blanco',cls:'bg-white border border-gray-200'},{value:'light',label:'Claro',cls:'bg-[#eaeeef]'},{value:'navy',label:'Oscuro',cls:'bg-[#051c33]'}].map(opt => (
+                <label key={opt.value} className="flex flex-col items-center gap-1 cursor-pointer">
+                  <input type="radio" name="cardBg" value={opt.value} checked={(s.cardBg ?? 'white') === opt.value} onChange={() => upd('cardBg', opt.value)} className="sr-only" />
+                  <div className={`w-10 h-10 rounded-lg ${opt.cls} ${(s.cardBg ?? 'white') === opt.value ? 'ring-2 ring-[#051c33] ring-offset-2' : ''}`} />
                   <span className="text-xs text-gray-500">{opt.label}</span>
                 </label>
               ))}
