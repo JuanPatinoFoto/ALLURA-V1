@@ -103,7 +103,7 @@ export async function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-4 bg-white rounded-xl px-4 py-2">
+            <Link href="/" className="inline-block mb-3 bg-white rounded-xl px-4 py-2">
               <Image
                 src="/images/allura-logo.png"
                 alt="Allura Healthcare"
@@ -112,6 +112,9 @@ export async function Footer() {
                 className="h-9 w-auto object-contain"
               />
             </Link>
+            <p className="font-heading text-sm text-white/60 italic mb-4 tracking-wide">
+              Salud que inspira, Viajes que transforman
+            </p>
             <p className="font-body text-sm leading-relaxed text-brand-silver mb-6">
               {t("brand")}
             </p>
