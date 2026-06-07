@@ -5,7 +5,8 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 type I18n = { es?: string; en?: string }
 type CtaStyle = 'link' | 'button-navy' | 'button-whatsapp' | 'button-outline'
 type CtaAlign = 'left' | 'center' | 'right'
-type Card = { iconType?: 'none' | 'emoji' | 'image'; icon?: string; iconImageUrl?: string; title?: I18n; body?: I18n; imageUrl?: string; ctaLabel?: I18n; ctaUrl?: string; ctaStyle?: CtaStyle; ctaAlign?: CtaAlign; cardBg?: 'white' | 'light' | 'navy' }
+type NumberAlign = 'left' | 'center' | 'right'
+type Card = { iconType?: 'none' | 'emoji' | 'image'; icon?: string; iconImageUrl?: string; title?: I18n; body?: I18n; imageUrl?: string; ctaLabel?: I18n; ctaUrl?: string; ctaStyle?: CtaStyle; ctaAlign?: CtaAlign; cardBg?: 'white' | 'light' | 'navy'; cardNumber?: string; numberAlign?: NumberAlign }
 type Settings = {
   eyebrow?: I18n; title?: I18n; subtitle?: I18n
   columns?: 2 | 3 | 4
@@ -105,6 +106,14 @@ export function CardsGridSection({ locale = 'es', settings = {} }: CardsGridSect
                 )}
 
                 <div className={cardStyle === 'image-top' ? 'p-6 flex flex-col gap-3 flex-1 h-full' : 'flex flex-col gap-3 flex-1 h-full'}>
+                  {/* Number */}
+                  {card.cardNumber && (
+                    <div className={`flex ${card.numberAlign === 'center' ? 'justify-center' : card.numberAlign === 'right' ? 'justify-end' : 'justify-start'}`}>
+                      <span className={`font-heading text-5xl leading-none select-none ${isCardNavy ? 'text-white/15' : 'text-[#051c33]/15'}`}>
+                        {card.cardNumber}
+                      </span>
+                    </div>
+                  )}
                   {/* Icon */}
                   {(card.iconType ?? 'emoji') === 'emoji' && card.icon && (
                     <div className="w-12 h-12 rounded-xl bg-[#051c33]/5 flex items-center justify-center text-2xl flex-shrink-0">

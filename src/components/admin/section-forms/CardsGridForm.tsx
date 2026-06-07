@@ -6,6 +6,7 @@ import { Plus, Trash2, AlignLeft, AlignCenter, AlignRight } from 'lucide-react'
 type I18n = { es: string; en: string }
 type CtaStyle = 'link' | 'button-navy' | 'button-whatsapp' | 'button-outline'
 type CtaAlign = 'left' | 'center' | 'right'
+type NumberAlign = 'left' | 'center' | 'right'
 type Card = {
   iconType: 'none' | 'emoji' | 'image'
   icon: string
@@ -18,6 +19,8 @@ type Card = {
   ctaStyle: CtaStyle
   ctaAlign: CtaAlign
   cardBg: 'white' | 'light' | 'navy'
+  cardNumber: string
+  numberAlign: NumberAlign
 }
 
 const CTA_STYLES: { value: CtaStyle; label: string; preview: string }[] = [
@@ -61,6 +64,8 @@ const emptyCard = (): Card => ({
   ctaStyle: 'button-navy',
   ctaAlign: 'left',
   cardBg: 'white',
+  cardNumber: '',
+  numberAlign: 'left',
 })
 
 export function CardsGridForm({ settings, onChange }: { settings: Record<string, unknown>; onChange: (s: Record<string, unknown>) => void }) {
@@ -173,6 +178,31 @@ export function CardsGridForm({ settings, onChange }: { settings: Record<string,
                     <Trash2 size={12} />
                   </button>
                 )}
+              </div>
+
+              {/* Número decorativo */}
+              <div className="border border-gray-100 rounded-lg p-3 space-y-2 bg-gray-50">
+                <label className="block text-xs font-semibold text-gray-500">Número decorativo <span className="font-normal">(opcional, ej: 01, 02…)</span></label>
+                <input
+                  value={cards[activeCard].cardNumber ?? ''}
+                  onChange={e => updCard(activeCard, 'cardNumber', e.target.value)}
+                  className={inputCls}
+                  placeholder="Ej: 01"
+                  maxLength={4}
+                />
+                <div className="flex gap-2 pt-1">
+                  {([
+                    { value: 'left',   icon: <AlignLeft size={13} />,   label: 'Izq.' },
+                    { value: 'center', icon: <AlignCenter size={13} />, label: 'Centro' },
+                    { value: 'right',  icon: <AlignRight size={13} />,  label: 'Der.' },
+                  ] as const).map(opt => (
+                    <button key={opt.value} type="button"
+                      onClick={() => updCard(activeCard, 'numberAlign', opt.value)}
+                      className={`flex-1 flex flex-col items-center gap-1 py-1.5 rounded-lg border text-xs transition-colors ${(cards[activeCard].numberAlign ?? 'left') === opt.value ? 'border-[#051c33] bg-[#051c33]/5 text-[#051c33] font-semibold' : 'border-gray-200 text-gray-400'}`}>
+                      {opt.icon}{opt.label}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Icon type selector */}
