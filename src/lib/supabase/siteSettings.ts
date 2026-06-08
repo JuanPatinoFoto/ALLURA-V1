@@ -30,6 +30,7 @@ export async function getSiteSettings(): Promise<SiteSettings | null> {
     socialLinkedin: map.social_linkedin as string | undefined,
     socialYoutube: map.social_youtube as string | undefined,
     socialTiktok: map.social_tiktok as string | undefined,
+    socialX: map.social_x as string | undefined,
     seoTitle: map.seo_title as SiteSettings['seoTitle'],
     seoDescription: map.seo_description as SiteSettings['seoDescription'],
     seoImageUrl: map.seo_image_url as string | undefined,

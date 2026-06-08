@@ -23,6 +23,7 @@ export interface SiteSettings {
   socialLinkedin?: string
   socialYoutube?: string
   socialTiktok?: string
+  socialX?: string
   seoTitle?: I18nField
   seoDescription?: I18nField
   seoImageUrl?: string

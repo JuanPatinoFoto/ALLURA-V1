@@ -255,14 +255,17 @@ export default function FooterEditorPage() {
           <Field label="Texto disponibilidad WhatsApp (inglés)">
             <input value={values.footer_wa_avail_en ?? ''} onChange={e => set('footer_wa_avail_en', e.target.value)} className={inp} />
           </Field>
-          <Field label="Instagram URL" hint="Ej: https://www.instagram.com/allurahealthcare">
-            <input type="text" value={values.social_instagram ?? ''} onChange={e => set('social_instagram', e.target.value)} placeholder="https://www.instagram.com/..." className={inp} />
-          </Field>
           <Field label="Facebook URL" hint="Ej: https://www.facebook.com/allurahealthcare">
             <input type="text" value={values.social_facebook ?? ''} onChange={e => set('social_facebook', e.target.value)} placeholder="https://www.facebook.com/..." className={inp} />
           </Field>
-          <Field label="LinkedIn URL" hint="Ej: https://www.linkedin.com/company/allura">
-            <input type="text" value={values.social_linkedin ?? ''} onChange={e => set('social_linkedin', e.target.value)} placeholder="https://www.linkedin.com/..." className={inp} />
+          <Field label="Instagram URL" hint="Ej: https://www.instagram.com/allurahealthcare">
+            <input type="text" value={values.social_instagram ?? ''} onChange={e => set('social_instagram', e.target.value)} placeholder="https://www.instagram.com/..." className={inp} />
+          </Field>
+          <Field label="TikTok URL" hint="Ej: https://www.tiktok.com/@allurahealthcare">
+            <input type="text" value={values.social_tiktok ?? ''} onChange={e => set('social_tiktok', e.target.value)} placeholder="https://www.tiktok.com/@..." className={inp} />
+          </Field>
+          <Field label="X (Twitter) URL" hint="Ej: https://x.com/allurahealthcare">
+            <input type="text" value={values.social_x ?? ''} onChange={e => set('social_x', e.target.value)} placeholder="https://x.com/..." className={inp} />
           </Field>
         </Section>
 
