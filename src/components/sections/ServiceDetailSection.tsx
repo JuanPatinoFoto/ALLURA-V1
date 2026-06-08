@@ -69,7 +69,7 @@ export async function ServiceDetailSection({ locale = 'es', settings = {} }: Pro
       {benefits.length > 0 && (
         <section className="py-16 px-6 md:px-12 bg-white">
           <div className="container-allura">
-            <SectionHeading eyebrow="Beneficios" title="¿Por qué este tratamiento?" />
+            <SectionHeading eyebrow="Beneficios" title="¿Qué lograrás con este tratamiento?" />
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
               {benefits.map((b, i) => {
                 const text = b[loc] || b.es || ''
