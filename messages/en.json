@@ -124,12 +124,24 @@
     "subtitle": "Meet the professionals who guide each journey with clinical expertise, international experience and personalized attention.",
     "cta": "Learn more about them",
     "members": [
-      { "specialty": "Dentist, Specialist in Periodontal Prosthetics" },
-      { "specialty": "Dentist and Orthodontist" },
-      { "specialty": "Dentist, Orthodontist and MSc." },
-      { "specialty": "Dentist, Orthodontist and MSc." },
-      { "specialty": "Dentist MSc, Specialist in Periodontal Prosthetics" },
-      { "specialty": "Dentist, Specialist in Oral Rehabilitation" }
+      {
+        "specialty": "Dentist, Specialist in Periodontal Prosthetics"
+      },
+      {
+        "specialty": "Dentist and Orthodontist"
+      },
+      {
+        "specialty": "Dentist, Orthodontist and MSc."
+      },
+      {
+        "specialty": "Dentist, Orthodontist and MSc."
+      },
+      {
+        "specialty": "Dentist MSc, Specialist in Periodontal Prosthetics"
+      },
+      {
+        "specialty": "Dentist, Specialist in Oral Rehabilitation"
+      }
     ]
   },
   "process": {
@@ -163,7 +175,7 @@
     "eyebrow": "Take the first step",
     "title": "Transform your wellbeing. Book your consultation today.",
     "body": "Our team will be with you at every stage. No commitments, complete transparency.",
-    "button": "Contact us now"
+    "button": "Chat on WhatsApp"
   },
   "serviceTemplate": {
     "whatsapp": "Chat on WhatsApp",
@@ -208,16 +220,37 @@
     "pillarsTitle": "The pillars of Allura",
     "pillarsSubtitle": "Three principles that guide every decision we make with our patients.",
     "pillars": [
-      { "number": "01", "title": "Honest diagnosis", "description": "We evaluate each case without rushing, with 3D digital diagnosis and specialist opinion." },
-      { "number": "02", "title": "Personalized plan", "description": "We design an exclusive roadmap for you: treatment, accommodation and experience in Medellín." },
-      { "number": "03", "title": "Total support", "description": "We coordinate arrival, procedures, recovery and post-return follow-up from your home country." }
+      {
+        "number": "01",
+        "title": "Honest diagnosis",
+        "description": "We evaluate each case without rushing, with 3D digital diagnosis and specialist opinion."
+      },
+      {
+        "number": "02",
+        "title": "Personalized plan",
+        "description": "We design an exclusive roadmap for you: treatment, accommodation and experience in Medellín."
+      },
+      {
+        "number": "03",
+        "title": "Total support",
+        "description": "We coordinate arrival, procedures, recovery and post-return follow-up from your home country."
+      }
     ],
     "valuesLabel": "Our values",
     "valuesTitle": "What defines us",
     "values": [
-      { "title": "Excellence", "description": "Every treatment follows the highest international standards, with certified specialists and cutting-edge technology." },
-      { "title": "Empathy", "description": "We listen and understand your story before any recommendation. Your wellbeing is our only priority." },
-      { "title": "Transparency", "description": "Clear information, real prices and ethical processes at all times. No surprises, no hidden commitments." }
+      {
+        "title": "Excellence",
+        "description": "Every treatment follows the highest international standards, with certified specialists and cutting-edge technology."
+      },
+      {
+        "title": "Empathy",
+        "description": "We listen and understand your story before any recommendation. Your wellbeing is our only priority."
+      },
+      {
+        "title": "Transparency",
+        "description": "Clear information, real prices and ethical processes at all times. No surprises, no hidden commitments."
+      }
     ]
   },
   "equipo": {
@@ -233,44 +266,108 @@
       {
         "name": "Dra. Johanna Jaramillo",
         "specialty": "Dentist · Specialist in Periodontal Prosthetics",
-        "formacion": ["Dentist – Universidad CES (1999)", "Specialist in Periodontal Prosthodontics (2004)"],
-        "reconocimiento": ["Key Opinion Leader in implantology", "Member of international specialized networks", "University lecturer since 2006", "National and international speaker"],
-        "enfoque": ["Dental implants and complex rehabilitations", "Interdisciplinary cases", "Digital clinical photography"]
+        "formacion": [
+          "Dentist – Universidad CES (1999)",
+          "Specialist in Periodontal Prosthodontics (2004)"
+        ],
+        "reconocimiento": [
+          "Key Opinion Leader in implantology",
+          "Member of international specialized networks",
+          "University lecturer since 2006",
+          "National and international speaker"
+        ],
+        "enfoque": [
+          "Dental implants and complex rehabilitations",
+          "Interdisciplinary cases",
+          "Digital clinical photography"
+        ]
       },
       {
         "name": "Dra. Daniela Alzate",
         "specialty": "Dentist · Orthodontist and MSc.",
-        "formacion": ["Dentist – Universidad CES (2013)", "Specialist in Orthodontics – Universidad CES (2020)", "Master's in Dental Sciences – Universidad CES (2020)"],
-        "reconocimiento": ["Co-author of study published in American Journal of Orthodontics and Dentofacial Orthopedics"],
-        "enfoque": ["Modern orthodontics and clear aligners", "Facial harmonization through orthodontics", "Evidence-based treatment plans"]
+        "formacion": [
+          "Dentist – Universidad CES (2013)",
+          "Specialist in Orthodontics – Universidad CES (2020)",
+          "Master's in Dental Sciences – Universidad CES (2020)"
+        ],
+        "reconocimiento": [
+          "Co-author of study published in American Journal of Orthodontics and Dentofacial Orthopedics"
+        ],
+        "enfoque": [
+          "Modern orthodontics and clear aligners",
+          "Facial harmonization through orthodontics",
+          "Evidence-based treatment plans"
+        ]
       },
       {
         "name": "Dr. Sebastián Muñoz",
         "specialty": "Dentist MSc · Specialist in Periodontal Prosthetics",
-        "formacion": ["Dentist – Universidad CES (2000)", "Specialist in Periodontal Prosthodontics (2005)", "Master's in Dental Sciences (2018)", "Clinical Master's in aesthetic dentistry (gIDE / UCLA)"],
-        "reconocimiento": ["Director of oral rehabilitation postgraduate program (CES)", "International speaker"],
-        "enfoque": ["Full oral rehabilitation", "Advanced dental aesthetics", "Complex interdisciplinary cases"]
+        "formacion": [
+          "Dentist – Universidad CES (2000)",
+          "Specialist in Periodontal Prosthodontics (2005)",
+          "Master's in Dental Sciences (2018)",
+          "Clinical Master's in aesthetic dentistry (gIDE / UCLA)"
+        ],
+        "reconocimiento": [
+          "Director of oral rehabilitation postgraduate program (CES)",
+          "International speaker"
+        ],
+        "enfoque": [
+          "Full oral rehabilitation",
+          "Advanced dental aesthetics",
+          "Complex interdisciplinary cases"
+        ]
       },
       {
         "name": "Dr. Santiago Henao",
         "specialty": "Dentist · Orthodontist · Diamond Top Doctor Invisalign",
-        "formacion": ["Dentist – UAM (2012)", "Orthodontics and Maxillofacial Orthopedics – Mexico (2015)"],
-        "reconocimiento": ["Diamond Top Doctor Invisalign", "Key Opinion Leader in aligners"],
-        "enfoque": ["Invisalign treatments", "Digital orthodontics", "Smile aesthetics"]
+        "formacion": [
+          "Dentist – UAM (2012)",
+          "Orthodontics and Maxillofacial Orthopedics – Mexico (2015)"
+        ],
+        "reconocimiento": [
+          "Diamond Top Doctor Invisalign",
+          "Key Opinion Leader in aligners"
+        ],
+        "enfoque": [
+          "Invisalign treatments",
+          "Digital orthodontics",
+          "Smile aesthetics"
+        ]
       },
       {
         "name": "Dr. Iván Darío Jiménez",
         "specialty": "Dentist · Orthodontist and MSc.",
-        "formacion": ["Orthodontics and Master's – University of Manitoba, Canada", "American Board of Orthodontics certification"],
-        "reconocimiento": ["International speaker in dental research", "Member of global orthodontics associations"],
-        "enfoque": ["Facial growth and development", "Advanced orthodontics", "Functional and aesthetic balance"]
+        "formacion": [
+          "Orthodontics and Master's – University of Manitoba, Canada",
+          "American Board of Orthodontics certification"
+        ],
+        "reconocimiento": [
+          "International speaker in dental research",
+          "Member of global orthodontics associations"
+        ],
+        "enfoque": [
+          "Facial growth and development",
+          "Advanced orthodontics",
+          "Functional and aesthetic balance"
+        ]
       },
       {
         "name": "Dr. Alejandro Cifuentes",
         "specialty": "Dentist · Specialist in Oral Rehabilitation",
-        "formacion": ["Dentist – Universidad CES (2013)", "Specialist in Oral Rehabilitation (Prosthodontics) – Universidad CES (2020)"],
-        "reconocimiento": ["Technical director of high-precision dental laboratory", "Lecturer in dental aesthetics diploma (since 2022)"],
-        "enfoque": ["Smile design and veneers", "Full oral rehabilitation", "Digital dentistry"]
+        "formacion": [
+          "Dentist – Universidad CES (2013)",
+          "Specialist in Oral Rehabilitation (Prosthodontics) – Universidad CES (2020)"
+        ],
+        "reconocimiento": [
+          "Technical director of high-precision dental laboratory",
+          "Lecturer in dental aesthetics diploma (since 2022)"
+        ],
+        "enfoque": [
+          "Smile design and veneers",
+          "Full oral rehabilitation",
+          "Digital dentistry"
+        ]
       }
     ]
   },
@@ -286,28 +383,56 @@
         "eyebrow": "Comprehensive Dentistry",
         "trademark": "Allura Full Mouth Reconstruction™",
         "description": "Comprehensive solution to restore function, stability and a smile that feels secure again. For patients who have lost teeth, have severe deterioration, or need complete rehabilitation, we design a comprehensive plan backed by 3D technology and top-level specialists.",
-        "items": ["Single and multiple implants", "All-on-X implants", "Full oral rehabilitation", "Fixed prostheses on implants", "Replacement of failed restorations", "3D digital planning"],
+        "items": [
+          "Single and multiple implants",
+          "All-on-X implants",
+          "Full oral rehabilitation",
+          "Fixed prostheses on implants",
+          "Replacement of failed restorations",
+          "3D digital planning"
+        ],
         "href": "/servicios/full-mouth-reconstruction"
       },
       {
         "eyebrow": "Dental Aesthetics",
         "trademark": "Allura Smile Makeover™",
         "description": "Your smile, redesigned with artistic precision. We combine digital design, porcelain veneers and cutting-edge technology so each smile is unique, natural and projects exactly what you want to convey.",
-        "items": ["Porcelain veneers", "Digital smile design", "Porcelain crowns", "Advanced aesthetic restorations", "Professional teeth whitening"],
+        "items": [
+          "Porcelain veneers",
+          "Digital smile design",
+          "Porcelain crowns",
+          "Advanced aesthetic restorations",
+          "Professional teeth whitening"
+        ],
         "href": "/servicios/smile-makeover"
       },
       {
         "eyebrow": "Invisible Orthodontics",
         "trademark": "Allura Aligners™",
         "description": "Bracket-free orthodontics with personalized digital planning and remote monitoring for international patients. We use Invisalign and next-generation aligners to achieve precise alignments with complete discretion.",
-        "items": ["Invisalign", "Clear aligners", "3D digital scanning", "Personalized planning", "International remote monitoring"],
+        "items": [
+          "Invisalign",
+          "Clear aligners",
+          "3D digital scanning",
+          "Personalized planning",
+          "International remote monitoring"
+        ],
         "href": "/servicios/aligners"
       },
       {
         "eyebrow": "Facial Aesthetic Medicine",
         "trademark": "Allura Facial Harmony™",
         "description": "Precision facial aesthetic medicine to enhance your features naturally. Our team of specialists works with minimally invasive techniques and international protocols for results that look authentic and lasting.",
-        "items": ["Structural facial assessment", "Botulinum toxin and dermal fillers", "Biostimulators and rejuvenation", "Blepharoplasty", "Rhinoplasty", "Facelift", "Mentoplasty", "Maxillofacial surgery coordination"],
+        "items": [
+          "Structural facial assessment",
+          "Botulinum toxin and dermal fillers",
+          "Biostimulators and rejuvenation",
+          "Blepharoplasty",
+          "Rhinoplasty",
+          "Facelift",
+          "Mentoplasty",
+          "Maxillofacial surgery coordination"
+        ],
         "href": "/servicios/facial-harmony"
       }
     ]
@@ -379,10 +504,22 @@
     "faqLabel": "Frequently asked questions",
     "faqTitle": "What people ask us most",
     "faqs": [
-      { "q": "Do I need to speak Spanish to receive care?", "a": "No. We have bilingual coordinators (Spanish and English) available throughout the entire process." },
-      { "q": "What happens if I need follow-up after returning to my country?", "a": "We offer remote follow-up with video calls and direct communication with your specialist via WhatsApp." },
-      { "q": "Do procedures include a guarantee?", "a": "Yes. All our treatments include guarantees according to the type of procedure, with clear follow-up protocols." },
-      { "q": "Can I combine several treatments in one trip?", "a": "Absolutely. In fact, many patients optimize their trip by combining dental and facial aesthetic medicine treatments." }
+      {
+        "q": "Do I need to speak Spanish to receive care?",
+        "a": "No. We have bilingual coordinators (Spanish and English) available throughout the entire process."
+      },
+      {
+        "q": "What happens if I need follow-up after returning to my country?",
+        "a": "We offer remote follow-up with video calls and direct communication with your specialist via WhatsApp."
+      },
+      {
+        "q": "Do procedures include a guarantee?",
+        "a": "Yes. All our treatments include guarantees according to the type of procedure, with clear follow-up protocols."
+      },
+      {
+        "q": "Can I combine several treatments in one trip?",
+        "a": "Absolutely. In fact, many patients optimize their trip by combining dental and facial aesthetic medicine treatments."
+      }
     ],
     "ctaEyebrow": "Ready to start?",
     "ctaTitle": "Your first step is a conversation",
@@ -401,7 +538,13 @@
     "imagePlaceholder": "Image coming soon",
     "readTimeSuffix": "read",
     "comingSoon": "More articles coming soon. Subscribe to receive updates.",
-    "categories": ["All", "Dentistry", "Facial Medicine", "Medical Tourism", "Wellness Tips"],
+    "categories": [
+      "All",
+      "Dentistry",
+      "Facial Medicine",
+      "Medical Tourism",
+      "Wellness Tips"
+    ],
     "posts": [
       {
         "category": "Dentistry",

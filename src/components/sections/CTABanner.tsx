@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
 import { useTranslations } from "next-intl";
 import type { LocaleString, SanityImage, CtaField } from "@/types/cms";
+
+const WA_URL = "https://wa.me/17862087572?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20Allura%20Healthcare";
 
 export interface CTABannerProps {
   sanityData?: {
@@ -20,26 +21,20 @@ export interface CTABannerProps {
 export function CTABanner({ sanityData, locale = "es", settings }: CTABannerProps = {}) {
   const t = useTranslations("cta");
 
-  // Helper to get locale-aware text with settings → Sanity → i18n fallback
   const getText = (sanityValue: LocaleString | undefined, i18nKey: string, settingsKey: string): string => {
     const fromSettings = (settings?.[settingsKey] as { es?: string; en?: string })?.[locale as 'es' | 'en'];
     if (fromSettings && fromSettings.trim()) return fromSettings;
     if (sanityValue && sanityValue[locale as keyof LocaleString]) {
       const value = sanityValue[locale as keyof LocaleString];
-      if (value?.trim()) {
-        return value;
-      }
+      if (value?.trim()) return value;
     }
     return t(i18nKey);
   };
 
-  // Get CTA text and href
   const ctaLabel = (settings?.buttonLabel as { es?: string; en?: string })?.[locale as 'es' | 'en']
     || (sanityData?.cta?.label
       ? sanityData.cta.label[locale as keyof LocaleString] || t("button")
       : t("button"));
-  const ctaHref = sanityData?.cta?.url || "/contacto";
-  const ctaNewTab = sanityData?.cta?.openInNewTab ?? false;
 
   return (
     <section className="bg-brand-navy section-padding">
@@ -59,9 +54,14 @@ export function CTABanner({ sanityData, locale = "es", settings }: CTABannerProp
           <p className="font-body text-brand-light/70 text-base mb-10 max-w-lg mx-auto">
             {getText(sanityData?.body, "body", "subtitle")}
           </p>
-          <Button href={ctaHref} variant="secondary" target={ctaNewTab ? "_blank" : undefined}>
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#25D366] text-white rounded-full font-body font-bold text-sm hover:bg-[#22c55e] transition-colors"
+          >
             {ctaLabel}
-          </Button>
+          </a>
         </motion.div>
       </div>
     </section>

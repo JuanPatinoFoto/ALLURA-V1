@@ -124,12 +124,24 @@
     "subtitle": "Conoce a los profesionales que acompañan cada proceso con criterio clínico, experiencia internacional y atención personalizada.",
     "cta": "Conoce más sobre ellos",
     "members": [
-      { "specialty": "Odontóloga, Especialista en Prótesis Periodontal" },
-      { "specialty": "Odontólogo y Ortodoncista" },
-      { "specialty": "Odontóloga, Ortodoncista y MSc." },
-      { "specialty": "Odontólogo, Ortodoncista y MSc." },
-      { "specialty": "Odontólogo, MSc, Especialista en Prótesis Periodontal" },
-      { "specialty": "Odontólogo, Especialista en Rehabilitación Oral" }
+      {
+        "specialty": "Odontóloga, Especialista en Prótesis Periodontal"
+      },
+      {
+        "specialty": "Odontólogo y Ortodoncista"
+      },
+      {
+        "specialty": "Odontóloga, Ortodoncista y MSc."
+      },
+      {
+        "specialty": "Odontólogo, Ortodoncista y MSc."
+      },
+      {
+        "specialty": "Odontólogo, MSc, Especialista en Prótesis Periodontal"
+      },
+      {
+        "specialty": "Odontólogo, Especialista en Rehabilitación Oral"
+      }
     ]
   },
   "process": {
@@ -163,7 +175,7 @@
     "eyebrow": "Da el primer paso",
     "title": "Transforma tu bienestar. Agenda tu consulta hoy.",
     "body": "Nuestro equipo te acompañará en cada etapa. Sin compromisos, con total transparencia.",
-    "button": "Contactar ahora"
+    "button": "Hablar por WhatsApp"
   },
   "serviceTemplate": {
     "whatsapp": "Hablar por WhatsApp",
@@ -208,16 +220,37 @@
     "pillarsTitle": "Los pilares de Allura",
     "pillarsSubtitle": "Tres principios que guían cada decisión que tomamos con nuestros pacientes.",
     "pillars": [
-      { "number": "01", "title": "Diagnóstico honesto", "description": "Evaluamos cada caso sin apresuramiento, con diagnóstico digital 3D y opinión de especialistas." },
-      { "number": "02", "title": "Plan personalizado", "description": "Diseñamos una hoja de ruta exclusiva para ti: tratamiento, alojamiento y experiencia en Medellín." },
-      { "number": "03", "title": "Acompañamiento total", "description": "Coordinamos llegada, procedimientos, recuperación y seguimiento post-retorno desde tu país." }
+      {
+        "number": "01",
+        "title": "Diagnóstico honesto",
+        "description": "Evaluamos cada caso sin apresuramiento, con diagnóstico digital 3D y opinión de especialistas."
+      },
+      {
+        "number": "02",
+        "title": "Plan personalizado",
+        "description": "Diseñamos una hoja de ruta exclusiva para ti: tratamiento, alojamiento y experiencia en Medellín."
+      },
+      {
+        "number": "03",
+        "title": "Acompañamiento total",
+        "description": "Coordinamos llegada, procedimientos, recuperación y seguimiento post-retorno desde tu país."
+      }
     ],
     "valuesLabel": "Nuestros valores",
     "valuesTitle": "Lo que nos define",
     "values": [
-      { "title": "Excelencia", "description": "Cada tratamiento sigue los más altos estándares internacionales, con especialistas certificados y tecnología de vanguardia." },
-      { "title": "Empatía", "description": "Escuchamos y entendemos tu historia antes de cualquier recomendación. Tu bienestar es nuestra única prioridad." },
-      { "title": "Transparencia", "description": "Información clara, precios reales y procesos éticos en todo momento. Sin sorpresas, sin compromisos ocultos." }
+      {
+        "title": "Excelencia",
+        "description": "Cada tratamiento sigue los más altos estándares internacionales, con especialistas certificados y tecnología de vanguardia."
+      },
+      {
+        "title": "Empatía",
+        "description": "Escuchamos y entendemos tu historia antes de cualquier recomendación. Tu bienestar es nuestra única prioridad."
+      },
+      {
+        "title": "Transparencia",
+        "description": "Información clara, precios reales y procesos éticos en todo momento. Sin sorpresas, sin compromisos ocultos."
+      }
     ]
   },
   "equipo": {
@@ -233,44 +266,108 @@
       {
         "name": "Dra. Johanna Jaramillo",
         "specialty": "Odontóloga · Especialista en Prótesis Periodontal",
-        "formacion": ["Odontóloga – Universidad CES (1999)", "Especialista en Prostodoncia Periodontal (2004)"],
-        "reconocimiento": ["Key Opinion Leader en implantología", "Miembro de redes internacionales especializadas", "Docente universitaria desde 2006", "Conferencista nacional e internacional"],
-        "enfoque": ["Implantes dentales y rehabilitaciones complejas", "Casos interdisciplinarios", "Fotografía clínica digital"]
+        "formacion": [
+          "Odontóloga – Universidad CES (1999)",
+          "Especialista en Prostodoncia Periodontal (2004)"
+        ],
+        "reconocimiento": [
+          "Key Opinion Leader en implantología",
+          "Miembro de redes internacionales especializadas",
+          "Docente universitaria desde 2006",
+          "Conferencista nacional e internacional"
+        ],
+        "enfoque": [
+          "Implantes dentales y rehabilitaciones complejas",
+          "Casos interdisciplinarios",
+          "Fotografía clínica digital"
+        ]
       },
       {
         "name": "Dra. Daniela Alzate",
         "specialty": "Odontóloga · Ortodoncista y MSc.",
-        "formacion": ["Odontóloga – Universidad CES (2013)", "Especialista en Ortodoncia – Universidad CES (2020)", "Magíster en Ciencias Odontológicas – Universidad CES (2020)"],
-        "reconocimiento": ["Coautora de estudio publicado en American Journal of Orthodontics and Dentofacial Orthopedics"],
-        "enfoque": ["Ortodoncia moderna y alineadores transparentes", "Armonización facial desde la ortodoncia", "Planes de tratamiento basados en evidencia"]
+        "formacion": [
+          "Odontóloga – Universidad CES (2013)",
+          "Especialista en Ortodoncia – Universidad CES (2020)",
+          "Magíster en Ciencias Odontológicas – Universidad CES (2020)"
+        ],
+        "reconocimiento": [
+          "Coautora de estudio publicado en American Journal of Orthodontics and Dentofacial Orthopedics"
+        ],
+        "enfoque": [
+          "Ortodoncia moderna y alineadores transparentes",
+          "Armonización facial desde la ortodoncia",
+          "Planes de tratamiento basados en evidencia"
+        ]
       },
       {
         "name": "Dr. Sebastián Muñoz",
         "specialty": "Odontólogo MSc · Especialista en Prótesis Periodontal",
-        "formacion": ["Odontólogo – Universidad CES (2000)", "Especialista en Prostodoncia Periodontal (2005)", "Magíster en Ciencias Odontológicas (2018)", "Máster clínico en odontología estética (gIDE / UCLA)"],
-        "reconocimiento": ["Director de posgrado en rehabilitación oral (CES)", "Conferencista internacional"],
-        "enfoque": ["Rehabilitación oral completa", "Estética dental avanzada", "Casos interdisciplinarios complejos"]
+        "formacion": [
+          "Odontólogo – Universidad CES (2000)",
+          "Especialista en Prostodoncia Periodontal (2005)",
+          "Magíster en Ciencias Odontológicas (2018)",
+          "Máster clínico en odontología estética (gIDE / UCLA)"
+        ],
+        "reconocimiento": [
+          "Director de posgrado en rehabilitación oral (CES)",
+          "Conferencista internacional"
+        ],
+        "enfoque": [
+          "Rehabilitación oral completa",
+          "Estética dental avanzada",
+          "Casos interdisciplinarios complejos"
+        ]
       },
       {
         "name": "Dr. Santiago Henao",
         "specialty": "Odontólogo · Ortodoncista · Diamond Top Doctor Invisalign",
-        "formacion": ["Odontólogo – UAM (2012)", "Ortodoncia y Ortopedia Maxilofacial – México (2015)"],
-        "reconocimiento": ["Diamond Top Doctor Invisalign", "Key Opinion Leader en alineadores"],
-        "enfoque": ["Tratamientos con Invisalign", "Ortodoncia digital", "Estética de la sonrisa"]
+        "formacion": [
+          "Odontólogo – UAM (2012)",
+          "Ortodoncia y Ortopedia Maxilofacial – México (2015)"
+        ],
+        "reconocimiento": [
+          "Diamond Top Doctor Invisalign",
+          "Key Opinion Leader en alineadores"
+        ],
+        "enfoque": [
+          "Tratamientos con Invisalign",
+          "Ortodoncia digital",
+          "Estética de la sonrisa"
+        ]
       },
       {
         "name": "Dr. Iván Darío Jiménez",
         "specialty": "Odontólogo · Ortodoncista y MSc.",
-        "formacion": ["Ortodoncia y Maestría – University of Manitoba, Canadá", "Certificación American Board of Orthodontics"],
-        "reconocimiento": ["Conferencista internacional en investigación odontológica", "Miembro de asociaciones globales de ortodoncia"],
-        "enfoque": ["Crecimiento y desarrollo facial", "Ortodoncia avanzada", "Equilibrio funcional y estético"]
+        "formacion": [
+          "Ortodoncia y Maestría – University of Manitoba, Canadá",
+          "Certificación American Board of Orthodontics"
+        ],
+        "reconocimiento": [
+          "Conferencista internacional en investigación odontológica",
+          "Miembro de asociaciones globales de ortodoncia"
+        ],
+        "enfoque": [
+          "Crecimiento y desarrollo facial",
+          "Ortodoncia avanzada",
+          "Equilibrio funcional y estético"
+        ]
       },
       {
         "name": "Dr. Alejandro Cifuentes",
         "specialty": "Odontólogo · Especialista en Rehabilitación Oral",
-        "formacion": ["Odontólogo – Universidad CES (2013)", "Especialista en Rehabilitación Oral (Prostodoncia) – Universidad CES (2020)"],
-        "reconocimiento": ["Director técnico de laboratorio dental de alta precisión", "Docente en diplomado de estética dental (desde 2022)"],
-        "enfoque": ["Diseño de sonrisa y carillas", "Rehabilitación oral completa", "Odontología digital"]
+        "formacion": [
+          "Odontólogo – Universidad CES (2013)",
+          "Especialista en Rehabilitación Oral (Prostodoncia) – Universidad CES (2020)"
+        ],
+        "reconocimiento": [
+          "Director técnico de laboratorio dental de alta precisión",
+          "Docente en diplomado de estética dental (desde 2022)"
+        ],
+        "enfoque": [
+          "Diseño de sonrisa y carillas",
+          "Rehabilitación oral completa",
+          "Odontología digital"
+        ]
       }
     ]
   },
@@ -286,28 +383,56 @@
         "eyebrow": "Odontología Integral",
         "trademark": "Allura Full Mouth Reconstruction™",
         "description": "Solución integral para recuperar función, estabilidad y una sonrisa que vuelva a sentirse segura. Para pacientes que han perdido piezas, presentan deterioro severo o necesitan rehabilitación completa, diseñamos un plan integral respaldado por tecnología 3D y especialistas de alto nivel.",
-        "items": ["Implantes unitarios y múltiples", "Implantes All-on-X", "Rehabilitación oral completa", "Prótesis fijas sobre implantes", "Reemplazo de restauraciones fallidas", "Planificación digital 3D"],
+        "items": [
+          "Implantes unitarios y múltiples",
+          "Implantes All-on-X",
+          "Rehabilitación oral completa",
+          "Prótesis fijas sobre implantes",
+          "Reemplazo de restauraciones fallidas",
+          "Planificación digital 3D"
+        ],
         "href": "/servicios/full-mouth-reconstruction"
       },
       {
         "eyebrow": "Estética Dental",
         "trademark": "Allura Smile Makeover™",
         "description": "Tu sonrisa, rediseñada con precisión artística. Combinamos diseño digital, carillas en porcelana y tecnología de vanguardia para que cada sonrisa sea única, natural y proyecte exactamente lo que quieres transmitir.",
-        "items": ["Carillas en porcelana", "Diseño digital de sonrisa", "Coronas en porcelana", "Restauraciones estéticas avanzadas", "Blanqueamiento dental profesional"],
+        "items": [
+          "Carillas en porcelana",
+          "Diseño digital de sonrisa",
+          "Coronas en porcelana",
+          "Restauraciones estéticas avanzadas",
+          "Blanqueamiento dental profesional"
+        ],
         "href": "/servicios/smile-makeover"
       },
       {
         "eyebrow": "Ortodoncia Invisible",
         "trademark": "Allura Aligners™",
         "description": "Ortodoncia sin brackets, con planificación digital personalizada y seguimiento remoto para pacientes internacionales. Usamos Invisalign y alineadores de última generación para lograr alineaciones precisas con total discreción.",
-        "items": ["Invisalign", "Alineadores transparentes", "Escaneo digital 3D", "Planificación personalizada", "Seguimiento remoto internacional"],
+        "items": [
+          "Invisalign",
+          "Alineadores transparentes",
+          "Escaneo digital 3D",
+          "Planificación personalizada",
+          "Seguimiento remoto internacional"
+        ],
         "href": "/servicios/aligners"
       },
       {
         "eyebrow": "Medicina Facial Estética",
         "trademark": "Allura Facial Harmony™",
         "description": "Medicina facial estética de precisión para realzar tus rasgos con naturalidad. Nuestro equipo de especialistas trabaja con técnicas mínimamente invasivas y protocolos internacionales para resultados que se ven auténticos y duraderos.",
-        "items": ["Evaluación facial estructural", "Toxina botulínica y rellenos dérmicos", "Bioestimuladores y rejuvenecimiento", "Blefaroplastia", "Rinoplastia", "Lifting facial", "Mentoplastia", "Coordinación con cirugía maxilofacial"],
+        "items": [
+          "Evaluación facial estructural",
+          "Toxina botulínica y rellenos dérmicos",
+          "Bioestimuladores y rejuvenecimiento",
+          "Blefaroplastia",
+          "Rinoplastia",
+          "Lifting facial",
+          "Mentoplastia",
+          "Coordinación con cirugía maxilofacial"
+        ],
         "href": "/servicios/facial-harmony"
       }
     ]
@@ -379,10 +504,22 @@
     "faqLabel": "Preguntas frecuentes",
     "faqTitle": "Lo que más nos preguntan",
     "faqs": [
-      { "q": "¿Necesito hablar español para recibir atención?", "a": "No. Contamos con coordinadores bilingües (español e inglés) disponibles durante todo el proceso." },
-      { "q": "¿Qué pasa si necesito seguimiento después de regresar a mi país?", "a": "Ofrecemos seguimiento remoto con videollamadas y comunicación directa con tu especialista vía WhatsApp." },
-      { "q": "¿Los procedimientos incluyen garantía?", "a": "Sí. Todos nuestros tratamientos incluyen garantías según el tipo de procedimiento, con protocolos claros de seguimiento." },
-      { "q": "¿Puedo combinar varios tratamientos en un mismo viaje?", "a": "Absolutamente. De hecho, muchos pacientes optimizan su viaje combinando tratamientos odontológicos y de medicina facial estética." }
+      {
+        "q": "¿Necesito hablar español para recibir atención?",
+        "a": "No. Contamos con coordinadores bilingües (español e inglés) disponibles durante todo el proceso."
+      },
+      {
+        "q": "¿Qué pasa si necesito seguimiento después de regresar a mi país?",
+        "a": "Ofrecemos seguimiento remoto con videollamadas y comunicación directa con tu especialista vía WhatsApp."
+      },
+      {
+        "q": "¿Los procedimientos incluyen garantía?",
+        "a": "Sí. Todos nuestros tratamientos incluyen garantías según el tipo de procedimiento, con protocolos claros de seguimiento."
+      },
+      {
+        "q": "¿Puedo combinar varios tratamientos en un mismo viaje?",
+        "a": "Absolutamente. De hecho, muchos pacientes optimizan su viaje combinando tratamientos odontológicos y de medicina facial estética."
+      }
     ],
     "ctaEyebrow": "¿Listo para comenzar?",
     "ctaTitle": "Tu primer paso es una conversación",
@@ -401,7 +538,13 @@
     "imagePlaceholder": "Imagen próximamente",
     "readTimeSuffix": "lectura",
     "comingSoon": "Más artículos próximamente. Suscríbete para recibir novedades.",
-    "categories": ["Todos", "Odontología", "Medicina Facial", "Turismo Médico", "Consejos de Bienestar"],
+    "categories": [
+      "Todos",
+      "Odontología",
+      "Medicina Facial",
+      "Turismo Médico",
+      "Consejos de Bienestar"
+    ],
     "posts": [
       {
         "category": "Odontología",
