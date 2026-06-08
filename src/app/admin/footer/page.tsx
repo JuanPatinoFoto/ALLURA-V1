@@ -7,6 +7,11 @@ const SITE_ID = '00000000-0000-0000-0000-000000000001'
 
 // ─── Default values (lo que el footer muestra actualmente hardcodeado) ─────────
 const DEFAULTS: Record<string, string> = {
+  // Social links — vacíos por defecto, se llenan desde la DB o desde el editor
+  social_facebook: '',
+  social_instagram: '',
+  social_tiktok: '',
+  social_x: '',
   footer_slogan_es: 'Salud que inspira, Viajes que transforman',
   footer_slogan_en: 'Health that inspires, Journeys that transform',
   footer_brand_text_es: 'Turismo médico de excelencia en Medellín. Odontología premium y medicina facial estética con la calidez de Colombia.',
@@ -185,9 +190,9 @@ export default function FooterEditorPage() {
     e.preventDefault()
     setSaving(true)
     const supabase = createBrowserSupabaseClient()
-    // Only upsert entries that have a non-empty value to avoid wiping existing DB data
+    // Upsert all fields that are in state (including empty strings to allow clearing)
     const upserts = Object.entries(values)
-      .filter(([, value]) => value !== '' && value !== null && value !== undefined)
+      .filter(([, value]) => value !== null && value !== undefined)
       .map(([key, value]) => ({
         site_id: SITE_ID,
         key,
