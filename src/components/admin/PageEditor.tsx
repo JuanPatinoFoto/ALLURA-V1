@@ -7,6 +7,7 @@ import { SECTION_REGISTRY } from '@/lib/section-registry'
 import { SectionTree } from './SectionTree'
 import { SectionFormRouter } from './SectionFormRouter'
 import { RotateCw, Pencil, Check, X } from 'lucide-react'
+import { SERVICE_DETAIL_SEEDS } from '@/lib/service-detail-seeds'
 
 interface PageEditorProps {
   page: PageRow
@@ -159,6 +160,9 @@ export function PageEditor({ page, initialSections }: PageEditorProps) {
     const def = SECTION_REGISTRY.find(d => d.type === type)
     if (!def) return
     setShowAddModal(false)
+    const settings = type === 'service_detail' && SERVICE_DETAIL_SEEDS[page.slug]
+      ? SERVICE_DETAIL_SEEDS[page.slug]
+      : def.defaultSettings
     const res = await fetch('/api/admin/sections', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -167,7 +171,7 @@ export function PageEditor({ page, initialSections }: PageEditorProps) {
         type,
         sort_order: sections.length,
         is_visible: true,
-        settings: def.defaultSettings,
+        settings,
       }),
     })
     if (res.ok) {
