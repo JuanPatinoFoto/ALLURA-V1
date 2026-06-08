@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { ImageUploader } from '@/components/admin/ImageUploader'
-import { Plus, Trash2, AlignLeft, AlignCenter, AlignRight } from 'lucide-react'
+import { Plus, Trash2, AlignLeft, AlignCenter, AlignRight, ChevronLeft, ChevronRight } from 'lucide-react'
 
 type I18n = { es: string; en: string }
 type CtaStyle = 'link' | 'button-navy' | 'button-whatsapp' | 'button-outline'
@@ -104,6 +104,15 @@ export function CardsGridForm({ settings, onChange }: { settings: Record<string,
     setActiveCard(Math.min(activeCard, updated.length - 1))
   }
 
+  const moveCard = (i: number, dir: -1 | 1) => {
+    const j = i + dir
+    if (j < 0 || j >= cards.length) return
+    const updated = [...cards]
+    ;[updated[i], updated[j]] = [updated[j], updated[i]]
+    upd('cards', updated)
+    setActiveCard(j)
+  }
+
   return (
     <div className="space-y-3">
       {/* Nombre interno */}
@@ -172,12 +181,28 @@ export function CardsGridForm({ settings, onChange }: { settings: Record<string,
           {cards[activeCard] && (
             <div className="border border-gray-200 rounded-xl p-3 space-y-3">
               <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold text-gray-500 uppercase">Tarjeta {activeCard + 1}</p>
-                {cards.length > 1 && (
-                  <button onClick={() => removeCard(activeCard)} className="text-red-400 hover:text-red-600 p-1">
-                    <Trash2 size={12} />
-                  </button>
-                )}
+                <p className="text-xs font-semibold text-gray-500 uppercase">Tarjeta {activeCard + 1} de {cards.length}</p>
+                <div className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={() => moveCard(activeCard, -1)}
+                    disabled={activeCard === 0}
+                    className="p-1 rounded text-gray-400 hover:text-[#051c33] disabled:opacity-25"
+                    title="Mover izquierda"
+                  ><ChevronLeft size={14} /></button>
+                  <button
+                    type="button"
+                    onClick={() => moveCard(activeCard, 1)}
+                    disabled={activeCard === cards.length - 1}
+                    className="p-1 rounded text-gray-400 hover:text-[#051c33] disabled:opacity-25"
+                    title="Mover derecha"
+                  ><ChevronRight size={14} /></button>
+                  {cards.length > 1 && (
+                    <button onClick={() => removeCard(activeCard)} className="p-1 text-red-400 hover:text-red-600">
+                      <Trash2 size={12} />
+                    </button>
+                  )}
+                </div>
               </div>
 
               {/* Número decorativo */}
