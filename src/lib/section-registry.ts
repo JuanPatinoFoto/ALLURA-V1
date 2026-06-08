@@ -309,6 +309,26 @@ export const SECTION_REGISTRY: SectionDefinition[] = [
     },
   },
   {
+    type: 'service_detail',
+    label: 'Detalle de servicio',
+    icon: '⚕️',
+    defaultSettings: {
+      category:    { es: '', en: '' },
+      categorySlug: '',
+      title:       { es: '', en: '' },
+      description: { es: '', en: '' },
+      benefits:    [{ es: '', en: '' }, { es: '', en: '' }, { es: '', en: '' }],
+      steps:       [
+        { title: { es: '', en: '' }, description: { es: '', en: '' } },
+        { title: { es: '', en: '' }, description: { es: '', en: '' } },
+        { title: { es: '', en: '' }, description: { es: '', en: '' } },
+      ],
+      candidates:  [{ es: '', en: '' }, { es: '', en: '' }],
+      timeline:    { es: '', en: '' },
+      whyBody:     { es: '', en: '' },
+    },
+  },
+  {
     type: 'custom',
     label: 'Sección personalizada',
     icon: '🎨',

@@ -17,6 +17,7 @@ import { CardsGridForm } from './section-forms/CardsGridForm'
 import { CustomFormSectionForm } from './section-forms/CustomFormSectionForm'
 import { PageHeaderForm } from './section-forms/PageHeaderForm'
 import { SocialLinksForm } from './section-forms/SocialLinksForm'
+import { ServiceDetailForm } from './section-forms/ServiceDetailForm'
 
 interface SectionFormRouterProps {
   type: string
@@ -44,7 +45,8 @@ export function SectionFormRouter({ type, settings, onChange }: SectionFormRoute
     case 'custom_form':  return <CustomFormSectionForm {...props} />
     case 'page_header':   return <PageHeaderForm {...props} />
     case 'social_links':  return <SocialLinksForm {...props} />
-    case 'custom': return <CustomSectionForm {...props} />
+    case 'custom':          return <CustomSectionForm {...props} />
+    case 'service_detail':  return <ServiceDetailForm {...props} />
     default: return <p className="text-sm text-gray-400 italic">Tipo no reconocido: {type}</p>
   }
 }

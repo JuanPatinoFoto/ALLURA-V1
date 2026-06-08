@@ -17,6 +17,7 @@ import { CardsGridSection } from '@/components/sections/CardsGridSection'
 import { CustomFormSection } from '@/components/sections/CustomFormSection'
 import { PageHeaderSection } from '@/components/sections/PageHeaderSection'
 import { SocialLinksSection } from '@/components/sections/SocialLinksSection'
+import { ServiceDetailSection } from '@/components/sections/ServiceDetailSection'
 import type { SectionRow } from '@/lib/supabase/pages'
 
 export function renderSection(section: SectionRow, locale: string) {
@@ -40,7 +41,8 @@ export function renderSection(section: SectionRow, locale: string) {
     case 'custom_form':   return <CustomFormSection key={section.id} locale={locale} settings={s} />
     case 'page_header':   return <PageHeaderSection key={section.id} locale={locale} settings={s} />
     case 'social_links':  return <SocialLinksSection key={section.id} locale={locale} settings={s} />
-    case 'custom':        return <CustomSection key={section.id} locale={locale} settings={s} />
-    default:              return null
+    case 'custom':          return <CustomSection key={section.id} locale={locale} settings={s} />
+    case 'service_detail':  return <ServiceDetailSection key={section.id} locale={locale} settings={s} />
+    default:                return null
   }
 }
