@@ -92,6 +92,26 @@ export async function getTrackingScripts(): Promise<TrackingScripts | null> {
   }
 }
 
+export type HeaderCta = Record<string, string>
+
+/** Lee la configuracion de los botones del header (claves header_*) desde el servidor. */
+export async function getHeaderCta(): Promise<HeaderCta> {
+  const supabase = createClient()
+  const { data, error } = await supabase
+    .from('site_settings')
+    .select('key, value')
+    .eq('site_id', SITE_ID)
+    .like('key', 'header_%')
+
+  if (error || !data) return {}
+  return Object.fromEntries(
+    data.map((r: { key: string; value: unknown }) => [
+      r.key,
+      typeof r.value === 'string' ? r.value : String(r.value ?? ''),
+    ])
+  )
+}
+
 export function buildWhatsAppUrl(settings: SiteSettings | null, locale: 'es' | 'en'): string {
   const FALLBACK = 'https://wa.me/17862087572?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20Allura%20Healthcare'
   if (!settings?.whatsappNumber) return FALLBACK

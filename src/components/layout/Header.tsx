@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import type { MenuItem } from "@/lib/menu-defaults";
 import { defaultMenu } from "@/lib/menu-defaults";
 
-export function Header({ hasPromo = false, menuItems = defaultMenu }: { hasPromo?: boolean; menuItems?: MenuItem[] }) {
+export function Header({ hasPromo = false, menuItems = defaultMenu, ctaConfig = {} }: { hasPromo?: boolean; menuItems?: MenuItem[]; ctaConfig?: Record<string, string> }) {
   const pathname = usePathname();
   const locale = useLocale();
   const [scrolled,      setScrolled]      = useState(false);
@@ -22,24 +22,6 @@ export function Header({ hasPromo = false, menuItems = defaultMenu }: { hasPromo
   const [openSubmenu,   setOpenSubmenu]   = useState<string | null>(null);
   const [searchOpen,    setSearchOpen]    = useState(false);
   const t = useTranslations("nav");
-  const [ctaConfig, setCtaConfig] = useState<Record<string, string>>({});
-
-  useEffect(() => {
-    fetch('/api/admin/footer')
-      .then(r => r.json())
-      .then(({ data }) => {
-        if (data) {
-          const map: Record<string, string> = {}
-          data.forEach((r: { key: string; value: unknown }) => {
-            if (typeof r.key === 'string' && r.key.startsWith('header_')) {
-              map[r.key] = typeof r.value === 'string' ? r.value : String(r.value ?? '')
-            }
-          })
-          setCtaConfig(map)
-        }
-      })
-      .catch(() => {})
-  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
