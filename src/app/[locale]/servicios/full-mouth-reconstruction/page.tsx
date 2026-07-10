@@ -12,7 +12,7 @@ const contentEs = {
   title: "Allura Full Mouth Reconstruction™",
   eyebrow: "Odontología Integral",
   subtitle: "Solución integral para recuperar función, estabilidad y una sonrisa que vuelva a sentirse segura.",
-  description: "Para pacientes que han perdido piezas, presentan deterioro severo o necesitan una rehabilitación completa, diseñamos un plan integral respaldado por tecnología 3D de última generación y un equipo de especialistas altamente certificados. Cada caso es único y cada plan es hecho a medida.",
+  description: "Para pacientes que han perdido piezas dentales, presentan deterioro severo o necesitan una rehabilitación completa, diseñamos un plan integral respaldado por tecnología 3D de última generación y un equipo de especialistas altamente certificados. Cada caso es único y cada plan es hecho a medida.",
   heroImage: "/images/imagenes_web/Allura-Full-Mouth-Reconstruction.jpg",
   subServices: [
     { slug: "implantes-unitarios", name: "Implantes Unitarios y Múltiples", description: "Reemplazo de una o varias piezas dentales con implantes de titanio de alta precisión, integrados para durar toda la vida." },
