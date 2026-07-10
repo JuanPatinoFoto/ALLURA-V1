@@ -21,7 +21,7 @@ const contentEs = {
     "Resultados funcionales y estéticos de alta calidad desde el primer día",
   ],
   steps: [
-    { title: "Diagnóstico 3D y planificación quirúrgica", description: "Tomografía cone beam y diseño digital del ángulo y posición óptima de cada implante para maximizar el soporte óseo disponible." },
+    { title: "Diagnóstico 3D y planificación quirúrgica", description: "Con la tomografía analizamos el volumen óseo disponible y las estructuras anatómicas. También se realiza un escaneo digital de los maxilares para diseñar la prótesis, los dientes o la futura rehabilitación que guía la posición exacta del implante." },
     { title: "Cirugía de colocación", description: "Instalación de los 4 o 6 implantes bajo sedación o anestesia local. Procedimiento de alta complejidad realizado por nuestro equipo de implantólogos." },
     { title: "Carga provisional inmediata", description: "En la mayoría de los casos, instalamos una prótesis provisional fija el mismo día de la cirugía." },
     { title: "Prótesis definitiva", description: "Entre 6 y 12 meses después, instalamos la prótesis definitiva de porcelana o zirconio, fabricada a medida." },
@@ -50,7 +50,7 @@ const contentEn = {
     "High-quality functional and aesthetic results from day one",
   ],
   steps: [
-    { title: "3D diagnosis and surgical planning", description: "Cone beam CT scan and digital design of the optimal angle and position of each implant to maximize available bone support." },
+    { title: "3D diagnosis and surgical planning", description: "With the CT scan we analyze the available bone volume and anatomical structures. We also perform a digital scan of the jaws to design the prosthesis, the teeth or the future rehabilitation that guides the exact position of the implant." },
     { title: "Placement surgery", description: "Installation of the 4 or 6 implants under sedation or local anesthesia. High-complexity procedure performed by our implantology team." },
     { title: "Immediate provisional loading", description: "In most cases, we install a fixed provisional prosthesis the same day as surgery." },
     { title: "Definitive prosthesis", description: "Between 6 and 12 months later, we install the custom-made definitive porcelain or zirconia prosthesis." },
