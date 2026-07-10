@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/Button";
 import { useTranslations } from "next-intl";
 
 const teamMeta = [
-  { name: "Dra. Johanna Jaramillo", image: "/images/equipo/Dra-Johanna-Jaramillo-Allura.avif" },
-  { name: "Dr. Santiago Henao",     image: "/images/equipo/Dr-Santiago-Henao-Allura.avif" },
-  { name: "Dra. Daniela Alzate",    image: "/images/equipo/Dra-Daniela-Alzate-Allura.avif" },
+  { name: "Dra. Johanna Jaramillo", image: "/images/equipo/Dra-Johanna-Jaramillo-Allura-2.jpg" },
+  { name: "Dr. Santiago Henao",     image: "/images/equipo/Dr-Santiago-Henao-Allura-2.jpg" },
+  { name: "Dra. Daniela Alzate",    image: "/images/equipo/Dra-Daniela-Alzate-Allura-2.jpg" },
   { name: "Dr. Iván Darío Jiménez", image: "/images/equipo/Dr-Ivan-Jimenez-Allura.avif" },
-  { name: "Dr. Sebastián Muñoz",    image: "/images/equipo/Dr-Sebastian-Munoz-Allura.avif" },
-  { name: "Dr. Alejandro Cifuentes",image: "/images/equipo/Dr-Alejandro-Cifuentes-Allura.avif" },
+  { name: "Dr. Sebastián Muñoz",    image: "/images/equipo/Dr-Sebastian-Munoz-Allura-2.jpg" },
+  { name: "Dr. Alejandro Cifuentes",image: "/images/equipo/Dr-Alejandro-Cifuentes-Allura-2.jpg" },
 ];
 
 interface TeamPreviewProps {
