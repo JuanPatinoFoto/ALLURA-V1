@@ -43,6 +43,10 @@ export interface SiteSettings {
   footerLegalTerms?: I18nField
   footerLegalMedical?: I18nField
   footerLegalAccess?: I18nField
+  footerLegalPrivacyUrl?: string
+  footerLegalTermsUrl?: string
+  footerLegalMedicalUrl?: string
+  footerLegalAccessUrl?: string
   footerNavItemsEs?: string
   footerNavItemsEn?: string
   footerServiceItems?: string

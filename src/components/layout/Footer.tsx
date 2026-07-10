@@ -86,6 +86,12 @@ export async function Footer() {
   const legalMedical = config?.footerLegalMedical?.[l] || t("legal.medicalDisclaimer")
   const legalAccess = config?.footerLegalAccess?.[l] || t("legal.accessibility")
 
+  // URLs editables desde el admin; si estan vacias, usan el link por defecto (sin romper nada).
+  const legalPrivacyUrl = config?.footerLegalPrivacyUrl || "/politicas-de-privacidad"
+  const legalTermsUrl = config?.footerLegalTermsUrl || "/terminos-y-condiciones"
+  const legalMedicalUrl = config?.footerLegalMedicalUrl || "/medical-disclaimer"
+  const legalAccessUrl = config?.footerLegalAccessUrl || "/accesibilidad"
+
   const navItems = parseJson<LinkItem[]>(
     l === 'en' ? config?.footerNavItemsEn : config?.footerNavItemsEs,
     l === 'en' ? DEFAULT_NAV_EN : DEFAULT_NAV_ES
@@ -239,16 +245,16 @@ export async function Footer() {
             © {new Date().getFullYear()} Allura Healthcare. {copyrightText}
           </p>
           <div className="flex flex-wrap justify-center sm:justify-end gap-x-6 gap-y-2">
-            <Link href="/politicas-de-privacidad" className="font-body text-xs text-brand-silver hover:text-white transition-colors">
+            <Link href={legalPrivacyUrl as `/${string}`} className="font-body text-xs text-brand-silver hover:text-white transition-colors">
               {legalPrivacy}
             </Link>
-            <Link href="/terminos-y-condiciones" className="font-body text-xs text-brand-silver hover:text-white transition-colors">
+            <Link href={legalTermsUrl as `/${string}`} className="font-body text-xs text-brand-silver hover:text-white transition-colors">
               {legalTerms}
             </Link>
-            <Link href="/medical-disclaimer" className="font-body text-xs text-brand-silver hover:text-white transition-colors">
+            <Link href={legalMedicalUrl as `/${string}`} className="font-body text-xs text-brand-silver hover:text-white transition-colors">
               {legalMedical}
             </Link>
-            <Link href="/accesibilidad" className="font-body text-xs text-brand-silver hover:text-white transition-colors">
+            <Link href={legalAccessUrl as `/${string}`} className="font-body text-xs text-brand-silver hover:text-white transition-colors">
               {legalAccess}
             </Link>
           </div>

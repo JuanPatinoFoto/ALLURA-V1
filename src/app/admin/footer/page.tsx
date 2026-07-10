@@ -41,6 +41,10 @@ const DEFAULTS: Record<string, string> = {
   footer_legal_medical_en: 'Medical Disclaimer',
   footer_legal_access_es: 'Declaración de accesibilidad',
   footer_legal_access_en: 'Accessibility Statement',
+  footer_legal_privacy_url: '',
+  footer_legal_terms_url: '',
+  footer_legal_medical_url: '',
+  footer_legal_access_url: '',
   footer_nav_items_es: JSON.stringify([
     { label: 'Inicio', href: '/' },
     { label: 'Cómo funciona', href: '/como-funciona' },
@@ -382,6 +386,25 @@ export default function FooterEditorPage() {
             <Field label="'Accessibility Statement' (inglés)">
               <input value={values.footer_legal_access_en ?? ''} onChange={e => set('footer_legal_access_en', e.target.value)} className={inp} />
             </Field>
+          </div>
+
+          <div className="mt-5 pt-4 border-t border-[#eaeeef]">
+            <p className="text-sm font-semibold text-[#051c33] mb-1">Destino de los links legales (URL)</p>
+            <p className="text-xs text-[#8b9fb3] mb-3">Opcional. Si dejas un campo vacío, el link usa la página por defecto. Para apuntar a una página creada en el CMS, escribe su ruta (ej: <code>/privacidad</code>).</p>
+            <div className="grid grid-cols-2 gap-3">
+              <Field label="URL — Políticas de privacidad">
+                <input value={values.footer_legal_privacy_url ?? ''} onChange={e => set('footer_legal_privacy_url', e.target.value)} placeholder="/politicas-de-privacidad" className={inp} />
+              </Field>
+              <Field label="URL — Términos y Condiciones">
+                <input value={values.footer_legal_terms_url ?? ''} onChange={e => set('footer_legal_terms_url', e.target.value)} placeholder="/terminos-y-condiciones" className={inp} />
+              </Field>
+              <Field label="URL — Aviso Médico Legal">
+                <input value={values.footer_legal_medical_url ?? ''} onChange={e => set('footer_legal_medical_url', e.target.value)} placeholder="/medical-disclaimer" className={inp} />
+              </Field>
+              <Field label="URL — Declaración de accesibilidad">
+                <input value={values.footer_legal_access_url ?? ''} onChange={e => set('footer_legal_access_url', e.target.value)} placeholder="/accesibilidad" className={inp} />
+              </Field>
+            </div>
           </div>
         </Section>
 
