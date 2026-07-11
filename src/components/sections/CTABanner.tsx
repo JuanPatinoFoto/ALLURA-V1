@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import type { LocaleString, CtaField } from "@/types/cms";
 
-const DEFAULT_URL = "https://allura-healthcare-v2.vercel.app/es/contacto";
+const DEFAULT_URL = "/contacto";
 
 const BUTTON_STYLES: Record<string, { bg: string; hover: string; text: string }> = {
   whatsapp: { bg: '#25D366', hover: '#22c55e', text: 'white' },
